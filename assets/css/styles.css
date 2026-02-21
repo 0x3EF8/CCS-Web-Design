@@ -824,10 +824,18 @@ a, button, [role="button"] {
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    "copy panel"
+    "hud  panel";
   gap: 64px;
+  row-gap: 0;
   align-items: center;
   padding-block: 80px;
 }
+.hero-copy   { grid-area: copy; }
+.hero-panel  { grid-area: panel; align-self: center; }
+.hud-status  { grid-area: hud; }
 
 .hero-eyebrow {
   display: inline-flex;
@@ -942,8 +950,8 @@ a, button, [role="button"] {
   letter-spacing: .12em;
   text-transform: uppercase;
   color: rgba(255,255,255,.24);
-  margin-top: 24px;
-  padding-top: 16px;
+  margin-top: 0;
+  padding-top: 20px;
   border-top: 1px solid rgba(249,115,22,.12);
 }
 .hud-online {
@@ -1301,33 +1309,6 @@ a, button, [role="button"] {
 .hero-chip--br::after {
   bottom: -1px; left: 7px;
   width: 10px; height: 1px;
-}
-
-.scroll-hint {
-  position: absolute;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 24px;
-  height: 40px;
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-full);
-  display: flex;
-  justify-content: center;
-  padding-top: 6px;
-}
-.scroll-track { width: 3px; }
-.scroll-thumb {
-  width: 3px;
-  height: 8px;
-  background: var(--color-primary);
-  border-radius: 2px;
-  animation: scroll-cue 2s ease-in-out infinite;
-}
-@keyframes scroll-cue {
-  0%   { transform: translateY(0);    opacity: 1; }
-  75%  { transform: translateY(14px); opacity: 0; }
-  100% { transform: translateY(0);    opacity: 0; }
 }
 
 
@@ -1728,10 +1709,16 @@ a, button, [role="button"] {
   /* Hero */
   .hero-layout {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "copy"
+      "panel"
+      "hud";
     text-align: center;
-    gap: 48px;
+    gap: 40px;
     padding-block: 64px;
   }
+  .hud-status { padding-top: 12px; justify-content: center; }
   .hero-body  { margin-inline: auto; }
   .hero-panel { margin-inline: auto; }
   .hero-actions { justify-content: center; }
@@ -1841,7 +1828,7 @@ a, button, [role="button"] {
   .hero-heading      { font-size: clamp(2rem, 7.5vw, 2.6rem); }
   .hero-body         { font-size: .975rem; max-width: 100%; }
   .hero-metrics      { gap: 20px; flex-wrap: wrap; justify-content: center; }
-  .ide-card          { display: none; }
+  .ide-card          { max-width: 360px; }
   .hero-chip--tl     { left: 0; }
   .hero-chip--br     { right: 0; }
 
@@ -2063,7 +2050,6 @@ a, button, [role="button"] {
   .back-top,
   .hero-orbs,
   #particleCanvas,
-  .scroll-hint,
   .hero-chip,
   .hero-panel,
   .social-row {
