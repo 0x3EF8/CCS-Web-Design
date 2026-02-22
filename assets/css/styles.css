@@ -1179,6 +1179,22 @@ a, button, [role="button"] {
 .tk-str     { color: #a5f3aa; }
 .tk-comment { color: rgba(255,255,255,.25); font-style: italic; }
 
+/* Typing cursor that blinks inside the IDE code block */
+.ide-type-cursor {
+  display: inline-block;
+  width: 2px;
+  height: .9em;
+  background: rgba(255,255,255,.80);
+  vertical-align: text-bottom;
+  border-radius: 1px;
+  margin-left: 1px;
+  animation: ide-caret .6s step-end infinite;
+}
+@keyframes ide-caret {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
 .ide-terminal {
   background: rgba(4,6,9,.88);
   border-top: 1px solid rgba(255,255,255,.06);

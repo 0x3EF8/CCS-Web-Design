@@ -34,7 +34,7 @@
 
     if (!navbar) return;
 
-    // Scrolled shadow
+    // Scroll behaviour — identical on every page: transparent at top, dark glass when scrolled
     const onScroll = () => navbar.classList.toggle('is-scrolled', window.scrollY > 10);
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
