@@ -213,4 +213,109 @@
     });
   }
 
+  /* ── Hero Carousel ─────────────────────────────────────────── */
+  const heroCarousel = document.getElementById('np-hero-carousel');
+  if (heroCarousel) {
+    const slides = [
+      {
+        img: '../assets/images/IT.jpg',
+        badge: 'Featured', live: 'Latest',
+        headline: 'CCS Opens Enrollment for A.Y. 2025&mdash;2026:<br>Slots Strictly Limited for BSCS &amp; BSIT',
+        excerpt: 'The College of Computing Studies is now accepting applications for both programs. Prospective students are urged to apply early &mdash; entrance examinations are scheduled throughout March and April 2026.',
+        avatar: 'CO', author: 'CCS Office', datetime: '2026-02-20', date: 'Feb 20, 2026', read: '8 min read'
+      },
+      {
+        img: '../assets/images/CCS/PhilNITS.jpg',
+        badge: 'Achievement', live: '',
+        headline: 'CCS Students Clinch Top 3 at Regional E-Thesis Competition 2026',
+        excerpt: 'Three CCS teams swept the top placements, showcasing research in AI health diagnostics, smart agriculture IoT systems, and blockchain-based academic credentialing.',
+        avatar: 'JR', author: 'J. Reyes', datetime: '2026-02-15', date: 'Feb 15, 2026', read: '4 min read'
+      },
+      {
+        img: '../assets/images/CCS/teachers.jpg',
+        badge: 'Research', live: '',
+        headline: 'Faculty Publishes AI-Driven Curriculum Framework in Peer-Reviewed Journal',
+        excerpt: 'A landmark publication from the CCS faculty introduces an AI-driven framework for computing education, now cited in three international journals.',
+        avatar: 'FA', author: 'Faculty Affairs', datetime: '2026-02-10', date: 'Feb 10, 2026', read: '6 min read'
+      },
+      {
+        img: '../assets/images/CCS/CCS Gov.jpg',
+        badge: 'Program', live: '',
+        headline: 'New Specialization Track Launched: Cloud &amp; DevOps Engineering',
+        excerpt: 'Starting 2nd semester, students can enroll in the new Cloud &amp; DevOps Engineering track, co-designed with industry partners.',
+        avatar: 'CO', author: 'CCS Office', datetime: '2026-02-05', date: 'Feb 05, 2026', read: '3 min read'
+      },
+      {
+        img: '../assets/images/CCS/ccs dean.jpg',
+        badge: 'Announcement', live: '',
+        headline: 'Peer Tutoring Program Opens Applications for 2nd Semester',
+        excerpt: 'The CCS Peer Tutoring Program is now accepting applications for student tutors and tutees for the upcoming 2nd semester.',
+        avatar: 'CO', author: 'CCS Office', datetime: '2026-01-28', date: 'Jan 28, 2026', read: '2 min read'
+      }
+    ];
+
+    let current = 0;
+    let timer;
+
+    const heroImg       = document.getElementById('np-hero-img');
+    const heroBadge     = document.getElementById('np-hero-badge');
+    const heroLive      = document.getElementById('np-hero-live');
+    const heroHeadline  = document.getElementById('np-hero-headline');
+    const heroExcerpt   = document.getElementById('np-hero-excerpt');
+    const heroAvatar    = document.getElementById('np-hero-avatar');
+    const heroAuthor    = document.getElementById('np-hero-author-name');
+    const heroDate      = document.getElementById('np-hero-date');
+    const heroRead      = document.getElementById('np-hero-read-time');
+    const slideCur      = document.getElementById('np-slide-cur');
+    const slideTotal    = document.getElementById('np-slide-total');
+    const thumbItems    = heroCarousel.querySelectorAll('.np-thumb-item');
+
+    if (slideTotal) slideTotal.textContent = slides.length;
+
+    function goTo(idx) {
+      current = (idx + slides.length) % slides.length;
+      const s = slides[current];
+
+      heroImg.style.opacity = '0';
+      setTimeout(() => {
+        heroImg.src = s.img;
+        heroImg.alt = s.badge + ' — ' + s.date;
+        heroImg.style.opacity = '1';
+      }, 200);
+
+      heroBadge.textContent = s.badge;
+      heroLive.textContent  = s.live;
+      heroLive.style.display = s.live ? '' : 'none';
+      heroHeadline.innerHTML = s.headline;
+      heroExcerpt.innerHTML  = s.excerpt;
+      heroAvatar.textContent = s.avatar;
+      heroAuthor.textContent = s.author;
+      heroDate.setAttribute('datetime', s.datetime);
+      heroDate.textContent = s.date;
+      heroRead.textContent = s.read;
+      if (slideCur) slideCur.textContent = current + 1;
+
+      thumbItems.forEach((t, i) => {
+        const slideIdx = parseInt(t.dataset.slide, 10);
+        t.classList.toggle('is-active', slideIdx === current);
+      });
+    }
+
+    function startAuto() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(current + 1), 5000);
+    }
+
+    document.getElementById('np-next').addEventListener('click', () => { goTo(current + 1); startAuto(); });
+    document.getElementById('np-prev').addEventListener('click', () => { goTo(current - 1); startAuto(); });
+
+    thumbItems.forEach(t => {
+      t.addEventListener('click', () => { goTo(parseInt(t.dataset.slide, 10)); startAuto(); });
+    });
+
+    heroImg.style.transition = 'opacity .25s ease';
+    goTo(0);
+    startAuto();
+  }
+
 })();
