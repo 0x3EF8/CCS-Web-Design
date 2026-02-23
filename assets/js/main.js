@@ -18,6 +18,10 @@
     setupCounters();
     setupProgramTabs();
     setupContactForm();
+    setupFaqAccordion();
+    setupFacultyFilter();
+    setupNewsFilter();
+    setupLoadMore();
 
     // Auto copyright year
     const yr = document.getElementById('copy-year');
@@ -189,27 +193,192 @@
   }
 
   /* ──────────────────────────────────────────────────────────────
-     8. CONTACT FORM (contact.html only)
+     8. CONTACT FORM — real-time validation + submission
   ────────────────────────────────────────────────────────────── */
   function setupContactForm() {
-    const form = document.querySelector('.contact-form');
+    const form = document.querySelector('.ct-form');
     if (!form) return;
 
-    const alert  = form.querySelector('.form-alert');
+    const notice = form.querySelector('#ct-form-notice') || form.querySelector('.ct-form-notice');
     const submit = form.querySelector('button[type="submit"]');
+
+    // Validation rules
+    const validators = {
+      text:     v => v.trim().length >= 2  ? '' : 'Please enter at least 2 characters.',
+      email:    v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Please enter a valid email address.',
+      select:   v => v  ? '' : 'Please select an option.',
+      textarea: v => v.trim().length >= 10 ? '' : 'Please enter at least 10 characters.',
+    };
+
+    function validateField(input) {
+      const field = input.closest('.ct-field');
+      const errSpan = field ? field.querySelector('.ct-field-error') : null;
+      let msg = '';
+
+      if (input.required) {
+        if (input.type === 'checkbox') {
+          msg = input.checked ? '' : 'You must agree to continue.';
+        } else if (input.tagName === 'SELECT') {
+          msg = validators.select(input.value);
+        } else if (input.tagName === 'TEXTAREA') {
+          msg = validators.textarea(input.value);
+        } else if (input.type === 'email') {
+          msg = validators.email(input.value);
+        } else {
+          msg = validators.text(input.value);
+        }
+      }
+
+      if (errSpan) errSpan.textContent = msg;
+      input.classList.toggle('ct-input--error', !!msg);
+      return msg === '';
+    }
+
+    // Real-time validation on blur
+    form.querySelectorAll('input, select, textarea').forEach(el => {
+      el.addEventListener('blur', () => validateField(el));
+      el.addEventListener('input', () => {
+        if (el.classList.contains('ct-input--error')) validateField(el);
+      });
+    });
 
     form.addEventListener('submit', e => {
       e.preventDefault();
-      if (submit) {
-        submit.disabled    = true;
-        submit.textContent = 'Sending…';
-      }
+      const fields = form.querySelectorAll('input, select, textarea');
+      let allValid = true;
+      fields.forEach(f => { if (!validateField(f)) allValid = false; });
+      if (!allValid) return;
+
+      if (submit) { submit.disabled = true; submit.textContent = 'Sending…'; }
+
       setTimeout(() => {
-        if (alert)  { alert.removeAttribute('hidden'); }
+        if (notice) {
+          notice.removeAttribute('hidden');
+          notice.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg> Message sent! We\'ll respond within 24–48 hours.';
+          notice.className = 'ct-form-notice ct-form-notice--success';
+        }
         form.reset();
+        form.querySelectorAll('.ct-input--error').forEach(el => el.classList.remove('ct-input--error'));
         if (submit) { submit.disabled = false; submit.textContent = 'Send Message'; }
-        setTimeout(() => { if (alert) alert.setAttribute('hidden', ''); }, 5000);
-      }, 1200);
+        setTimeout(() => { if (notice) notice.setAttribute('hidden', ''); }, 6000);
+      }, 1000);
+    });
+  }
+
+  /* ──────────────────────────────────────────────────────────────
+     9. FAQ ACCORDION (enroll.html & contact.html)
+  ────────────────────────────────────────────────────────────── */
+  function setupFaqAccordion() {
+    const faqItems = document.querySelectorAll('.en-faq-item, .ct-faq-item');
+    if (!faqItems.length) return;
+
+    faqItems.forEach(item => {
+      const btn = item.querySelector('button.en-faq-q, button.ct-faq-q');
+      const panel = item.querySelector('.en-faq-a, .ct-faq-a');
+      if (!btn || !panel) return;
+
+      btn.addEventListener('click', () => {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+        // Close all others (accordion behavior)
+        faqItems.forEach(other => {
+          const ob = other.querySelector('button.en-faq-q, button.ct-faq-q');
+          const op = other.querySelector('.en-faq-a, .ct-faq-a');
+          if (ob && op && ob !== btn) {
+            ob.setAttribute('aria-expanded', 'false');
+            op.setAttribute('hidden', '');
+            other.classList.remove('is-open');
+          }
+        });
+
+        // Toggle current
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        if (isOpen) {
+          panel.setAttribute('hidden', '');
+          item.classList.remove('is-open');
+        } else {
+          panel.removeAttribute('hidden');
+          item.classList.add('is-open');
+        }
+      });
+    });
+  }
+
+  /* ──────────────────────────────────────────────────────────────
+     10. FACULTY FILTER (faculty.html)
+  ────────────────────────────────────────────────────────────── */
+  function setupFacultyFilter() {
+    const filterBtns = document.querySelectorAll('.fc-filter-btn');
+    if (!filterBtns.length) return;
+
+    const allCards = document.querySelectorAll('.fc-card[data-expertise]');
+    const fcGroups = document.querySelectorAll('.fc-group');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('fc-filter-btn--active'));
+        btn.classList.add('fc-filter-btn--active');
+
+        const filter = btn.dataset.filter;
+
+        allCards.forEach(card => {
+          const show = filter === 'all' || card.dataset.expertise === filter;
+          card.style.display = show ? '' : 'none';
+          card.style.opacity = show ? '1' : '0';
+        });
+
+        // Hide group labels when filtering
+        fcGroups.forEach(g => {
+          g.style.display = filter === 'all' ? '' : 'none';
+        });
+      });
+    });
+  }
+
+  /* ──────────────────────────────────────────────────────────────
+     11. NEWS CATEGORY FILTER (news.html)
+  ────────────────────────────────────────────────────────────── */
+  function setupNewsFilter() {
+    const filterBtns = document.querySelectorAll('.np-filter-btn');
+    if (!filterBtns.length) return;
+
+    const allArticles = document.querySelectorAll('.np-card[data-category]');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('np-filter-btn--active'));
+        btn.classList.add('np-filter-btn--active');
+
+        const filter = btn.dataset.filter;
+
+        allArticles.forEach(card => {
+          const show = filter === 'all' || card.dataset.category === filter;
+          card.style.display = show ? '' : 'none';
+        });
+
+        // Show/hide section headers based on visibility
+        document.querySelectorAll('.np-section-hdr').forEach(hdr => {
+          const nextGrid = hdr.nextElementSibling;
+          if (nextGrid) {
+            const visibleCards = nextGrid.querySelectorAll('.np-card:not([style*="none"])');
+            hdr.style.display = (filter === 'all' || visibleCards.length > 0) ? '' : 'none';
+          }
+        });
+      });
+    });
+  }
+
+  /* ──────────────────────────────────────────────────────────────
+     12. LOAD MORE (news.html)
+  ────────────────────────────────────────────────────────────── */
+  function setupLoadMore() {
+    const btn = document.querySelector('.np-load-more-btn');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      // Visual feedback — in a real app this would fetch more articles
+      btn.textContent = 'All articles loaded';
+      btn.disabled = true;
+      btn.style.opacity = '0.5';
     });
   }
 

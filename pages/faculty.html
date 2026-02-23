@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Meet the CCS Department faculty — dedicated educators and industry experts." />
-  <title>Faculty — CCS Department</title>
+  <meta name="description" content="Meet the CCS Department faculty — dedicated educators, researchers, and industry experts shaping the next generation of computing professionals." />
+  <meta property="og:title" content="Faculty & Staff | CCS Department" />
+  <meta property="og:description" content="Meet the CCS Department faculty — dedicated educators, researchers, and industry experts shaping the next generation of computing professionals." />
+  <meta property="og:type" content="website" />
+  <title>Faculty &amp; Staff | CCS Department &mdash; College of Computing Studies</title>
   <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,7 +15,7 @@
   <link rel="stylesheet" href="../assets/css/styles.css" />
 </head>
 <body style="background:#080c10">
-  <!-- ═══════════════ NAVBAR ═══════════════ -->
+
   <header class="navbar is-scrolled" role="banner">
     <div class="nav-inner">
       <a href="../index.html" class="nav-brand" aria-label="CCS Department Home">
@@ -23,13 +26,13 @@
         </div>
       </a>
       <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
-        <a href="../index.html"    class="nav-item">Home</a>
-        <a href="about.html"      class="nav-item">About</a>
-        <a href="programs.html"   class="nav-item">Programs</a>
-        <a href="faculty.html"    class="nav-item">Faculty</a>
-        <a href="enroll.html"     class="nav-item">Enroll</a>
-        <a href="news.html"       class="nav-item">News</a>
-        <a href="contact.html"    class="nav-item nav-item--cta">Apply Now</a>
+        <a href="../index.html"   class="nav-item">Home</a>
+        <a href="about.html"     class="nav-item">About</a>
+        <a href="programs.html"  class="nav-item">Programs</a>
+        <a href="faculty.html"   class="nav-item active" aria-current="page">Faculty</a>
+        <a href="enroll.html"    class="nav-item">Enroll</a>
+        <a href="news.html"      class="nav-item">News</a>
+        <a href="contact.html"   class="nav-item nav-item--cta">Apply Now</a>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
         <span class="toggle-bar"></span>
@@ -41,42 +44,438 @@
 
   <main class="page-main">
 
-    <!-- ═══════════════ FACULTY PLACEHOLDER ═══════════════ -->
-    <section class="hero" style="min-height: 70vh;" aria-label="Faculty placeholder">
+    <!-- ═══ HERO ═══ -->
+    <section class="about-hero" aria-label="Faculty hero">
       <div class="hero-orbs" aria-hidden="true">
         <div class="orb orb--1"></div>
         <div class="orb orb--2"></div>
         <div class="orb orb--3"></div>
       </div>
-
       <div class="container">
-        <div style="position: relative; z-index: 1; text-align: center; padding-block: 100px 80px;">
+        <div class="about-hero-inner js-reveal">
 
-          <div class="hero-eyebrow" style="display: inline-flex; margin-bottom: 28px;">
+          <div class="hero-eyebrow" style="display:inline-flex;margin-bottom:24px;">
             <span class="eyebrow-bracket" aria-hidden="true">[</span>
             <span class="eyebrow-dot" aria-hidden="true"></span>
-            <span>PAGE://FACULTY</span>
+            <span>FACULTY://CCS</span>
             <span class="eyebrow-bracket" aria-hidden="true">]</span>
           </div>
 
-          <h1 class="hero-heading" style="text-align: center;">
-            This is <em class="heading-accent">Faculty</em>
+          <h1 class="about-hero-heading">
+            Meet the Minds Behind<br /><em class="heading-accent">CCS Excellence</em>
           </h1>
-
-          <p class="hero-body" style="text-align: center; margin-inline: auto; max-width: 480px;">
-            This page is a <strong>work in progress.</strong> Full content — faculty profiles, specializations, and research interests — will be added here soon.
+          <p class="about-hero-sub">
+            Our faculty are more than educators &mdash; they are researchers, industry practitioners, and mentors dedicated to shaping the next generation of computing professionals.
           </p>
 
-          <div class="hero-actions" style="justify-content: center;">
-            <a href="../index.html" class="btn btn--ghost">← Back to Home</a>
+          <div class="about-hero-actions">
+            <a href="#faculty-grid" class="btn btn--primary">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              Browse Faculty
+            </a>
+            <a href="contact.html" class="btn btn--ghost">Get in Touch</a>
+          </div>
+
+          <div class="about-hero-metrics" role="list">
+            <div class="about-hero-metric" role="listitem">
+              <span class="about-hero-metric-val">24</span>
+              <span class="about-hero-metric-lbl">Faculty Members</span>
+            </div>
+            <div class="about-hero-metric" role="listitem">
+              <span class="about-hero-metric-val">14</span>
+              <span class="about-hero-metric-lbl">PhD Holders</span>
+            </div>
+            <div class="about-hero-metric" role="listitem">
+              <span class="about-hero-metric-val">180+</span>
+              <span class="about-hero-metric-lbl">Research Publications</span>
+            </div>
+            <div class="about-hero-metric" role="listitem">
+              <span class="about-hero-metric-val">15+</span>
+              <span class="about-hero-metric-lbl">Years Avg. Experience</span>
+            </div>
           </div>
 
         </div>
       </div>
     </section>
 
+    <div class="about-rule" role="separator"></div>
+
+    <!-- ═══ DEAN SPOTLIGHT ═══ -->
+    <section class="fc-spotlight" aria-labelledby="dean-heading">
+      <div class="container">
+        <div class="fc-spotlight-inner js-reveal">
+
+          <div class="fc-spotlight-avatar" aria-hidden="true">
+            <span>MS</span>
+            <div class="fc-spotlight-avatar-ring"></div>
+          </div>
+
+          <div class="fc-spotlight-body">
+            <div class="section-tag section-tag--light" style="margin-bottom:12px;">Department Leadership</div>
+            <h2 class="section-heading section-heading--light" id="dean-heading" style="margin-bottom:8px;">Dr. Maria L. Santos, PhD</h2>
+            <p class="fc-spotlight-role">Dean &mdash; College of Computing Studies</p>
+            <p class="fc-spotlight-bio">Dr. Santos has over 22 years of experience in computing education and research. She earned her Doctor of Philosophy in Computer Science from De La Salle University, with a dissertation focused on adaptive learning systems and computational intelligence. Under her leadership, CCS has been recognized as a CHED Center of Development and has forged partnerships with leading technology companies across the Philippines and Southeast Asia.</p>
+            <div class="fc-spotlight-tags">
+              <span class="fc-tag">Artificial Intelligence</span>
+              <span class="fc-tag">Adaptive Systems</span>
+              <span class="fc-tag">Educational Technology</span>
+              <span class="fc-tag">CHED COD Awardee</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="about-rule" role="separator"></div>
+
+    <!-- ═══ FACULTY GRID ═══ -->
+    <section class="fc-section" id="faculty-grid" aria-labelledby="faculty-heading">
+      <div class="container">
+
+        <!-- Faculty Filter -->
+        <div class="fc-filter js-reveal" role="group" aria-label="Filter faculty by expertise">
+          <button class="fc-filter-btn fc-filter-btn--active" data-filter="all">All Faculty</button>
+          <button class="fc-filter-btn" data-filter="ai">AI &amp; ML</button>
+          <button class="fc-filter-btn" data-filter="software">Software Eng</button>
+          <button class="fc-filter-btn" data-filter="security">Cybersecurity</button>
+          <button class="fc-filter-btn" data-filter="cloud">Cloud &amp; DevOps</button>
+          <button class="fc-filter-btn" data-filter="data">Data Science</button>
+          <button class="fc-filter-btn" data-filter="web">Web &amp; Mobile</button>
+        </div>
+
+        <!-- BSCS Faculty -->
+        <div class="fc-group js-reveal">
+          <div class="fc-group-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <span>Computer Science Faculty</span>
+          </div>
+        </div>
+
+        <div class="fc-grid" id="cs-faculty">
+
+          <article class="fc-card js-reveal" data-expertise="ai">
+            <div class="fc-avatar fc-avatar--a">JR</div>
+            <div class="fc-card-body">
+              <h3 class="fc-name">Dr. Jose A. Reyes, PhD</h3>
+              <p class="fc-role">Full Professor</p>
+              <p class="fc-specialization">AI &amp; Machine Learning</p>
+              <p class="fc-bio">Leads the CCS AI Research Lab. Published 30+ papers on deep learning, NLP, and intelligent systems. Former research fellow at Ateneo de Manila University.</p>
+              <div class="fc-credentials">
+                <span class="fc-cred">PhD CS &mdash; DLSU</span>
+                <span class="fc-cred">MSCS &mdash; UP Diliman</span>
+              </div>
+              <div class="fc-subjects">
+                <span class="fc-subject">Artificial Intelligence</span>
+                <span class="fc-subject">Machine Learning</span>
+                <span class="fc-subject">Deep Learning</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="fc-card js-reveal" data-expertise="software">
+            <div class="fc-avatar fc-avatar--b">AG</div>
+            <div class="fc-card-body">
+              <h3 class="fc-name">Dr. Ana P. Gonzalez, PhD</h3>
+              <p class="fc-role">Associate Professor</p>
+              <p class="fc-specialization">Software Engineering</p>
+              <p class="fc-bio">Expert in agile development methodologies and software architecture. Leads the Capstone Program and is a certified Scrum Master with 12 years of industry experience.</p>
+              <div class="fc-credentials">
+                <span class="fc-cred">PhD SE &mdash; Mapua University</span>
+                <span class="fc-cred">BSCS &mdash; UP Diliman</span>
+              </div>
+              <div class="fc-subjects">
+                <span class="fc-subject">Software Engineering</span>
+                <span class="fc-subject">System Design</span>
+                <span class="fc-subject">Capstone</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="fc-card js-reveal" data-expertise="software">
+            <div class="fc-avatar fc-avatar--c">CM</div>
+            <div class="fc-card-body">
+              <h3 class="fc-name">Prof. Carlo B. Mendoza, MIT</h3>
+              <p class="fc-role">Assistant Professor</p>
+              <p class="fc-specialization">Algorithms &amp; Theory</p>
+              <p class="fc-bio">Specializes in computational complexity, graph theory, and algorithm design. Former software engineer at a Silicon Valley-based fintech startup. Currently pursuing PhD.</p>
+              <div class="fc-credentials">
+                <span class="fc-cred">MIT CS &mdash; DLSU</span>
+                <span class="fc-cred">BSCS &mdash; Ateneo</span>
+              </div>
+              <div class="fc-subjects">
+                <span class="fc-subject">Data Structures</span>
+                <span class="fc-subject">Algorithms</span>
+                <span class="fc-subject">Discrete Math</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="fc-card js-reveal" data-expertise="security">
+            <div class="fc-avatar fc-avatar--d">LC</div>
+            <div class="fc-card-body">
+              <h3 class="fc-name">Prof. Liza M. Cruz, MIS</h3>
+              <p class="fc-role">Assistant Professor</p>
+              <p class="fc-specialization">Cybersecurity</p>
+              <p class="fc-bio">Certified Ethical Hacker (CEH) and CompTIA Security+ holder. Former IT security consultant for banking institutions. Leads the CCS Cybersecurity Club.</p>
+              <div class="fc-credentials">
+                <span class="fc-cred">MIS &mdash; AIM</span>
+                <span class="fc-cred">BSCS &mdash; FEU</span>
+              </div>
+              <div class="fc-subjects">
+                <span class="fc-subject">Cybersecurity</span>
+                <span class="fc-subject">Network Security</span>
+                <span class="fc-subject">Digital Forensics</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="fc-card js-reveal" data-expertise="data">
+            <div class="fc-avatar fc-avatar--e">RV</div>
+            <div class="fc-card-body">
+              <h3 class="fc-name">Dr. Ramon F. Villanueva, PhD</h3>
+              <p class="fc-role">Associate Professor</p>
+              <p class="fc-specialization">Data Science &amp; Analytics</p>
+              <p class="fc-bio">Researcher in big data analytics, predictive modeling, and visualization. Collaborated with government agencies on data-driven public health projects.</p>
+              <div class="fc-credentials">
+                <span class="fc-cred">PhD IS &mdash; UP Diliman</span>
+                <span class="fc-cred">MSCS &mdash; Mapua</span>
+              </div>
+              <div class="fc-subjects">
+                <span class="fc-subject">Data Science</span>
+                <span class="fc-subject">Statistics</span>
+                <span class="fc-subject">Big Data</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="fc-card js-reveal" data-expertise="software">
+            <div class="fc-avatar fc-avatar--f">SP</div>
+            <div class="fc-card-body">
+              <h3 class="fc-name">Prof. Sofia N. Pascual, MSCS</h3>
+              <p class="fc-role">Assistant Professor</p>
+              <p class="fc-specialization">Programming Languages &amp; OS</p>
+              <p class="fc-bio">Passionate about functional programming, compiler design, and operating systems. Developed open-source tools used in educational computing environments.</p>
+              <div class="fc-credentials">
+                <span class="fc-cred">MSCS &mdash; Ateneo</span>
+                <span class="fc-cred">BSCS &mdash; DLSU</span>
+              </div>
+              <div class="fc-subjects">
+                <span class="fc-subject">Operating Systems</span>
+                <span class="fc-subject">Programming Lang.</span>
+                <span class="fc-subject">Compiler Design</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="about-rule" role="separator" style="margin-block:64px;"></div>
+
+        <!-- BSIT Faculty -->
+        <div class="fc-group js-reveal">
+          <div class="fc-group-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Information Technology Faculty</span>
+          </div>
+        </div>
+
+        <div class="fc-grid" id="it-faculty">
+
+          <article class="fc-card js-reveal" data-expertise="web">
+            <div class="fc-avatar fc-avatar--a">MT</div>
+            <div class="fc-card-body">
+              <h3 class="fc-name">Dr. Michael R. Torres, PhD</h3>
+              <p class="fc-role">Full Professor</p>
+              <p class="fc-specialization">Web Technologies &amp; Systems</p>
+              <p class="fc-bio">Pioneer in full-stack web development education in the Philippines. Author of two textbooks on modern web systems. AWS Certified Solutions Architect.</p>
+              <div class="fc-credentials">
+                <span class="fc-cred">PhD IT &mdash; DLSU</span>
+                <span class="fc-cred">MSIT &mdash; UP Open Univ.</span>
+              </div>
+              <div class="fc-subjects">
+                <span class="fc-subject">Web Development</span>
+                <span class="fc-subject">System Architecture</span>
+                <span class="fc-subject">Cloud Computing</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="fc-card js-reveal" data-expertise="data">
+            <div class="fc-avatar fc-avatar--b">RF</div>
+            <div class="fc-card-body">
+              <h3 class="fc-name">Prof. Rosa C. Flores, MIT</h3>
+              <p class="fc-role">Associate Professor</p>
+              <p class="fc-specialization">Database Systems</p>
+              <p class="fc-bio">Oracle Certified Professional and Microsoft SQL Server expert. Extensive experience designing enterprise database solutions for retail and logistics industries.</p>
+              <div class="fc-credentials">
+                <span class="fc-cred">MIT &mdash; AIM</span>
+                <span class="fc-cred">BSIT &mdash; Mapua</span>
+              </div>
+              <div class="fc-subjects">
+                <span class="fc-subject">Database Admin</span>
+                <span class="fc-subject">SQL / NoSQL</span>
+                <span class="fc-subject">Data Warehousing</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="fc-card js-reveal" data-expertise="web">
+            <div class="fc-avatar fc-avatar--c">KV</div>
+            <div class="fc-card-body">
+              <h3 class="fc-name">Prof. Kevin S. Villanueva, MSIT</h3>
+              <p class="fc-role">Assistant Professor</p>
+              <p class="fc-specialization">Networking &amp; Infrastructure</p>
+              <p class="fc-bio">Cisco CCNP-certified network engineer with 10 years of enterprise IT infrastructure experience. Manages the CCS department's networking lab and equipment.</p>
+              <div class="fc-credentials">
+                <span class="fc-cred">MSIT &mdash; FEU</span>
+                <span class="fc-cred">BSIT &mdash; PLM</span>
+              </div>
+              <div class="fc-subjects">
+                <span class="fc-subject">Network Admin</span>
+                <span class="fc-subject">IT Infrastructure</span>
+                <span class="fc-subject">CCNA Prep</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="fc-card js-reveal" data-expertise="cloud">
+            <div class="fc-avatar fc-avatar--d">DC</div>
+            <div class="fc-card-body">
+              <h3 class="fc-name">Prof. Diana B. Castillo, MSCS</h3>
+              <p class="fc-role">Assistant Professor</p>
+              <p class="fc-specialization">Cloud &amp; DevOps</p>
+              <p class="fc-bio">AWS Solutions Architect and Kubernetes Administrator. Former DevOps engineer at a leading Philippine e-commerce platform. Teaches modern cloud-native development practices.</p>
+              <div class="fc-credentials">
+                <span class="fc-cred">MSCS &mdash; Ateneo</span>
+                <span class="fc-cred">BSIT &mdash; DLSU</span>
+              </div>
+              <div class="fc-subjects">
+                <span class="fc-subject">Cloud Computing</span>
+                <span class="fc-subject">DevOps</span>
+                <span class="fc-subject">Virtualization</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="fc-card js-reveal" data-expertise="web">
+            <div class="fc-avatar fc-avatar--e">AL</div>
+            <div class="fc-card-body">
+              <h3 class="fc-name">Dr. Antonio D. Lim, PhD</h3>
+              <p class="fc-role">Associate Professor</p>
+              <p class="fc-specialization">Mobile &amp; App Development</p>
+              <p class="fc-bio">Published researcher in mobile HCI and cross-platform development. Built several award-winning mobile apps exhibited at national ICT conferences. Flutter evangelist.</p>
+              <div class="fc-credentials">
+                <span class="fc-cred">PhD IS &mdash; Mapua</span>
+                <span class="fc-cred">BSIT &mdash; Ateneo</span>
+              </div>
+              <div class="fc-subjects">
+                <span class="fc-subject">Mobile Dev</span>
+                <span class="fc-subject">UI/UX Design</span>
+                <span class="fc-subject">App Development</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="fc-card js-reveal" data-expertise="cloud">
+            <div class="fc-avatar fc-avatar--f">JM</div>
+            <div class="fc-card-body">
+              <h3 class="fc-name">Prof. Jasmine O. Morales, MSIT</h3>
+              <p class="fc-role">Assistant Professor</p>
+              <p class="fc-specialization">IT Governance &amp; Management</p>
+              <p class="fc-bio">ITIL 4 Foundation certified and COBIT practitioner. Brings corporate IT governance experience from the BPO and financial services sectors into the classroom.</p>
+              <div class="fc-credentials">
+                <span class="fc-cred">MSIT &mdash; UP Open Univ.</span>
+                <span class="fc-cred">BSIT &mdash; FEU</span>
+              </div>
+              <div class="fc-subjects">
+                <span class="fc-subject">IT Governance</span>
+                <span class="fc-subject">IT Management</span>
+                <span class="fc-subject">IT Special Topics</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <div class="about-rule" role="separator"></div>
+
+    <!-- ═══ RESEARCH & EXPERTISE ═══ -->
+    <section class="fc-expertise" aria-labelledby="expertise-heading">
+      <div class="container">
+        <div class="pg-hdr js-reveal">
+          <div class="section-tag section-tag--light">Research Areas</div>
+          <h2 class="section-heading section-heading--light" id="expertise-heading">Faculty Expertise</h2>
+          <p class="intro-body intro-body--light">Our faculty actively conduct research and collaborate with industry partners across these key computing domains.</p>
+        </div>
+        <div class="fc-expertise-grid">
+          <div class="fc-exp-card js-reveal">
+            <div class="fc-exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
+            <h5 class="fc-exp-title">Artificial Intelligence</h5>
+            <p class="fc-exp-desc">Deep learning, NLP, computer vision, intelligent systems</p>
+            <span class="fc-exp-count">6 Faculty</span>
+          </div>
+          <div class="fc-exp-card js-reveal">
+            <div class="fc-exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <h5 class="fc-exp-title">Cybersecurity</h5>
+            <p class="fc-exp-desc">Ethical hacking, cryptography, digital forensics, compliance</p>
+            <span class="fc-exp-count">4 Faculty</span>
+          </div>
+          <div class="fc-exp-card js-reveal">
+            <div class="fc-exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+            <h5 class="fc-exp-title">Cloud &amp; DevOps</h5>
+            <p class="fc-exp-desc">Cloud-native architecture, container orchestration, CI/CD</p>
+            <span class="fc-exp-count">4 Faculty</span>
+          </div>
+          <div class="fc-exp-card js-reveal">
+            <div class="fc-exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+            <h5 class="fc-exp-title">Software Engineering</h5>
+            <p class="fc-exp-desc">Agile, system design, software architecture, DevSecOps</p>
+            <span class="fc-exp-count">5 Faculty</span>
+          </div>
+          <div class="fc-exp-card js-reveal">
+            <div class="fc-exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+            <h5 class="fc-exp-title">Data Science</h5>
+            <p class="fc-exp-desc">Big data, analytics pipelines, predictive modeling, BI</p>
+            <span class="fc-exp-count">3 Faculty</span>
+          </div>
+          <div class="fc-exp-card js-reveal">
+            <div class="fc-exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <h5 class="fc-exp-title">Web &amp; Mobile Dev</h5>
+            <p class="fc-exp-desc">Full-stack, progressive web apps, cross-platform mobile</p>
+            <span class="fc-exp-count">5 Faculty</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="about-rule" role="separator"></div>
+
+    <!-- ═══ JOIN CTA ═══ -->
+    <section class="pg-cta" aria-label="Join the faculty">
+      <div class="container">
+        <div class="pg-cta-inner js-reveal">
+          <div class="pg-cta-orb" aria-hidden="true"></div>
+          <div class="section-tag section-tag--light" style="margin-bottom:16px;">We Are Hiring</div>
+          <h2 class="pg-cta-heading">Join Our <em class="heading-accent">Faculty Team</em></h2>
+          <p class="intro-body intro-body--light" style="margin-bottom:36px;margin-inline:auto;">We are looking for passionate computing professionals and researchers to join the CCS family. If you have a strong academic background and a commitment to excellence in education, we want to hear from you.</p>
+          <div class="pg-cta-actions">
+            <a href="contact.html" class="btn btn--primary">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 1v14M1 8h14"/></svg>
+              Inquire About Openings
+            </a>
+            <a href="about.html" class="btn btn--ghost">About CCS</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
-  <!-- ═══════════════ FOOTER ═══════════════ -->
+
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
@@ -90,50 +489,15 @@
           </div>
           <p class="footer-about">Empowering the next generation of technology leaders through rigorous academics, hands-on learning, and values-driven education.</p>
           <div class="social-row" aria-label="Social media links">
-            <a href="#" class="social-btn" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </a>
-            <a href="#" class="social-btn" aria-label="Twitter / X">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-            </a>
-            <a href="#" class="social-btn" aria-label="YouTube">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1f2937"/></svg>
-            </a>
+            <a href="#" class="social-btn" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" class="social-btn" aria-label="Twitter / X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+            <a href="#" class="social-btn" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1f2937"/></svg></a>
           </div>
         </div>
-
-        <nav class="footer-nav" aria-label="Explore">
-          <p class="footer-nav-heading">Explore</p>
-          <ul>
-            <li><a href="about.html">About CCS</a></li>
-            <li><a href="programs.html">Programs</a></li>
-            <li><a href="faculty.html">Faculty</a></li>
-            <li><a href="enroll.html">How to Enroll</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="news.html">News &amp; Events</a></li>
-          </ul>
-        </nav>
-
-        <nav class="footer-nav" aria-label="Programs">
-          <p class="footer-nav-heading">Programs</p>
-          <ul>
-            <li><a href="programs.html">BS Computer Science</a></li>
-            <li><a href="programs.html">BS Information Technology</a></li>
-            <li><a href="programs.html#cs-track">CS Tracks</a></li>
-            <li><a href="programs.html#it-track">IT Tracks</a></li>
-          </ul>
-        </nav>
-
-        <nav class="footer-nav" aria-label="Support">
-          <p class="footer-nav-heading">Support</p>
-          <ul>
-            <li><a href="enroll.html">Admissions</a></li>
-            <li><a href="contact.html">Get in Touch</a></li>
-            <li><a href="about.html#values">Our Values</a></li>
-          </ul>
-        </nav>
+        <nav class="footer-nav" aria-label="Explore"><p class="footer-nav-heading">Explore</p><ul><li><a href="about.html">About CCS</a></li><li><a href="programs.html">Programs</a></li><li><a href="faculty.html">Faculty</a></li><li><a href="enroll.html">How to Enroll</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="news.html">News &amp; Events</a></li></ul></nav>
+        <nav class="footer-nav" aria-label="Programs"><p class="footer-nav-heading">Programs</p><ul><li><a href="programs.html#bscs">BS Computer Science</a></li><li><a href="programs.html#bsit">BS Information Technology</a></li><li><a href="programs.html#cs-track">BSCS Tracks</a></li><li><a href="programs.html#it-track">BSIT Tracks</a></li></ul></nav>
+        <nav class="footer-nav" aria-label="Support"><p class="footer-nav-heading">Support</p><ul><li><a href="enroll.html">Admissions</a></li><li><a href="contact.html">Get in Touch</a></li><li><a href="about.html#values">Our Values</a></li></ul></nav>
       </div>
-
       <div class="footer-bar">
         <p>&copy; <span id="copy-year"></span> CCS Department. All rights reserved.</p>
         <p class="footer-credit">Built with passion by the CCS Family</p>
@@ -141,7 +505,6 @@
     </div>
   </footer>
 
-  <!-- Back to top -->
   <button class="back-top" aria-label="Back to top" hidden>
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 12V4M4 8l4-4 4 4"/></svg>
   </button>

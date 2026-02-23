@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Explore BSCS and BSIT programs offered by the CCS Department." />
-  <title>Programs — CCS Department</title>
+  <meta name="description" content="Explore BSCS and BSIT programs offered by the CCS Department — curriculum, specialization tracks, career paths, and admission requirements." />
+  <meta property="og:title" content="Academic Programs | CCS Department" />
+  <meta property="og:description" content="Explore BSCS and BSIT programs offered by the CCS Department — curriculum, specialization tracks, career paths, and admission requirements." />
+  <meta property="og:type" content="website" />
+  <title>Academic Programs | CCS Department &mdash; BSCS &amp; BSIT</title>
   <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,7 +15,7 @@
   <link rel="stylesheet" href="../assets/css/styles.css" />
 </head>
 <body style="background:#080c10">
-  <!-- ═══════════════ NAVBAR ═══════════════ -->
+
   <header class="navbar is-scrolled" role="banner">
     <div class="nav-inner">
       <a href="../index.html" class="nav-brand" aria-label="CCS Department Home">
@@ -23,13 +26,13 @@
         </div>
       </a>
       <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
-        <a href="../index.html"    class="nav-item">Home</a>
-        <a href="about.html"      class="nav-item">About</a>
-        <a href="programs.html"   class="nav-item">Programs</a>
-        <a href="faculty.html"    class="nav-item">Faculty</a>
-        <a href="enroll.html"     class="nav-item">Enroll</a>
-        <a href="news.html"       class="nav-item">News</a>
-        <a href="contact.html"    class="nav-item nav-item--cta">Apply Now</a>
+        <a href="../index.html"   class="nav-item">Home</a>
+        <a href="about.html"     class="nav-item">About</a>
+        <a href="programs.html"  class="nav-item active" aria-current="page">Programs</a>
+        <a href="faculty.html"   class="nav-item">Faculty</a>
+        <a href="enroll.html"    class="nav-item">Enroll</a>
+        <a href="news.html"      class="nav-item">News</a>
+        <a href="contact.html"   class="nav-item nav-item--cta">Apply Now</a>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
         <span class="toggle-bar"></span>
@@ -41,42 +44,604 @@
 
   <main class="page-main">
 
-    <!-- ═══════════════ PROGRAMS PLACEHOLDER ═══════════════ -->
-    <section class="hero" style="min-height: 70vh;" aria-label="Programs placeholder">
+    <!-- ═══ HERO ═══ -->
+    <section class="about-hero" aria-label="Programs hero">
       <div class="hero-orbs" aria-hidden="true">
         <div class="orb orb--1"></div>
         <div class="orb orb--2"></div>
         <div class="orb orb--3"></div>
       </div>
-
       <div class="container">
-        <div style="position: relative; z-index: 1; text-align: center; padding-block: 100px 80px;">
+        <div class="about-hero-inner js-reveal">
 
-          <div class="hero-eyebrow" style="display: inline-flex; margin-bottom: 28px;">
+          <div class="hero-eyebrow" style="display:inline-flex;margin-bottom:24px;">
             <span class="eyebrow-bracket" aria-hidden="true">[</span>
             <span class="eyebrow-dot" aria-hidden="true"></span>
-            <span>PAGE://PROGRAMS</span>
+            <span>PROGRAMS://CCS</span>
             <span class="eyebrow-bracket" aria-hidden="true">]</span>
           </div>
 
-          <h1 class="hero-heading" style="text-align: center;">
-            This is <em class="heading-accent">Programs</em>
+          <h1 class="about-hero-heading">
+            Shape Your Future in<br /><em class="heading-accent">Computing</em>
           </h1>
-
-          <p class="hero-body" style="text-align: center; margin-inline: auto; max-width: 480px;">
-            This page is a <strong>work in progress.</strong> Full content — BSCS &amp; BSIT degree details, tracks, and curriculum — will be added here soon.
+          <p class="about-hero-sub">
+            Two CHED-accredited degree programs designed to equip you with deep technical expertise, industry-ready skills, and the critical thinking to thrive in a rapidly evolving digital economy.
           </p>
 
-          <div class="hero-actions" style="justify-content: center;">
-            <a href="../index.html" class="btn btn--ghost">← Back to Home</a>
+          <div class="about-hero-actions">
+            <a href="#programs" class="btn btn--primary">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              Explore Programs
+            </a>
+            <a href="enroll.html" class="btn btn--ghost">How to Enroll</a>
+          </div>
+
+          <div class="about-hero-metrics" role="list">
+            <div class="about-hero-metric" role="listitem">
+              <span class="about-hero-metric-val">2</span>
+              <span class="about-hero-metric-lbl">Degree Programs</span>
+            </div>
+            <div class="about-hero-metric" role="listitem">
+              <span class="about-hero-metric-val">8</span>
+              <span class="about-hero-metric-lbl">Specialization Tracks</span>
+            </div>
+            <div class="about-hero-metric" role="listitem">
+              <span class="about-hero-metric-val">4 Yrs</span>
+              <span class="about-hero-metric-lbl">Program Duration</span>
+            </div>
+            <div class="about-hero-metric" role="listitem">
+              <span class="about-hero-metric-val">98%</span>
+              <span class="about-hero-metric-lbl">Employment Rate</span>
+            </div>
           </div>
 
         </div>
       </div>
     </section>
 
+    <div class="about-rule" role="separator"></div>
+
+    <!-- ═══ PROGRAM OVERVIEW ═══ -->
+    <section class="pg-overview" id="programs" aria-labelledby="programs-heading">
+      <div class="container">
+
+        <div class="pg-hdr js-reveal">
+          <div class="section-tag section-tag--light">Offered Degrees</div>
+          <h2 class="section-heading section-heading--light" id="programs-heading">Our Degree Programs</h2>
+          <p class="intro-body intro-body--light">Both programs follow the CHED-prescribed curriculum with additional electives and specialization tracks tailored to industry demands.</p>
+        </div>
+
+        <div class="pg-cards-grid">
+
+          <!-- BSCS -->
+          <div class="pg-prog-card js-reveal-left" id="bscs">
+            <div class="pg-prog-card-accent pg-prog-card-accent--orange"></div>
+            <div class="pg-prog-card-head">
+              <div class="pg-prog-icon pg-prog-icon--orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+              <div>
+                <span class="pg-prog-abbr">BSCS</span>
+                <h3 class="pg-prog-name">Bachelor of Science in<br /><strong>Computer Science</strong></h3>
+              </div>
+            </div>
+            <p class="pg-prog-desc">A rigorous program that develops strong foundations in algorithms, software engineering, artificial intelligence, and theoretical computing. Graduates are prepared for roles in software development, research, and technology leadership.</p>
+            <ul class="pg-prog-highlights" aria-label="Program highlights">
+              <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>CHED Center of Development designation</li>
+              <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>Strong focus on AI, Machine Learning &amp; Data Science</li>
+              <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>Industry internship in 3rd &amp; 4th year</li>
+              <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>Research-oriented capstone program</li>
+            </ul>
+            <div class="pg-prog-meta-row">
+              <span class="pg-prog-badge">4-Year Program</span>
+              <span class="pg-prog-badge">158 Units</span>
+              <span class="pg-prog-badge pg-prog-badge--accent">CHED Accredited</span>
+            </div>
+            <a href="#cs-curriculum" class="pg-prog-cta">
+              View Full Curriculum
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </a>
+          </div>
+
+          <!-- BSIT -->
+          <div class="pg-prog-card js-reveal-right" id="bsit">
+            <div class="pg-prog-card-accent pg-prog-card-accent--orange"></div>
+            <div class="pg-prog-card-head">
+              <div class="pg-prog-icon pg-prog-icon--orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <div>
+                <span class="pg-prog-abbr">BSIT</span>
+                <h3 class="pg-prog-name">Bachelor of Science in<br /><strong>Information Technology</strong></h3>
+              </div>
+            </div>
+            <p class="pg-prog-desc">A practice-focused program covering web development, database management, networking, and systems administration. Graduates are equipped to design, implement, and manage technology solutions across modern organizations.</p>
+            <ul class="pg-prog-highlights" aria-label="Program highlights">
+              <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>Competency-based curriculum design</li>
+              <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>Full-stack &amp; cloud development focus</li>
+              <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>Professional certification prep (AWS, CompTIA)</li>
+              <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 8l3 3 7-7"/></svg>On-the-job training with partner companies</li>
+            </ul>
+            <div class="pg-prog-meta-row">
+              <span class="pg-prog-badge">4-Year Program</span>
+              <span class="pg-prog-badge">154 Units</span>
+              <span class="pg-prog-badge pg-prog-badge--accent">CHED Accredited</span>
+            </div>
+            <a href="#it-curriculum" class="pg-prog-cta">
+              View Full Curriculum
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="about-rule" role="separator"></div>
+
+    <!-- ═══ TECH STACK MARQUEE ═══ -->
+    <div class="pg-marquee-wrap" aria-hidden="true">
+      <div class="pg-marquee-track">
+        <span class="pg-marquee-item">Python</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">Java</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">JavaScript</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">React</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">Node.js</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">AWS</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">Docker</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">TensorFlow</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">MySQL</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">Linux</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">Cisco</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">Flutter</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">MongoDB</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">Vue.js</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">Kubernetes</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">PHP</span><span class="pg-marquee-dot"></span>
+        <!-- duplicate for seamless loop -->
+        <span class="pg-marquee-item">Python</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">Java</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">JavaScript</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">React</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">Node.js</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">AWS</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">Docker</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">TensorFlow</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">MySQL</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">Linux</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">Cisco</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">Flutter</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">MongoDB</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">Vue.js</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">Kubernetes</span><span class="pg-marquee-dot"></span>
+        <span class="pg-marquee-item">PHP</span><span class="pg-marquee-dot"></span>
+      </div>
+    </div>
+
+    <div class="about-rule" role="separator"></div>
+
+    <!-- ═══ BSCS CURRICULUM ═══ -->
+    <section class="pg-curriculum" id="cs-curriculum" aria-labelledby="cs-heading">
+      <div class="container">
+
+        <div class="pg-hdr js-reveal">
+          <div class="section-tag section-tag--light">BSCS</div>
+          <h2 class="section-heading section-heading--light" id="cs-heading">Computer Science Curriculum</h2>
+          <p class="intro-body intro-body--light">A structured 4-year roadmap from computing fundamentals to advanced research and specialization.</p>
+        </div>
+
+        <div class="pg-year-grid">
+          <div class="pg-year-card js-reveal">
+            <div class="pg-year-label pg-year-label--orange">Year 1</div>
+            <h4 class="pg-year-title">Foundations</h4>
+            <ul class="pg-year-subjects">
+              <li>Introduction to Computing</li>
+              <li>Programming Fundamentals (Python)</li>
+              <li>Discrete Mathematics</li>
+              <li>Computer Organization &amp; Architecture</li>
+              <li>Digital Logic Design</li>
+              <li>Technical Communication</li>
+            </ul>
+          </div>
+          <div class="pg-year-card js-reveal">
+            <div class="pg-year-label pg-year-label--orange">Year 2</div>
+            <h4 class="pg-year-title">Core Computing</h4>
+            <ul class="pg-year-subjects">
+              <li>Data Structures &amp; Algorithms</li>
+              <li>Object-Oriented Programming (Java)</li>
+              <li>Database Management Systems</li>
+              <li>Operating Systems</li>
+              <li>Computer Networks</li>
+              <li>Software Engineering I</li>
+            </ul>
+          </div>
+          <div class="pg-year-card js-reveal">
+            <div class="pg-year-label pg-year-label--orange">Year 3</div>
+            <h4 class="pg-year-title">Specialization</h4>
+            <ul class="pg-year-subjects">
+              <li>Artificial Intelligence</li>
+              <li>Machine Learning</li>
+              <li>Software Engineering II</li>
+              <li>Web Systems &amp; Technologies</li>
+              <li>CS Elective I &amp; II</li>
+              <li>Practicum / OJT (300 hrs)</li>
+            </ul>
+          </div>
+          <div class="pg-year-card js-reveal">
+            <div class="pg-year-label pg-year-label--orange">Year 4</div>
+            <h4 class="pg-year-title">Research &amp; Capstone</h4>
+            <ul class="pg-year-subjects">
+              <li>Advanced Algorithms</li>
+              <li>CS Elective III &amp; IV</li>
+              <li>Research Methods in CS</li>
+              <li>Capstone Project I &amp; II</li>
+              <li>Ethics in Computing</li>
+              <li>CS Special Topics</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pg-tracks-sub">
+          <div class="pg-hdr js-reveal" style="margin-bottom:36px;">
+            <div class="section-tag section-tag--light">Elective Tracks</div>
+            <h3 class="section-heading section-heading--light" style="font-size:clamp(1.4rem,3vw,2rem);">BSCS Specialization Tracks</h3>
+          </div>
+          <div class="pg-tracks-grid" id="cs-track">
+            <div class="pg-track-card js-reveal">
+              <div class="pg-track-icon pg-track-icon--orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+              </div>
+              <h5 class="pg-track-name">Artificial Intelligence &amp; ML</h5>
+              <p class="pg-track-desc">Deep learning, NLP, computer vision, and intelligent systems design.</p>
+            </div>
+            <div class="pg-track-card js-reveal">
+              <div class="pg-track-icon pg-track-icon--orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 17.5h7M17.5 14v7"/></svg>
+              </div>
+              <h5 class="pg-track-name">Data Science &amp; Analytics</h5>
+              <p class="pg-track-desc">Big data, statistical modeling, data visualization, and business intelligence.</p>
+            </div>
+            <div class="pg-track-card js-reveal">
+              <div class="pg-track-icon pg-track-icon--orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <h5 class="pg-track-name">Cybersecurity</h5>
+              <p class="pg-track-desc">Ethical hacking, cryptography, network security, and digital forensics.</p>
+            </div>
+            <div class="pg-track-card js-reveal">
+              <div class="pg-track-icon pg-track-icon--orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+              <h5 class="pg-track-name">Software Engineering</h5>
+              <p class="pg-track-desc">Agile development, system design, DevOps, and large-scale application architecture.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="about-rule" role="separator"></div>
+
+    <!-- ═══ BSIT CURRICULUM ═══ -->
+    <section class="pg-curriculum pg-curriculum--alt" id="it-curriculum" aria-labelledby="it-heading">
+      <div class="container">
+
+        <div class="pg-hdr js-reveal">
+          <div class="section-tag section-tag--light">BSIT</div>
+          <h2 class="section-heading section-heading--light" id="it-heading">Information Technology Curriculum</h2>
+          <p class="intro-body intro-body--light">A hands-on 4-year journey from IT fundamentals to professional-grade systems and application development.</p>
+        </div>
+
+        <div class="pg-year-grid">
+          <div class="pg-year-card js-reveal">
+            <div class="pg-year-label pg-year-label--orange">Year 1</div>
+            <h4 class="pg-year-title">IT Fundamentals</h4>
+            <ul class="pg-year-subjects">
+              <li>Introduction to Information Technology</li>
+              <li>Programming Logic &amp; Design</li>
+              <li>Computer Hardware Servicing</li>
+              <li>Mathematics in the Modern World</li>
+              <li>Fundamentals of Database</li>
+              <li>IT Professionalism &amp; Ethics</li>
+            </ul>
+          </div>
+          <div class="pg-year-card js-reveal">
+            <div class="pg-year-label pg-year-label--orange">Year 2</div>
+            <h4 class="pg-year-title">Applications Development</h4>
+            <ul class="pg-year-subjects">
+              <li>Web Development (HTML / CSS / JS)</li>
+              <li>Server-Side Development (PHP / Node)</li>
+              <li>Database Administration</li>
+              <li>Network Fundamentals (CCNA prep)</li>
+              <li>System Analysis &amp; Design</li>
+              <li>Mobile Application Development</li>
+            </ul>
+          </div>
+          <div class="pg-year-card js-reveal">
+            <div class="pg-year-label pg-year-label--orange">Year 3</div>
+            <h4 class="pg-year-title">Advanced Technologies</h4>
+            <ul class="pg-year-subjects">
+              <li>Cloud Computing (AWS / Azure)</li>
+              <li>IT Infrastructure &amp; Virtualization</li>
+              <li>Cybersecurity Essentials</li>
+              <li>IT Elective I &amp; II</li>
+              <li>Integrative Programming &amp; Tech</li>
+              <li>On-the-Job Training (500 hrs)</li>
+            </ul>
+          </div>
+          <div class="pg-year-card js-reveal">
+            <div class="pg-year-label pg-year-label--orange">Year 4</div>
+            <h4 class="pg-year-title">Capstone &amp; Profession</h4>
+            <ul class="pg-year-subjects">
+              <li>IT Elective III &amp; IV</li>
+              <li>IT Research &amp; Technical Writing</li>
+              <li>Capstone Project I &amp; II</li>
+              <li>IT Governance &amp; Management</li>
+              <li>Emerging Technologies</li>
+              <li>IT Special Topics</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pg-tracks-sub">
+          <div class="pg-hdr js-reveal" style="margin-bottom:36px;">
+            <div class="section-tag section-tag--light">Elective Tracks</div>
+            <h3 class="section-heading section-heading--light" style="font-size:clamp(1.4rem,3vw,2rem);">BSIT Specialization Tracks</h3>
+          </div>
+          <div class="pg-tracks-grid" id="it-track">
+            <div class="pg-track-card js-reveal">
+              <div class="pg-track-icon pg-track-icon--orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              </div>
+              <h5 class="pg-track-name">Web &amp; Mobile Development</h5>
+              <p class="pg-track-desc">React, Vue, Flutter, REST APIs, and progressive web applications.</p>
+            </div>
+            <div class="pg-track-card js-reveal">
+              <div class="pg-track-icon pg-track-icon--orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+              </div>
+              <h5 class="pg-track-name">Cloud &amp; DevOps Engineering</h5>
+              <p class="pg-track-desc">AWS, Docker, Kubernetes, CI/CD pipelines, and infrastructure automation.</p>
+            </div>
+            <div class="pg-track-card js-reveal">
+              <div class="pg-track-icon pg-track-icon--orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              </div>
+              <h5 class="pg-track-name">Database &amp; Data Management</h5>
+              <p class="pg-track-desc">SQL/NoSQL, data warehousing, ETL pipelines, and enterprise data systems.</p>
+            </div>
+            <div class="pg-track-card js-reveal">
+              <div class="pg-track-icon pg-track-icon--orange" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
+              </div>
+              <h5 class="pg-track-name">Network &amp; Systems Administration</h5>
+              <p class="pg-track-desc">Cisco networking, server management, VPNs, and enterprise IT support.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="about-rule" role="separator"></div>
+
+    <!-- ═══ CAREER PATHS ═══ -->
+    <section class="pg-careers" aria-labelledby="careers-heading">
+      <div class="container">
+
+        <div class="pg-hdr js-reveal">
+          <div class="section-tag section-tag--light">After Graduation</div>
+          <h2 class="section-heading section-heading--light" id="careers-heading">Where Our Graduates Go</h2>
+          <p class="intro-body intro-body--light">CCS alumni are employed across the tech industry &mdash; from startups to global corporations &mdash; within 6 months of graduation.</p>
+        </div>
+
+        <div class="pg-careers-grid">
+          <div class="pg-career-card js-reveal">
+            <div class="pg-career-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+            <h5 class="pg-career-title">Software Developer</h5>
+            <p class="pg-career-sub">Web, mobile, backend, embedded systems</p>
+          </div>
+          <div class="pg-career-card js-reveal">
+            <div class="pg-career-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+            <h5 class="pg-career-title">Systems Analyst</h5>
+            <p class="pg-career-sub">IT infrastructure, business solutions</p>
+          </div>
+          <div class="pg-career-card js-reveal">
+            <div class="pg-career-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
+            <h5 class="pg-career-title">AI / ML Engineer</h5>
+            <p class="pg-career-sub">Research, NLP, computer vision</p>
+          </div>
+          <div class="pg-career-card js-reveal">
+            <div class="pg-career-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <h5 class="pg-career-title">Cybersecurity Analyst</h5>
+            <p class="pg-career-sub">Pen testing, SOC, incident response</p>
+          </div>
+          <div class="pg-career-card js-reveal">
+            <div class="pg-career-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+            <h5 class="pg-career-title">Cloud / DevOps Engineer</h5>
+            <p class="pg-career-sub">AWS, Azure, GCP, CI/CD pipelines</p>
+          </div>
+          <div class="pg-career-card js-reveal">
+            <div class="pg-career-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+            <h5 class="pg-career-title">Database Administrator</h5>
+            <p class="pg-career-sub">SQL/NoSQL, data warehousing</p>
+          </div>
+          <div class="pg-career-card js-reveal">
+            <div class="pg-career-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <h5 class="pg-career-title">IT Manager / CTO</h5>
+            <p class="pg-career-sub">Technology leadership, digital strategy</p>
+          </div>
+          <div class="pg-career-card js-reveal">
+            <div class="pg-career-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+            <h5 class="pg-career-title">CS / IT Educator</h5>
+            <p class="pg-career-sub">Teaching, academic research, grad school</p>
+          </div>
+        </div>
+
+        <div class="pg-partners js-reveal" aria-label="Partner companies">
+          <p class="pg-partners-label">Our graduates work at</p>
+          <div class="pg-partners-row">
+            <span class="pg-partner-name">Google</span><span class="pg-partner-sep" aria-hidden="true">&middot;</span>
+            <span class="pg-partner-name">Accenture</span><span class="pg-partner-sep" aria-hidden="true">&middot;</span>
+            <span class="pg-partner-name">IBM</span><span class="pg-partner-sep" aria-hidden="true">&middot;</span>
+            <span class="pg-partner-name">Concentrix</span><span class="pg-partner-sep" aria-hidden="true">&middot;</span>
+            <span class="pg-partner-name">Ericsson</span><span class="pg-partner-sep" aria-hidden="true">&middot;</span>
+            <span class="pg-partner-name">UnionBank</span><span class="pg-partner-sep" aria-hidden="true">&middot;</span>
+            <span class="pg-partner-name">Telstra</span><span class="pg-partner-sep" aria-hidden="true">&middot;</span>
+            <span class="pg-partner-name">Globe Telecom</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="about-rule" role="separator"></div>
+
+    <!-- ═══ PROGRAM COMPARISON ═══ -->
+    <section class="pg-compare" aria-labelledby="compare-heading">
+      <div class="container">
+        <div class="pg-hdr js-reveal">
+          <div class="section-tag section-tag--light">Side-by-Side</div>
+          <h2 class="section-heading section-heading--light" id="compare-heading">BSCS vs BSIT — At a Glance</h2>
+          <p class="intro-body intro-body--light">Not sure which program fits you best? Here's a quick comparison to help you decide.</p>
+        </div>
+        <div class="pg-compare-table js-reveal" role="table" aria-label="Program comparison table">
+          <div class="pg-compare-row pg-compare-row--head" role="row">
+            <div role="columnheader">Feature</div>
+            <div role="columnheader">BSCS</div>
+            <div role="columnheader">BSIT</div>
+          </div>
+          <div class="pg-compare-row" role="row">
+            <div class="pg-compare-feature" role="cell">Program Focus</div>
+            <div role="cell">Theory, Research &amp; Algorithms</div>
+            <div role="cell">Applied Systems &amp; Development</div>
+          </div>
+          <div class="pg-compare-row" role="row">
+            <div class="pg-compare-feature" role="cell">Total Units</div>
+            <div role="cell">158 units</div>
+            <div role="cell">154 units</div>
+          </div>
+          <div class="pg-compare-row" role="row">
+            <div class="pg-compare-feature" role="cell">Specialization Tracks</div>
+            <div role="cell">AI/ML, Data Science, Cybersecurity, SE</div>
+            <div role="cell">Web/Mobile, Cloud/DevOps, Database, Networking</div>
+          </div>
+          <div class="pg-compare-row" role="row">
+            <div class="pg-compare-feature" role="cell">OJT / Practicum</div>
+            <div role="cell">300 hours (Year 3)</div>
+            <div role="cell">500 hours (Year 3)</div>
+          </div>
+          <div class="pg-compare-row" role="row">
+            <div class="pg-compare-feature" role="cell">Board Exam</div>
+            <div role="cell"><span class="pg-compare-yes">Yes — PNPBC</span></div>
+            <div role="cell"><span class="pg-compare-yes">Yes — PNPBC</span></div>
+          </div>
+          <div class="pg-compare-row" role="row">
+            <div class="pg-compare-feature" role="cell">Certifications Covered</div>
+            <div role="cell">AWS, Oracle, CompTIA</div>
+            <div role="cell">AWS, Cisco CCNA, CompTIA, Oracle</div>
+          </div>
+          <div class="pg-compare-row" role="row">
+            <div class="pg-compare-feature" role="cell">Best Suited For</div>
+            <div role="cell">Problem-solvers, researchers, future CTOs &amp; engineers</div>
+            <div role="cell">Builders, systems designers, IT managers</div>
+          </div>
+          <div class="pg-compare-row pg-compare-row--cta" role="row">
+            <div role="cell"></div>
+            <div role="cell"><a href="enroll.html" class="btn btn--primary" style="font-size:.85rem;padding:10px 20px;">Apply for BSCS</a></div>
+            <div role="cell"><a href="enroll.html" class="btn btn--primary" style="font-size:.85rem;padding:10px 20px;">Apply for BSIT</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="about-rule" role="separator"></div>
+
+    <!-- ═══ ADMISSION ═══ -->
+    <section class="pg-admission" aria-labelledby="admission-heading">
+      <div class="container">
+
+        <div class="pg-hdr js-reveal">
+          <div class="section-tag section-tag--light">Requirements</div>
+          <h2 class="section-heading section-heading--light" id="admission-heading">Admission Requirements</h2>
+          <p class="intro-body intro-body--light">Open to all incoming freshmen and transferees who meet the academic and entrance requirements of the college.</p>
+        </div>
+
+        <div class="pg-admission-grid">
+          <div class="pg-req-card js-reveal">
+            <div class="pg-req-num">01</div>
+            <h5 class="pg-req-title">Academic Credentials</h5>
+            <ul class="pg-req-list">
+              <li>Form 138 / Senior High School Report Card</li>
+              <li>Grade 12 certificate of graduation</li>
+              <li>PSA-authenticated birth certificate</li>
+              <li>2&times;2 ID photo (4 pieces)</li>
+            </ul>
+          </div>
+          <div class="pg-req-card js-reveal">
+            <div class="pg-req-num">02</div>
+            <h5 class="pg-req-title">Entrance Examination</h5>
+            <ul class="pg-req-list">
+              <li>CCS College Entrance Test (CET)</li>
+              <li>Coverage: Math, Logic &amp; Critical Thinking, Basic Computing</li>
+              <li>Passing score: 70% or higher</li>
+              <li>Exam schedules: March &mdash; April each year</li>
+            </ul>
+          </div>
+          <div class="pg-req-card js-reveal">
+            <div class="pg-req-num">03</div>
+            <h5 class="pg-req-title">For Transferees</h5>
+            <ul class="pg-req-list">
+              <li>Transcript of Records (TOR) from previous school</li>
+              <li>Honorable Dismissal / Transfer Credentials</li>
+              <li>At least 75% general average in all CS/IT subjects</li>
+              <li>No failing grades in major subjects</li>
+            </ul>
+          </div>
+          <div class="pg-req-card js-reveal">
+            <div class="pg-req-num">04</div>
+            <h5 class="pg-req-title">Enrollment Steps</h5>
+            <ul class="pg-req-list">
+              <li>Submit requirements to the Registrar&rsquo;s Office</li>
+              <li>Take and pass the CCS Entrance Test</li>
+              <li>Receive Notice of Acceptance (NOA)</li>
+              <li>Pay enrollment fees &amp; confirm slot</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pg-admission-note js-reveal" role="note">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M10 6v4M10 14h.01"/></svg>
+          <p>Limited slots are available each academic year. Early application is strongly encouraged. For questions, <a href="contact.html">contact our department online</a>.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="about-rule" role="separator"></div>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="pg-cta" aria-label="Call to action">
+      <div class="container">
+        <div class="pg-cta-inner js-reveal">
+          <div class="pg-cta-orb" aria-hidden="true"></div>
+          <div class="section-tag section-tag--light" style="margin-bottom:16px;">Ready to Start?</div>
+          <h2 class="pg-cta-heading">Begin Your<br /><em class="heading-accent">Computing Journey</em></h2>
+          <p class="intro-body intro-body--light" style="margin-bottom:36px;margin-inline:auto;">Applications for A.Y. 2026&ndash;2027 are now open. Choose your program, meet the requirements, and take the first step toward a rewarding tech career.</p>
+          <div class="pg-cta-actions">
+            <a href="enroll.html" class="btn btn--primary">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 1v14M1 8h14"/></svg>
+              Apply for Admission
+            </a>
+            <a href="contact.html" class="btn btn--ghost">Ask a Question</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
-  <!-- ═══════════════ FOOTER ═══════════════ -->
+
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
@@ -90,50 +655,15 @@
           </div>
           <p class="footer-about">Empowering the next generation of technology leaders through rigorous academics, hands-on learning, and values-driven education.</p>
           <div class="social-row" aria-label="Social media links">
-            <a href="#" class="social-btn" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-            </a>
-            <a href="#" class="social-btn" aria-label="Twitter / X">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-            </a>
-            <a href="#" class="social-btn" aria-label="YouTube">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1f2937"/></svg>
-            </a>
+            <a href="#" class="social-btn" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" class="social-btn" aria-label="Twitter / X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+            <a href="#" class="social-btn" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1f2937"/></svg></a>
           </div>
         </div>
-
-        <nav class="footer-nav" aria-label="Explore">
-          <p class="footer-nav-heading">Explore</p>
-          <ul>
-            <li><a href="about.html">About CCS</a></li>
-            <li><a href="programs.html">Programs</a></li>
-            <li><a href="faculty.html">Faculty</a></li>
-            <li><a href="enroll.html">How to Enroll</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="news.html">News &amp; Events</a></li>
-          </ul>
-        </nav>
-
-        <nav class="footer-nav" aria-label="Programs">
-          <p class="footer-nav-heading">Programs</p>
-          <ul>
-            <li><a href="programs.html">BS Computer Science</a></li>
-            <li><a href="programs.html">BS Information Technology</a></li>
-            <li><a href="programs.html#cs-track">CS Tracks</a></li>
-            <li><a href="programs.html#it-track">IT Tracks</a></li>
-          </ul>
-        </nav>
-
-        <nav class="footer-nav" aria-label="Support">
-          <p class="footer-nav-heading">Support</p>
-          <ul>
-            <li><a href="enroll.html">Admissions</a></li>
-            <li><a href="contact.html">Get in Touch</a></li>
-            <li><a href="about.html#values">Our Values</a></li>
-          </ul>
-        </nav>
+        <nav class="footer-nav" aria-label="Explore"><p class="footer-nav-heading">Explore</p><ul><li><a href="about.html">About CCS</a></li><li><a href="programs.html">Programs</a></li><li><a href="faculty.html">Faculty</a></li><li><a href="enroll.html">How to Enroll</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="news.html">News &amp; Events</a></li></ul></nav>
+        <nav class="footer-nav" aria-label="Programs"><p class="footer-nav-heading">Programs</p><ul><li><a href="programs.html#bscs">BS Computer Science</a></li><li><a href="programs.html#bsit">BS Information Technology</a></li><li><a href="programs.html#cs-track">BSCS Tracks</a></li><li><a href="programs.html#it-track">BSIT Tracks</a></li></ul></nav>
+        <nav class="footer-nav" aria-label="Support"><p class="footer-nav-heading">Support</p><ul><li><a href="enroll.html">Admissions</a></li><li><a href="contact.html">Get in Touch</a></li><li><a href="about.html#values">Our Values</a></li></ul></nav>
       </div>
-
       <div class="footer-bar">
         <p>&copy; <span id="copy-year"></span> CCS Department. All rights reserved.</p>
         <p class="footer-credit">Built with passion by the CCS Family</p>
@@ -141,7 +671,6 @@
     </div>
   </footer>
 
-  <!-- Back to top -->
   <button class="back-top" aria-label="Back to top" hidden>
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 12V4M4 8l4-4 4 4"/></svg>
   </button>
