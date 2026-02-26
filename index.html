@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="College of Computing Studies — Bachelor of Science in Computer Science and Information Technology." />
+  <meta name="description" content="College of Computing Studies � Bachelor of Science in Computer Science and Information Technology." />
   <meta property="og:title" content="CCS Department | College of Computing Studies" />
-  <meta property="og:description" content="College of Computing Studies — Bachelor of Science in Computer Science and Information Technology." />
+  <meta property="og:description" content="College of Computing Studies � Bachelor of Science in Computer Science and Information Technology." />
   <meta property="og:type" content="website" />
   <title>CCS Department | College of Computing Studies &mdash; BSCS &amp; BSIT</title>
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
@@ -16,7 +16,7 @@
 </head>
 <body>
 
-  <!-- ═══════════════ NAVBAR ═══════════════ -->
+  <!-- --------------- NAVBAR --------------- -->
   <header class="navbar" role="banner">
     <div class="nav-inner">
       <a href="index.html" class="nav-brand" aria-label="CCS Department Home">
@@ -45,265 +45,153 @@
 
   <main>
 
-    <!-- ═══════════════ HERO ═══════════════ -->
+    <!-- --------------- HERO --------------- -->
     <section class="hero" aria-label="Hero">
       <canvas id="particleCanvas" aria-hidden="true"></canvas>
-      <div class="hero-orbs" aria-hidden="true">
-        <div class="orb orb--1"></div>
-        <div class="orb orb--2"></div>
-        <div class="orb orb--3"></div>
-      </div>
 
       <div class="container">
         <div class="hero-layout">
 
           <!-- Copy -->
           <div class="hero-copy">
-            <div class="hero-eyebrow">
-              <span class="eyebrow-bracket" aria-hidden="true">[</span>
-              <span class="eyebrow-dot" aria-hidden="true"></span>
-              <span>SYS://ENROLL &mdash; A.Y. 2026&ndash;2027</span>
-              <span class="eyebrow-bracket" aria-hidden="true">]</span>
-            </div>
-            <h1 class="hero-heading">
-              Shape the Future<br>
-              with <em class="heading-accent">Technology</em><br>
-              &amp; Innovation
-            </h1>
-            <p class="hero-body">
-              At <strong>CCS</strong>, we don't just teach you how to code. We help you figure out what you want to build, and give you the skills to actually build it. Whether you're drawn to AI, web dev, or just curious about how software works, you'll find your place here.
+
+            <p class="hero-dept-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              College of Computing Studies
             </p>
+
+            <h1 class="hero-heading">
+              Build the <em class="heading-accent">Future</em><br>
+              One Line at<br>
+              a Time.
+            </h1>
+
+            <p class="hero-body">
+              Earn your <strong>BSCS</strong> or <strong>BSIT</strong> degree from a department that blends rigorous academics, hands-on projects, and real industry connections &mdash; designed to launch your career in tech.
+            </p>
+
             <div class="hero-actions">
               <a href="pages/enroll.html" class="btn btn--primary">
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 1v14M1 8h14"/></svg>
-                Start Enrollment
+                Apply Now
               </a>
-              <a href="pages/programs.html" class="btn btn--ghost">Explore Programs</a>
+              <a href="pages/programs.html" class="btn btn--ghost">View Programs</a>
+            </div>
+
+            <!-- Inline stats -->
+            <div class="hero-stats-row">
+              <div class="hstat">
+                <span class="hstat-num">500+</span>
+                <span class="hstat-label">Students</span>
+              </div>
+              <div class="hstat-div"></div>
+              <div class="hstat">
+                <span class="hstat-num">98%</span>
+                <span class="hstat-label">Employment</span>
+              </div>
+              <div class="hstat-div"></div>
+              <div class="hstat">
+                <span class="hstat-num">40+</span>
+                <span class="hstat-label">Industry Partners</span>
+              </div>
+              <div class="hstat-div"></div>
+              <div class="hstat">
+                <span class="hstat-num">15+</span>
+                <span class="hstat-label">Years</span>
+              </div>
             </div>
 
           </div>
 
-          <!-- Visual panel -->
-          <div class="hero-panel" aria-hidden="true">
+          <!-- Visual Panel � Student Model Showcase -->
+          <div class="hero-panel">
 
-            <!-- IDE Card -->
-            <div class="ide-card" id="ideCard">
-              <div class="ide-titlebar">
-                <div class="ide-dots">
-                  <span class="window-dot window-dot--red"></span>
-                  <span class="window-dot window-dot--yellow"></span>
-                  <span class="window-dot window-dot--green"></span>
+            <div class="hero-model-wrap">
+
+              <!-- Background logo -->
+              <img src="assets/images/hero/logo1.png" class="model-bg-logo" aria-hidden="true" draggable="false">
+
+              <!-- Photo frame -->
+              <div class="model-photo-frame">
+                <img
+                  id="heroStudentImg"
+                  src="assets/images/hero/gester.png"
+                  alt="CCS Student — College of Computing Studies"
+                  class="model-photo"
+                  loading="eager"
+                  draggable="false"
+                />
+                <!-- Bottom gradient fade -->
+                <div class="model-photo-fade" aria-hidden="true"></div>
+              </div>
+
+              <!-- Floating card — program badge (top-left) -->
+              <div class="model-badge model-badge--prog">
+                <div class="mbadge-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 </div>
-                <div class="ide-tabs">
-                  <button class="ide-tab ide-tab--active" data-ide-tab="0">
-                    <span class="ide-tab-dot" style="background:#3b82f6"></span>main.py
-                  </button>
-                  <button class="ide-tab" data-ide-tab="1">
-                    <span class="ide-tab-dot" style="background:#a855f7"></span>Student.cs
-                  </button>
-                  <button class="ide-tab" data-ide-tab="2">
-                    <span class="ide-tab-dot" style="background:#f97316"></span>app.js
-                  </button>
-                  <button class="ide-tab" data-ide-tab="3">
-                    <span class="ide-tab-dot" style="background:#22c55e"></span>query.sql
-                  </button>
-                </div>
-                <div class="ide-run" aria-hidden="true">
-                  <svg viewBox="0 0 10 10" fill="currentColor"><polygon points="2,1 9,5 2,9"/></svg>
+                <div class="mbadge-body">
+                  <span id="badgeProgLabel" class="mbadge-label">Be part of something great</span>
+                  <span id="badgeProgValue" class="mbadge-value">Join CCS Today 🚀</span>
                 </div>
               </div>
 
-              <div class="ide-panes">
-
-                <!-- Pane 0: Python -->
-                <div class="ide-pane ide-pane--active" data-ide-pane="0">
-                  <div class="ide-body">
-                    <div class="ide-gutter" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span></div>
-                    <pre class="ide-code"><span class="tk-comment"># CCS — Building Tomorrow's Tech</span>
-<span class="tk-keyword">from</span> <span class="tk-class">ccs</span> <span class="tk-keyword">import</span> <span class="tk-fn">Student</span>, <span class="tk-fn">Future</span>
-
-<span class="tk-keyword">class</span> <span class="tk-class">YouAtCCS</span>(<span class="tk-class">Student</span>):
-    major  = <span class="tk-str">"BSCS"</span>  <span class="tk-comment"># or BSIT</span>
-    skills = [<span class="tk-str">"AI"</span>, <span class="tk-str">"Web"</span>, <span class="tk-str">"Data"</span>]
-
-    <span class="tk-keyword">def</span> <span class="tk-fn">graduate</span>(self) -> <span class="tk-class">Future</span>:
-        <span class="tk-keyword">return</span> <span class="tk-class">Future</span>(
-            role=<span class="tk-str">"Software Engineer"</span>,
-            ready=<span class="tk-fn">True</span>
-        )</pre>
-                  </div>
-                  <div class="ide-terminal">
-                    <span class="term-label">TERMINAL</span>
-                    <span class="term-line"><span class="term-prompt">$</span> python main.py</span>
-                    <span class="term-line term-out"><span class="term-check">✓</span> Future initialized — role: <span class="term-hi">Software Engineer</span></span>
-                    <span class="term-cursor"></span>
-                  </div>
+              <!-- Floating card — enrollment status (top-right) -->
+              <div class="model-badge model-badge--status">
+                <span class="mbadge-dot"></span>
+                <div class="mbadge-body">
+                  <span id="badgeStatusLabel" class="mbadge-label">Enrollment</span>
+                  <span id="badgeStatusValue" class="mbadge-value mbadge-value--green">Now Open</span>
                 </div>
-
-                <!-- Pane 1: C# -->
-                <div class="ide-pane" data-ide-pane="1">
-                  <div class="ide-body">
-                    <div class="ide-gutter" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span></div>
-                    <pre class="ide-code"><span class="tk-comment">// CCS — Object-Oriented Programming</span>
-<span class="tk-keyword">public class</span> <span class="tk-class">Student</span> {
-  <span class="tk-keyword">public string</span> Name    { <span class="tk-keyword">get</span>; <span class="tk-keyword">set</span>; }
-  <span class="tk-keyword">public string</span> Program { <span class="tk-keyword">get</span>; <span class="tk-keyword">set</span>; }
-
-  <span class="tk-keyword">public string</span> <span class="tk-fn">GetFuture</span>() {
-    <span class="tk-keyword">return</span> $<span class="tk-str">"Building {Program}"</span>;
-  }
-}
-
-<span class="tk-keyword">var</span> you = <span class="tk-keyword">new</span> <span class="tk-class">Student</span> {
-  Name    = <span class="tk-str">"Your Name"</span>,
-  Program = <span class="tk-str">"BSCS / BSIT"</span>
-};</pre>
-                  </div>
-                  <div class="ide-terminal">
-                    <span class="term-label">TERMINAL</span>
-                    <span class="term-line"><span class="term-prompt">$</span> dotnet run</span>
-                    <span class="term-line term-out"><span class="term-check">✓</span> Build succeeded — Program: <span class="term-hi">BSCS / BSIT</span></span>
-                    <span class="term-cursor"></span>
-                  </div>
-                </div>
-
-                <!-- Pane 2: JavaScript -->
-                <div class="ide-pane" data-ide-pane="2">
-                  <div class="ide-body">
-                    <div class="ide-gutter" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span></div>
-                    <pre class="ide-code"><span class="tk-comment">// CCS — Web Development Track</span>
-<span class="tk-keyword">const</span> student = {
-  name:    <span class="tk-str">'Future Dev'</span>,
-  program: <span class="tk-str">'BSIT'</span>,
-  skills:  [<span class="tk-str">'React'</span>, <span class="tk-str">'Node'</span>, <span class="tk-str">'SQL'</span>],
-};
-
-<span class="tk-keyword">async function</span> <span class="tk-fn">enroll</span>(student) {
-  <span class="tk-keyword">const</span> res = <span class="tk-keyword">await</span> ccs.<span class="tk-fn">apply</span>(student);
-  <span class="tk-keyword">return</span> res.status === <span class="tk-str">'accepted'</span>;
-}
-
-enroll(student).<span class="tk-fn">then</span>(ok =>
-  console.<span class="tk-fn">log</span>(<span class="tk-str">'Enrolled:'</span>, ok));</pre>
-                  </div>
-                  <div class="ide-terminal">
-                    <span class="term-label">TERMINAL</span>
-                    <span class="term-line"><span class="term-prompt">$</span> node app.js</span>
-                    <span class="term-line term-out"><span class="term-check">✓</span> Enrolled: <span class="term-hi">true</span></span>
-                    <span class="term-cursor"></span>
-                  </div>
-                </div>
-
-                <!-- Pane 3: SQL -->
-                <div class="ide-pane" data-ide-pane="3">
-                  <div class="ide-body">
-                    <div class="ide-gutter" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span></div>
-                    <pre class="ide-code"><span class="tk-comment">-- CCS Student Database</span>
-<span class="tk-keyword">SELECT</span> s.name,
-       s.program,
-       <span class="tk-fn">COUNT</span>(c.id) <span class="tk-keyword">AS</span> courses
-  <span class="tk-keyword">FROM</span> <span class="tk-class">students</span> s
-  <span class="tk-keyword">JOIN</span> <span class="tk-class">enrollments</span> e
-    <span class="tk-keyword">ON</span> s.id = e.student_id
-  <span class="tk-keyword">JOIN</span> <span class="tk-class">courses</span> c
-    <span class="tk-keyword">ON</span> e.course_id = c.id
- <span class="tk-keyword">WHERE</span> s.year_level = <span class="tk-str">1</span>
- <span class="tk-keyword">ORDER BY</span> s.name <span class="tk-keyword">ASC</span>;</pre>
-                  </div>
-                  <div class="ide-terminal">
-                    <span class="term-label">TERMINAL</span>
-                    <span class="term-line"><span class="term-prompt">$</span> mysql ccs_db &lt; query.sql</span>
-                    <span class="term-line term-out"><span class="term-check">✓</span> <span class="term-hi">248 rows</span> returned in 12ms</span>
-                    <span class="term-cursor"></span>
-                  </div>
-                </div>
-
               </div>
-            </div>
 
-            <!-- Floating chips -->
-            <div class="hero-chip hero-chip--tl">
-              <span class="chip-pulse"></span>
-              Enrollment Open
-            </div>
+              <!-- Floating card — CHED recognized (mid-right) -->
+              <div class="model-badge model-badge--partners">
+                <div class="mbadge-icon mbadge-icon--gold">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M8 14l-4 8h16l-4-8"/></svg>
+                </div>
+                <div class="mbadge-body">
+                  <span id="badgeChedLabel" class="mbadge-label">Accredited</span>
+                  <span id="badgeChedValue" class="mbadge-value">CHED Recognized</span>
+                </div>
+              </div>
 
-            <div class="hero-chip hero-chip--br">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polyline points="2 11 6 7 10 11 14 3"/></svg>
-              98% Graduate Rate
-            </div>
+              <!-- Prev / Next buttons -->
+              <button class="model-nav-btn model-nav-btn--prev" id="modelPrev" aria-label="Previous student">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10 3L5 8l5 5"/></svg>
+              </button>
+              <button class="model-nav-btn model-nav-btn--next" id="modelNext" aria-label="Next student">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 3l5 5-5 5"/></svg>
+              </button>
+
+              <!-- Floating card � stat pill (bottom) -->
+              <div class="model-stat-row">
+                <div class="model-stat-pill">
+                  <span class="mstat-num">98%</span>
+                  <span class="mstat-label">Graduate<br>Employment</span>
+                </div>
+                <div class="model-stat-divider"></div>
+                <div class="model-stat-pill">
+                  <span class="mstat-num">500+</span>
+                  <span class="mstat-label">Active<br>Students</span>
+                </div>
+                <div class="model-stat-divider"></div>
+                <div class="model-stat-pill">
+                  <span class="mstat-num">15+</span>
+                  <span class="mstat-label">Years of<br>Excellence</span>
+                </div>
+              </div>
+
+            </div><!-- /hero-model-wrap -->
 
           </div><!-- /hero-panel -->
 
-          <!-- HUD status — 3rd grid area; shows BELOW IDE on mobile -->
-          <div class="hud-status" aria-hidden="true">
-            <span class="hud-online"></span>
-            <span>SYSTEM_ONLINE</span>
-            <span class="hud-sep"></span>
-            <span>BSCS / BSIT</span>
-            <span class="hud-sep"></span>
-            <span>AY 2026&ndash;27</span>
-          </div>
-
         </div>
       </div>
 
     </section>
 
-    <!-- ═══════════════ STATS STRIP ═══════════════ -->
-    <section class="stats-section" aria-label="CCS At a Glance">
-      <div class="container">
-        <div class="stats-intro">
-          <span class="stats-intro-label">CCS AT A GLANCE</span>
-          <div class="stats-intro-line"></div>
-        </div>
-        <div class="stats-grid">
-          <div class="stat-card js-reveal">
-            <div class="stat-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <span class="stat-num"><span class="counter-value" data-target="500">0</span><em>+</em></span>
-            <span class="stat-label">Active Students</span>
-          </div>
-          <div class="stat-card js-reveal">
-            <div class="stat-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="6"/><path d="M8 14l-4 8h16l-4-8"/></svg>
-            </div>
-            <span class="stat-num"><span class="counter-value" data-target="95">0</span><em>%</em></span>
-            <span class="stat-label">Board Exam Pass Rate</span>
-          </div>
-          <div class="stat-card js-reveal">
-            <div class="stat-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
-            </div>
-            <span class="stat-num"><span class="counter-value" data-target="40">0</span><em>+</em></span>
-            <span class="stat-label">Industry Partners</span>
-          </div>
-          <div class="stat-card js-reveal">
-            <div class="stat-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <span class="stat-num"><span class="counter-value" data-target="15">0</span><em>+</em></span>
-            <span class="stat-label">Years of Excellence</span>
-          </div>
-          <div class="stat-card js-reveal">
-            <div class="stat-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            </div>
-            <span class="stat-num"><span class="counter-value" data-target="98">0</span><em>%</em></span>
-            <span class="stat-label">Graduate Employment</span>
-          </div>
-          <div class="stat-card js-reveal">
-            <div class="stat-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            </div>
-            <span class="stat-num"><span class="counter-value" data-target="2">0</span></span>
-            <span class="stat-label">Degree Programs</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════ WHY CCS ═══════════════ -->
+    <!-- --------------- WHY CCS --------------- -->
     <section class="why-ccs" aria-label="Why Choose CCS">
       <div class="container">
         <div class="why-header">
@@ -323,63 +211,71 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
 
         <div class="why-grid">
 
-          <div class="why-card js-reveal">
+          <div class="why-card js-reveal" data-step="01">
             <div class="why-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
             </div>
-            <h3 class="why-title">Expert Faculty</h3>
-            <p class="why-body">Learn from PhD holders, licensed professionals, and industry veterans who bring real-world experience into the classroom every single day.</p>
-            <ul class="why-list">
-              <li>PhD &amp; MS degree holders</li>
-              <li>Licensed IT and CS professionals</li>
-              <li>Active researchers &amp; practitioners</li>
-            </ul>
+            <div class="why-card-body">
+              <h3 class="why-title">Expert Faculty</h3>
+              <p class="why-body">Learn from PhD holders, licensed professionals, and industry veterans who bring real-world experience into the classroom every single day.</p>
+              <ul class="why-list">
+                <li>PhD &amp; MS degree holders</li>
+                <li>Licensed IT and CS professionals</li>
+                <li>Active researchers &amp; practitioners</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="why-card js-reveal">
+          <div class="why-card js-reveal" data-step="02">
             <div class="why-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
             </div>
-            <h3 class="why-title">Modern Computing Labs</h3>
-            <p class="why-body">Access high-spec workstations with the latest software suites. Our labs host specialized setups for AI, networking, multimedia, and systems development.</p>
-            <ul class="why-list">
-              <li>5 dedicated computer labs</li>
-              <li>High-speed campus-wide internet</li>
-              <li>Licensed software &amp; cloud access</li>
-            </ul>
+            <div class="why-card-body">
+              <h3 class="why-title">Modern Computing Labs</h3>
+              <p class="why-body">Access high-spec workstations with the latest software suites. Our labs host specialized setups for AI, networking, multimedia, and systems development.</p>
+              <ul class="why-list">
+                <li>5 dedicated computer labs</li>
+                <li>High-speed campus-wide internet</li>
+                <li>Licensed software &amp; cloud access</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="why-card js-reveal">
+          <div class="why-card js-reveal" data-step="03">
             <div class="why-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 4.21 12 6.81 16.5 4.21"/><polyline points="7.5 19.79 7.5 14.6 3 12"/><polyline points="21 12 16.5 14.6 16.5 19.79"/></svg>
             </div>
-            <h3 class="why-title">Industry-Aligned Curriculum</h3>
-            <p class="why-body">Our OBE-based curriculum is continuously updated with input from 40+ tech industry partners, covering AI, full-stack development, cybersecurity, and cloud computing.</p>
-            <ul class="why-list">
-              <li>OBE &amp; outcomes-driven approach</li>
-              <li>Capstone &amp; thesis projects</li>
-              <li>OJT with partner companies</li>
-            </ul>
+            <div class="why-card-body">
+              <h3 class="why-title">Industry-Aligned Curriculum</h3>
+              <p class="why-body">Our OBE-based curriculum is continuously updated with input from 40+ tech industry partners, covering AI, full-stack development, cybersecurity, and cloud computing.</p>
+              <ul class="why-list">
+                <li>OBE &amp; outcomes-driven approach</li>
+                <li>Capstone &amp; thesis projects</li>
+                <li>OJT with partner companies</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="why-card js-reveal">
+          <div class="why-card js-reveal" data-step="04">
             <div class="why-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
-            <h3 class="why-title">Strong Alumni Network</h3>
-            <p class="why-body">Join a growing community of CCS graduates working at leading tech companies locally and abroad. Alumni actively mentor current students and open doors to opportunities.</p>
-            <ul class="why-list">
-              <li>1,200+ active alumni worldwide</li>
-              <li>Mentorship &amp; referral programs</li>
-              <li>Annual alumni networking events</li>
-            </ul>
+            <div class="why-card-body">
+              <h3 class="why-title">Strong Alumni Network</h3>
+              <p class="why-body">Join a growing community of CCS graduates working at leading tech companies locally and abroad. Alumni actively mentor current students and open doors to opportunities.</p>
+              <ul class="why-list">
+                <li>1,200+ active alumni worldwide</li>
+                <li>Mentorship &amp; referral programs</li>
+                <li>Annual alumni networking events</li>
+              </ul>
+            </div>
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════ INDUSTRY PARTNERS MARQUEE ═══════════════ -->
+    <!-- --------------- INDUSTRY PARTNERS MARQUEE --------------- -->
     <section class="idx-partners" aria-label="Industry Partners">
       <div class="container">
         <div class="idx-partners-hdr">
@@ -417,7 +313,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
       </div>
     </section>
 
-    <!-- ═══════════════ NEWS & EVENTS ═══════════════ -->
+    <!-- --------------- NEWS & EVENTS --------------- -->
     <section class="news-events" aria-label="News and Events" id="news-events">
       <div class="container">
 
@@ -449,7 +345,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
           <!-- Featured Article -->
           <article class="ne-featured js-reveal">
             <div class="ne-feat-img">
-              <img src="assets/images/IT.jpg" alt="CCS Department — Information Technology students in the lab" loading="eager" decoding="async" />
+              <img src="assets/images/IT.jpg" alt="CCS Department � Information Technology students in the lab" loading="eager" decoding="async" />
               <span class="news-tag news-tag--orange" aria-label="Category: Announcement">Announcement</span>
               <div class="news-badge" aria-hidden="true">
                 <span class="news-badge-dot"></span>
@@ -466,7 +362,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
                 CCS Opens Enrollment for A.Y. 2026&ndash;2027: Limited Slots Available for BSCS &amp; BSIT Programs
               </h3>
               <p class="ne-feat-excerpt">
-                The College of Computing Studies is now accepting applications for both the Bachelor of Science in Computer Science and the Bachelor of Science in Information Technology. Slots are strictly limited — prospective students are encouraged to apply early to secure their place in the program.
+                The College of Computing Studies is now accepting applications for both the Bachelor of Science in Computer Science and the Bachelor of Science in Information Technology. Slots are strictly limited � prospective students are encouraged to apply early to secure their place in the program.
               </p>
               <div class="ne-feat-footer">
                 <div class="ne-author">
@@ -497,7 +393,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
               <div class="ne-card-body">
                 <div class="ne-card-meta">
                   <time class="ne-card-date" datetime="2026-02-15">FEB 15, 2026</time>
-                  <span class="ne-card-dot" aria-hidden="true">●</span>
+                  <span class="ne-card-dot" aria-hidden="true">?</span>
                   <span class="ne-card-mins">4 min</span>
                 </div>
                 <h3 class="ne-card-headline">
@@ -521,7 +417,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
               <div class="ne-card-body">
                 <div class="ne-card-meta">
                   <time class="ne-card-date" datetime="2026-02-10">FEB 10, 2026</time>
-                  <span class="ne-card-dot" aria-hidden="true">●</span>
+                  <span class="ne-card-dot" aria-hidden="true">?</span>
                   <span class="ne-card-mins">6 min</span>
                 </div>
                 <h3 class="ne-card-headline">
@@ -545,7 +441,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
               <div class="ne-card-body">
                 <div class="ne-card-meta">
                   <time class="ne-card-date" datetime="2026-02-05">FEB 05, 2026</time>
-                  <span class="ne-card-dot" aria-hidden="true">●</span>
+                  <span class="ne-card-dot" aria-hidden="true">?</span>
                   <span class="ne-card-mins">3 min</span>
                 </div>
                 <h3 class="ne-card-headline">
@@ -571,23 +467,23 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
           <div class="ne-ticker-track">
             <div class="ne-ticker-inner">
               <!-- Duplicated for seamless loop -->
-              <span class="ne-ticker-item">CCS Enrollment open — A.Y. 2026–2027</span>
-              <span class="ne-ticker-item">Regional E-Thesis Champions — CCS Team A</span>
-              <span class="ne-ticker-item">Capstone Fair: March 14, 2026 — CCS Gymnasium</span>
+              <span class="ne-ticker-item">CCS Enrollment open � A.Y. 2026�2027</span>
+              <span class="ne-ticker-item">Regional E-Thesis Champions � CCS Team A</span>
+              <span class="ne-ticker-item">Capstone Fair: March 14, 2026 � CCS Gymnasium</span>
               <span class="ne-ticker-item">New Elective: Machine Learning Fundamentals</span>
-              <span class="ne-ticker-item">Job Fair 2026 — 40+ partner tech companies</span>
+              <span class="ne-ticker-item">Job Fair 2026 � 40+ partner tech companies</span>
               <span class="ne-ticker-item">Hackathon 2026 Registration Now Open</span>
-              <span class="ne-ticker-item">CCS Peer Tutoring Program — Apply Now</span>
-              <span class="ne-ticker-item">98% Graduate Employment Rate — Class of 2025</span>
+              <span class="ne-ticker-item">CCS Peer Tutoring Program � Apply Now</span>
+              <span class="ne-ticker-item">98% Graduate Employment Rate � Class of 2025</span>
               <!-- repeat for seamless scroll -->
-              <span class="ne-ticker-item">CCS Enrollment open — A.Y. 2026–2027</span>
-              <span class="ne-ticker-item">Regional E-Thesis Champions — CCS Team A</span>
-              <span class="ne-ticker-item">Capstone Fair: March 14, 2026 — CCS Gymnasium</span>
+              <span class="ne-ticker-item">CCS Enrollment open � A.Y. 2026�2027</span>
+              <span class="ne-ticker-item">Regional E-Thesis Champions � CCS Team A</span>
+              <span class="ne-ticker-item">Capstone Fair: March 14, 2026 � CCS Gymnasium</span>
               <span class="ne-ticker-item">New Elective: Machine Learning Fundamentals</span>
-              <span class="ne-ticker-item">Job Fair 2026 — 40+ partner tech companies</span>
+              <span class="ne-ticker-item">Job Fair 2026 � 40+ partner tech companies</span>
               <span class="ne-ticker-item">Hackathon 2026 Registration Now Open</span>
-              <span class="ne-ticker-item">CCS Peer Tutoring Program — Apply Now</span>
-              <span class="ne-ticker-item">98% Graduate Employment Rate — Class of 2025</span>
+              <span class="ne-ticker-item">CCS Peer Tutoring Program � Apply Now</span>
+              <span class="ne-ticker-item">98% Graduate Employment Rate � Class of 2025</span>
             </div>
           </div>
         </div>
@@ -610,7 +506,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
 
           <div class="ne-events-grid">
 
-            <!-- Event 1 — Capstone Fair -->
+            <!-- Event 1 � Capstone Fair -->
             <article class="ne-event-card ne-event-card--orange js-reveal">
               <div class="ne-event-date-col" aria-label="March 14">
                 <span class="ne-event-day">14</span>
@@ -655,7 +551,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
               </div>
             </article>
 
-            <!-- Event 2 — Hackathon -->
+            <!-- Event 2 � Hackathon -->
             <article class="ne-event-card ne-event-card--blue js-reveal">
               <div class="ne-event-date-col" aria-label="March 22">
                 <span class="ne-event-day">22</span>
@@ -700,7 +596,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
               </div>
             </article>
 
-            <!-- Event 3 — Job Fair -->
+            <!-- Event 3 � Job Fair -->
             <article class="ne-event-card ne-event-card--green js-reveal">
               <div class="ne-event-date-col" aria-label="April 4">
                 <span class="ne-event-day">04</span>
@@ -745,7 +641,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
               </div>
             </article>
 
-            <!-- Event 4 — Guest Lecture -->
+            <!-- Event 4 � Guest Lecture -->
             <article class="ne-event-card ne-event-card--purple js-reveal">
               <div class="ne-event-date-col" aria-label="April 18">
                 <span class="ne-event-day">18</span>
@@ -798,7 +694,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
 
   </main>
 
-  <!-- ═══════════════ PROGRAMS SPOTLIGHT ═══════════════ -->
+  <!-- --------------- PROGRAMS SPOTLIGHT --------------- -->
   <section class="prog-spot" aria-label="Programs Overview">
     <div class="container">
       <div class="prog-spot-header">
@@ -812,7 +708,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
           Two Degrees, <em class="heading-accent">Limitless</em> Futures
         </h2>
         <p class="intro-body intro-body--light prog-spot-sub">
-          Whether you're building intelligent systems or powering business technology — CCS has the program for you.
+          Whether you're building intelligent systems or powering business technology � CCS has the program for you.
         </p>
       </div>
 
@@ -869,7 +765,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
           </div>
           <div class="prog-spot-degree">BSIT</div>
           <h3 class="prog-spot-name">Bachelor of Science in<br><strong>Information Technology</strong></h3>
-          <p class="prog-spot-desc">Master the full spectrum of IT — from web and mobile development to network administration, database systems, and IT project management. Built for versatile tech professionals.</p>
+          <p class="prog-spot-desc">Master the full spectrum of IT � from web and mobile development to network administration, database systems, and IT project management. Built for versatile tech professionals.</p>
           <div class="prog-spot-tracks">
             <span class="prog-track-pill">Web Development</span>
             <span class="prog-track-pill">Network Administration</span>
@@ -912,7 +808,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
     </div>
   </section>
 
-  <!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+  <!-- --------------- TESTIMONIALS --------------- -->
   <section class="testimonials" aria-label="Student Testimonials">
     <div class="container">
       <div class="testi-header">
@@ -930,6 +826,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
       <div class="testi-grid">
 
         <blockquote class="testi-card js-reveal">
+          <span class="testi-card-quote-glyph" aria-hidden="true">“</span>
           <div class="testi-stars" aria-label="5 stars">
             <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
             <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
@@ -937,7 +834,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
             <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
             <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
           </div>
-          <p class="testi-quote">"CCS didn't just teach me to code — it taught me how to think like an engineer. The capstone project challenged me more than anything, but the support from faculty made it all possible. I landed my first dev role before graduation day."</p>
+          <p class="testi-quote">"CCS didn't just teach me to code � it taught me how to think like an engineer. The capstone project challenged me more than anything, but the support from faculty made it all possible. I landed my first dev role before graduation day."</p>
           <footer class="testi-author">
             <div class="testi-avatar testi-avatar--a" aria-hidden="true">JR</div>
             <div>
@@ -948,6 +845,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
         </blockquote>
 
         <blockquote class="testi-card js-reveal">
+          <span class="testi-card-quote-glyph" aria-hidden="true">“</span>
           <div class="testi-stars" aria-label="5 stars">
             <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
             <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
@@ -955,7 +853,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
             <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
             <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
           </div>
-          <p class="testi-quote">"The labs here are incredible — we get to work with industry-standard tools from day one. The professors genuinely care about your growth. Two years in and I already feel like a professional developer, not just a student."</p>
+          <p class="testi-quote">"The labs here are incredible � we get to work with industry-standard tools from day one. The professors genuinely care about your growth. Two years in and I already feel like a professional developer, not just a student."</p>
           <footer class="testi-author">
             <div class="testi-avatar testi-avatar--b" aria-hidden="true">MC</div>
             <div>
@@ -966,6 +864,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
         </blockquote>
 
         <blockquote class="testi-card js-reveal">
+          <span class="testi-card-quote-glyph" aria-hidden="true">“</span>
           <div class="testi-stars" aria-label="5 stars">
             <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
             <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
@@ -987,13 +886,13 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
     </div>
   </section>
 
-  <!-- ═══════════════ CTA BANNER ═══════════════ -->
+  <!-- --------------- CTA BANNER --------------- -->
   <section class="cta-banner" aria-label="Enroll Now Call to Action">
     <div class="container">
       <div class="cta-banner-inner">
         <div class="cta-banner-tag" aria-hidden="true">
           <span class="cta-banner-tag-dot"></span>
-          Enrollment Open — A.Y. 2026&ndash;2027
+          Enrollment Open � A.Y. 2026&ndash;2027
         </div>
         <h2 class="cta-banner-heading">
           Ready to Join<br>the <span class="cta-banner-accent">CCS Family</span>?
@@ -1035,7 +934,7 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
     </div>
   </section>
 
-  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <!-- --------------- FOOTER --------------- -->
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
@@ -1107,6 +1006,87 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
 
   <script src="assets/js/main.js"></script>
   <script>
+  /* ── Hero Model Slideshow ── */
+  (function () {
+    const slides = [
+      { img: 'calvin',   prog: ['Future is yours',      'Start Your Journey 🌟'],  status: ['A.Y. 2026–2027',   'Enrolling Now'],   ched: ['Accredited',    'CHED Recognized']   },
+      { img: 'charlie',  prog: ['Build. Create. Lead.', 'Join CCS Today 🚀'],      status: ['Enrollment',     'Now Open'],        ched: ['Award-Winning', 'Top CCS Program']    },
+      { img: 'cj',       prog: ['Be part of greatness', 'Study at CCS 💻'],       status: ['Slots Available', 'Apply Today'],      ched: ['Accredited',    'CHED Recognized']   },
+      { img: 'claire',   prog: ['Code your future',    'Enroll in CCS ✨'],         status: ['A.Y. 2026–2027',   'Enrolling Now'],   ched: ['Industry-Ready','Top-Rated Dept.']    },
+      { img: 'cleo',     prog: ['Where talent grows',  'Join CCS Today 🚀'],       status: ['Enrollment',     'Now Open'],        ched: ['Accredited',    'CHED Recognized']   },
+      { img: 'gester',   prog: ['Be part of something great', 'Join CCS Today 🚀'], status: ['Enrollment',  'Now Open'],        ched: ['Accredited',    'CHED Recognized']   },
+      { img: 'isaiah',   prog: ['Innovation starts here','Level Up with CCS 🚀'], status: ['Slots Available', 'Apply Today'],      ched: ['Award-Winning', 'Top CCS Program']    },
+      { img: 'jason',    prog: ['Code. Create. Innovate.', 'Join CCS 💻'],       status: ['A.Y. 2026–2027',   'Enrolling Now'],   ched: ['Accredited',    'CHED Recognized']   },
+      { img: 'jessel',   prog: ['Your tech career here','Study at CCS ✨'],          status: ['Enrollment',     'Now Open'],        ched: ['Industry-Ready','Top-Rated Dept.']    },
+      { img: 'jose',     prog: ['Build the future',    'Be a CCS Student 🌟'],    status: ['Slots Available', 'Apply Today'],      ched: ['Accredited',    'CHED Recognized']   },
+      { img: 'joshua',   prog: ['Dream. Build. Succeed.','Join CCS Today 🚀'],    status: ['A.Y. 2026–2027',   'Enrolling Now'],   ched: ['Award-Winning', 'Top CCS Program']    },
+      { img: 'julius',   prog: ['Where coders are made','Enroll in CCS 💻'],     status: ['Enrollment',     'Now Open'],        ched: ['Accredited',    'CHED Recognized']   },
+      { img: 'justine',  prog: ['Future is yours',     'Start Your Journey 🌟'], status: ['Slots Available', 'Apply Today'],      ched: ['Industry-Ready','Top-Rated Dept.']    },
+      { img: 'justines', prog: ['Code your path',      'Join CCS Today 🚀'],      status: ['A.Y. 2026–2027',   'Enrolling Now'],   ched: ['Accredited',    'CHED Recognized']   },
+      { img: 'karl',     prog: ['Innovation starts here','Level Up with CCS 🚀'], status: ['Enrollment',     'Now Open'],        ched: ['Award-Winning', 'Top CCS Program']    },
+      { img: 'kieziah',  prog: ['Be part of greatness','Study at CCS ✨'],           status: ['Slots Available', 'Apply Today'],      ched: ['Accredited',    'CHED Recognized']   },
+      { img: 'kinley',   prog: ['Build. Create. Lead.','Join CCS Today 🚀'],      status: ['A.Y. 2026–2027',   'Enrolling Now'],   ched: ['Industry-Ready','Top-Rated Dept.']    },
+      { img: 'mar',      prog: ['Your tech career here','Enroll in CCS 💻'],     status: ['Enrollment',     'Now Open'],        ched: ['Accredited',    'CHED Recognized']   },
+      { img: 'mark',     prog: ['Dream. Build. Succeed.','Be a CCS Student 🌟'],  status: ['Slots Available', 'Apply Today'],      ched: ['Award-Winning', 'Top CCS Program']    },
+      { img: 'markc',    prog: ['Where talent grows',  'Join CCS Today 🚀'],       status: ['A.Y. 2026–2027',   'Enrolling Now'],   ched: ['Accredited',    'CHED Recognized']   },
+      { img: 'marsha',   prog: ['Code. Create. Innovate.','Study at CCS ✨'],        status: ['Enrollment',     'Now Open'],        ched: ['Industry-Ready','Top-Rated Dept.']    },
+      { img: 'sam',      prog: ['Future is yours',     'Start Your Journey 🌟'], status: ['Slots Available', 'Apply Today'],      ched: ['Accredited',    'CHED Recognized']   },
+      { img: 'sean',     prog: ['Be part of something great','Join CCS Today 🚀'],status: ['A.Y. 2026–2027',   'Enrolling Now'],   ched: ['Award-Winning', 'Top CCS Program']    },
+    ];
+
+    let current = 0;
+    let timer;
+
+    const img        = document.getElementById('heroStudentImg');
+    const progLabel  = document.getElementById('badgeProgLabel');
+    const progValue  = document.getElementById('badgeProgValue');
+    const statLabel  = document.getElementById('badgeStatusLabel');
+    const statValue  = document.getElementById('badgeStatusValue');
+    const chedLabel  = document.getElementById('badgeChedLabel');
+    const chedValue  = document.getElementById('badgeChedValue');
+    const btnPrev    = document.getElementById('modelPrev');
+    const btnNext    = document.getElementById('modelNext');
+
+    if (!img) return;
+
+    function fadeTexts(out) {
+      [progLabel, progValue, statLabel, statValue, chedLabel, chedValue]
+        .forEach(el => el && el.classList.toggle('is-fading', out));
+    }
+
+    function goTo(idx) {
+      const slide = slides[idx];
+      img.classList.add('is-fading');
+      fadeTexts(true);
+
+      setTimeout(() => {
+        img.src = 'assets/images/hero/' + slide.img + '.png';
+        progLabel.textContent = slide.prog[0];
+        progValue.textContent = slide.prog[1];
+        statLabel.textContent = slide.status[0];
+        statValue.textContent = slide.status[1];
+        chedLabel.textContent = slide.ched[0];
+        chedValue.textContent = slide.ched[1];
+        img.classList.remove('is-fading');
+        fadeTexts(false);
+      }, 420);
+
+      current = idx;
+    }
+
+    function next() { goTo((current + 1) % slides.length); }
+    function prev() { goTo((current - 1 + slides.length) % slides.length); }
+
+    function startTimer() { timer = setInterval(next, 4000); }
+    function resetTimer()  { clearInterval(timer); startTimer(); }
+
+    btnNext && btnNext.addEventListener('click', () => { next(); resetTimer(); });
+    btnPrev && btnPrev.addEventListener('click', () => { prev(); resetTimer(); });
+
+    startTimer();
+  })();
+  </script>
+  <script>
   (function () {
     const canvas = document.getElementById('particleCanvas');
     if (!canvas) return;
@@ -1142,20 +1122,19 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
       const hero = canvas.parentElement;
       W = canvas.width  = hero.offsetWidth;
       H = canvas.height = hero.offsetHeight;
-      // re-init so label sizes are recalculated
       particles = LANGS.map(lang => new Particle(lang));
     }
 
     function rand(min, max) { return Math.random() * (max - min) + min; }
 
     function Particle(lang) {
-      this.label = lang.label;
-      this.color = lang.color;
-      this.x     = rand(60, W - 60);
-      this.y     = rand(40, H - 40);
-      this.vx    = rand(-SPEED, SPEED) || SPEED * 0.5;
-      this.vy    = rand(-SPEED, SPEED) || SPEED * 0.5;
-      this.alpha = rand(0.25, 0.55);
+      this.label    = lang.label;
+      this.color    = lang.color;
+      this.x        = rand(60, W - 60);
+      this.y        = rand(40, H - 40);
+      this.vx       = rand(-SPEED, SPEED) || SPEED * 0.5;
+      this.vy       = rand(-SPEED, SPEED) || SPEED * 0.5;
+      this.alpha    = rand(0.25, 0.55);
       this.fontSize = rand(10, 14);
     }
 
@@ -1188,44 +1167,37 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
         }
       }
 
-      // Draw each language label — chamfered badge (matches button clip-path)
+      // Draw each language label — chamfered badge
       particles.forEach(p => {
         ctx.font = `600 ${p.fontSize}px 'SFMono-Regular', Consolas, monospace`;
-        const tw = ctx.measureText(p.label).width;
-        const ph = p.fontSize + 10;  // badge height
-        const pw = tw + 22;          // badge width
-        const cut = 5;               // chamfer size (top-right + bottom-left)
+        const tw  = ctx.measureText(p.label).width;
+        const ph  = p.fontSize + 10;
+        const pw  = tw + 22;
+        const cut = 5;
+        const x1  = p.x - pw / 2;
+        const y1  = p.y - ph / 2;
+        const x2  = p.x + pw / 2;
+        const y2  = p.y + ph / 2;
 
-        const x1 = p.x - pw / 2;
-        const y1 = p.y - ph / 2;
-        const x2 = p.x + pw / 2;
-        const y2 = p.y + ph / 2;
-
-        // chamfered polygon: top-left square, top-right cut, bottom-right square, bottom-left cut
         ctx.beginPath();
-        ctx.moveTo(x1, y1);                        // top-left
-        ctx.lineTo(x2 - cut, y1);                  // top edge
-        ctx.lineTo(x2, y1 + cut);                  // top-right cut
-        ctx.lineTo(x2, y2);                        // right edge
-        ctx.lineTo(x1 + cut, y2);                  // bottom-left cut start
-        ctx.lineTo(x1, y2 - cut);                  // bottom-left cut
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2 - cut, y1);
+        ctx.lineTo(x2, y1 + cut);
+        ctx.lineTo(x2, y2);
+        ctx.lineTo(x1 + cut, y2);
+        ctx.lineTo(x1, y2 - cut);
         ctx.closePath();
 
-        // Fill — dark transparent
         ctx.fillStyle = `rgba(8,12,16,${p.alpha * 1.0})`;
         ctx.fill();
-
-        // Border — orange
         ctx.strokeStyle = `rgba(249,115,22,${p.alpha * 0.75})`;
         ctx.lineWidth = 0.85;
         ctx.stroke();
 
-        // Cut-corner accent dots
         ctx.fillStyle = `rgba(249,115,22,${p.alpha * 0.9})`;
-        ctx.fillRect(x2 - cut - 1, y1, 2, 1);     // top-right notch
-        ctx.fillRect(x1, y2 - cut - 1, 1, 2);     // bottom-left notch
+        ctx.fillRect(x2 - cut - 1, y1, 2, 1);
+        ctx.fillRect(x1, y2 - cut - 1, 1, 2);
 
-        // Label text
         ctx.fillStyle = `rgba(251,146,60,${p.alpha + 0.2})`;
         ctx.textAlign    = 'center';
         ctx.textBaseline = 'middle';
@@ -1240,156 +1212,6 @@ enroll(student).<span class="tk-fn">then</span>(ok =>
     resize();
     draw();
     window.addEventListener('resize', resize);
-  })();
-  </script>
-  <script>
-  /* ── IDE tab switcher — professional typing animation ── */
-  (function () {
-    var card = document.getElementById('ideCard');
-    if (!card) return;
-
-    var tabs  = card.querySelectorAll('.ide-tab[data-ide-tab]');
-    var panes = card.querySelectorAll('.ide-pane[data-ide-pane]');
-    var cur = 0, autoTimer, typeTimer;
-
-    /* ── Timing ─────────────────────────────────────────────────
-       BASE   : average ms per plain-text character
-       JITTER : ± random variance for natural feel
-       NL     : breath after a newline
-       THINK  : micro-pause at punctuation :{(=,
-       SWITCH : auto-rotate interval (type time + read dwell)
-    ─────────────────────────────────────────────────────────── */
-    var BASE   = 48;
-    var JITTER = 28;
-    var NL     = 130;
-    var THINK  = 80;
-    var SWITCH = 12000;
-
-    /* Snapshot every pane's <pre> once at load — never mutated */
-    var originals = [];
-    panes.forEach(function (pane) {
-      var pre = pane.querySelector('.ide-code');
-      originals.push(pre ? pre.cloneNode(true) : null);
-    });
-
-    /* ── Build a token list from a <pre>'s direct child nodes ──
-       · text nodes  → chars typed one-by-one  (kind:'char')
-       · span nodes  → inserted as whole units  (kind:'span')
-         Spans pop in instantly so syntax colours are always
-         correct and there's no DOM fragmentation.              */
-    function buildTokens(pre) {
-      var tokens = [];
-      pre.childNodes.forEach(function (node) {
-        if (node.nodeType === 3) {               /* plain text */
-          var txt = node.textContent;
-          for (var c = 0; c < txt.length; c++) {
-            tokens.push({ kind: 'char', ch: txt[c] });
-          }
-        } else if (node.nodeType === 1) {        /* <span> — atomic */
-          tokens.push({ kind: 'span', node: node.cloneNode(true) });
-        }
-      });
-      return tokens;
-    }
-
-    /* ── Type out one pane ── */
-    function typeIn(paneIdx) {
-      var pane = panes[paneIdx];
-      var pre  = pane && pane.querySelector('.ide-code');
-      if (!pre || !originals[paneIdx]) return;
-
-      /* Lock dimensions before clearing so the card never resizes */
-      pre.style.minHeight = pre.offsetHeight + 'px';
-      pre.style.overflowY = 'hidden';
-
-      var tokens = buildTokens(originals[paneIdx]);
-      pre.innerHTML = '';
-
-      /* Terminal-style white blinking caret */
-      var cursor = document.createElement('span');
-      cursor.className = 'ide-type-cursor';
-      pre.appendChild(cursor);
-
-      /* Accumulate consecutive plain-text chars into one text node */
-      var textBuf = null;
-
-      var i = 0;
-      function step() {
-        if (i >= tokens.length) { cursor.remove(); return; }
-
-        var tok = tokens[i++];
-
-        if (tok.kind === 'span') {
-          /* Flush any pending text buffer first */
-          textBuf = null;
-          pre.insertBefore(tok.node, cursor);
-          /* Tiny fixed pause so the colour pop feels intentional */
-          typeTimer = setTimeout(step, 18);
-          return;
-        }
-
-        /* Plain character */
-        var ch = tok.ch;
-        if (textBuf) {
-          textBuf.data += ch;
-        } else {
-          textBuf = document.createTextNode(ch);
-          pre.insertBefore(textBuf, cursor);
-        }
-
-        /* Human-like delay with jitter */
-        var delay = BASE + (Math.random() * JITTER * 2 - JITTER);
-        if (ch === '\n')                               { delay += NL;    textBuf = null; }
-        if (':{(=,'.indexOf(ch) !== -1 && ch !== ' ')   delay += THINK;
-
-        typeTimer = setTimeout(step, Math.max(8, delay));
-      }
-      step();
-    }
-
-    /* ── Restore a pane to its original full HTML instantly ── */
-    function restorePane(idx) {
-      clearTimeout(typeTimer);
-      var pre = panes[idx] && panes[idx].querySelector('.ide-code');
-      if (pre && originals[idx]) {
-        pre.style.minHeight = '';
-        pre.style.overflowY = '';
-        pre.innerHTML = originals[idx].innerHTML;
-      }
-    }
-
-    /* ── Switch to tab i ── */
-    function activate(i, doType) {
-      restorePane(cur);
-      tabs.forEach(function (t, n)  { t.classList.toggle('ide-tab--active',  n === i); });
-      panes.forEach(function (p, n) { p.classList.toggle('ide-pane--active', n === i); });
-      cur = i;
-      if (doType !== false) typeIn(i);
-    }
-
-    /* Manual click */
-    tabs.forEach(function (tab, i) {
-      tab.addEventListener('click', function () {
-        clearInterval(autoTimer);
-        activate(i, true);
-        startAuto();
-      });
-    });
-
-    /* Auto-rotate */
-    function startAuto() {
-      clearInterval(autoTimer);
-      autoTimer = setInterval(function () {
-        activate((cur + 1) % tabs.length, true);
-      }, SWITCH);
-    }
-
-    /* Pause on hover */
-    card.addEventListener('mouseenter', function () { clearInterval(autoTimer); });
-    card.addEventListener('mouseleave', startAuto);
-
-    typeIn(0);
-    startAuto();
   })();
   </script>
 </body>
