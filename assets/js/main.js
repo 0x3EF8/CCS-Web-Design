@@ -11,6 +11,8 @@
   document.addEventListener('DOMContentLoaded', init);
 
   function init() {
+    setupPageTransition();
+    setupBootScreen();
     setupNavbar();
     setActiveNavLink();
     setupScrollReveal();
@@ -26,6 +28,155 @@
     // Auto copyright year
     const yr = document.getElementById('copy-year');
     if (yr) yr.textContent = new Date().getFullYear();
+  }
+
+  /* ──────────────────────────────────────────────────────────────
+     BOOT SCREEN — Linux-style, first visit per session
+  ────────────────────────────────────────────────────────────── */
+  function setupBootScreen() {
+    if (sessionStorage.getItem('ccs_booted')) return;
+
+    const screen = document.createElement('div');
+    screen.id = 'boot-screen';
+    screen.innerHTML = [
+      '<div class="boot-header">',
+      '  <div class="boot-title-row">',
+      '    <span class="boot-logo">[ CCS ]</span>',
+      '  </div>',
+      '  <div class="boot-subtitle">CCS-DEPT BIOS v4.0.2026 &mdash; College of Computing Studies &mdash; BSCS &amp; BSIT Portal</div>',
+      '  <div class="boot-hw-row">',
+      '    <span class="boot-hw-item">CPU: <span>Web Interface Controller @ 4.0GHz</span></span>',
+      '    <span class="boot-hw-item">MEM: <span>512MB VRAM (CCS Academic DB)</span></span>',
+      '    <span class="boot-hw-item">NET: <span>eth0 — connected</span></span>',
+      '  </div>',
+      '</div>',
+      '<div class="boot-console" id="boot-console"></div>',
+      '<div class="boot-footer">',
+      '  <div class="boot-bar-wrap"><div class="boot-bar" id="boot-bar"></div></div>',
+      '  <div class="boot-status" id="boot-status">Initializing hardware...<span class="boot-cursor"></span></div>',
+      '</div>'
+    ].join('');
+
+    document.body.appendChild(screen);
+    document.body.style.overflow = 'hidden';
+
+    var lines = [
+      { t: '[    0.000000] Linux version 6.1.0-ccs (ccs@dept) (gcc 12.2.0) #1 SMP', c: 'dim' },
+      { t: '[    0.000012] BIOS-e820: [mem 0x0000000000000000-0x000000000009ffff] usable', c: 'dim' },
+      { t: '[    0.048213] CCS Department Portal v4.0.2026 — booting...', c: '' },
+      { t: '[    0.091337] Initializing kernel event notification mechanism', c: 'dim' },
+      { t: '[  OK  ] Loading kernel modules...', c: '' },
+      { t: '[  OK  ] Mounting /proc filesystem...', c: '' },
+      { t: '[  OK  ] Mounting /sys filesystem...', c: '' },
+      { t: '[  OK  ] Mounting virtual file systems...', c: '' },
+      { t: '[  OK  ] Starting system journal (systemd-journald)...', c: '' },
+      { t: '[  OK  ] Bringing up network interface: eth0', c: '' },
+      { t: '[    0.312894] eth0: Link is Up — 1000Mbps Full Duplex', c: 'dim' },
+      { t: '[  OK  ] Starting academic database service (ccs-db)...', c: '' },
+      { t: '[  OK  ] Loaded BSCS curriculum modules (4 tracks found)', c: '' },
+      { t: '[  OK  ] Loaded BSIT curriculum modules (3 tracks found)', c: '' },
+      { t: '[  OK  ] Connecting to faculty registry (15 records synced)', c: '' },
+      { t: '[  OK  ] Loading student enrollment system...', c: '' },
+      { t: '[ WARN ] 3 enrollment slots remaining — apply early!', c: 'w' },
+      { t: '[  OK  ] Starting news & events feed (ccs-news)...', c: '' },
+      { t: '[  OK  ] Initializing contact form handler...', c: '' },
+      { t: '[  OK  ] Starting web rendering engine (ccs-ui v4)...', c: '' },
+      { t: '[  OK  ] Verifying system integrity... [PASS]', c: '' },
+      { t: '[  OK  ] All systems operational.', c: '' },
+      { t: '', c: '' },
+      { t: '┌─────────────────────────────────────────────────────┐', c: 'ok' },
+      { t: '│                                                     │', c: 'ok' },
+      { t: '│     Welcome to CCS Department Portal                │', c: 'ok' },
+      { t: '│     College of Computing Studies                    │', c: 'ok' },
+      { t: '│     An open door to the limitless horizon           │', c: 'ok' },
+      { t: '│                                                     │', c: 'ok' },
+      { t: '└─────────────────────────────────────────────────────┘', c: 'ok' },
+      { t: '', c: '' },
+      { t: 'CCS login: portal@ccs — Starting graphical interface...', c: 'hl' }
+    ];
+
+    var console_el = document.getElementById('boot-console');
+    var bar        = document.getElementById('boot-bar');
+    var status_el  = document.getElementById('boot-status');
+    var delay      = 0;
+    // Vary timing for realism
+    var timings    = [80,40,120,60,110,80,80,90,130,140,60,160,140,140,160,150,130,150,130,140,200,120,60,40,40,40,40,40,40,80,100,160];
+
+    lines.forEach(function (line, idx) {
+      delay += (timings[idx] || 100);
+      (function (l, i, d) {
+        setTimeout(function () {
+          var el = document.createElement('div');
+          el.className = 'boot-line';
+
+          var html = l.t
+            .replace(/\[  OK  \]/g,  '<span class="ok">[  OK  ]</span>')
+            .replace(/\[ WARN \]/g,  '<span class="warn">[ WARN ]</span>')
+            .replace(/\[ ERR  \]/g,  '<span class="err">[ ERR  ]</span>');
+
+          if (l.c === 'dim') html = '<span class="dim">' + l.t + '</span>';
+          else if (l.c === 'ok')  html = '<span class="ok">' + l.t + '</span>';
+          else if (l.c === 'hl')  html = '<span class="hl">' + l.t + '</span>';
+          else if (l.c === 'w')   html = html; // already replaced warn tag
+
+          el.innerHTML = html;
+          console_el.appendChild(el);
+
+          // Progress bar
+          bar.style.width = (((i + 1) / lines.length) * 100) + '%';
+
+          // Status text
+          if (i < 10)        status_el.innerHTML = 'Initializing hardware...<span class="boot-cursor"></span>';
+          else if (i < 18)   status_el.innerHTML = 'Loading CCS modules...<span class="boot-cursor"></span>';
+          else if (i < 22)   status_el.innerHTML = 'Starting portal services...<span class="boot-cursor"></span>';
+          else               status_el.innerHTML = 'System ready.<span class="boot-cursor"></span>';
+
+          // Done — fade out
+          if (i === lines.length - 1) {
+            setTimeout(function () {
+              screen.classList.add('boot-screen--out');
+              sessionStorage.setItem('ccs_booted', '1');
+              document.body.style.overflow = '';
+              setTimeout(function () { screen.remove(); }, 650);
+            }, 900);
+          }
+        }, d);
+      })(line, idx, delay);
+    });
+  }
+
+  /* ──────────────────────────────────────────────────────────────
+     PAGE TRANSITION — top progress bar on every page nav
+  ────────────────────────────────────────────────────────────── */
+  function setupPageTransition() {
+    // Inject loader bar
+    var loader = document.createElement('div');
+    loader.id = 'page-loader';
+    document.body.appendChild(loader);
+
+    // Trigger entrance animation on every page load
+    document.body.classList.add('page-enter');
+
+    // Intercept internal link clicks → show loader
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href]');
+      if (!link) return;
+      var href = link.getAttribute('href');
+      if (!href) return;
+
+      // Skip anchors, mailto/tel, blank targets, external
+      var skip = href.startsWith('#') ||
+                 href.startsWith('mailto:') ||
+                 href.startsWith('tel:') ||
+                 href.startsWith('javascript') ||
+                 link.target === '_blank' ||
+                 (href.startsWith('http') && !href.includes(window.location.hostname));
+      if (skip) return;
+
+      // Show the loading bar
+      loader.classList.remove('is-complete');
+      loader.classList.add('is-loading');
+    });
   }
 
   /* ──────────────────────────────────────────────────────────────

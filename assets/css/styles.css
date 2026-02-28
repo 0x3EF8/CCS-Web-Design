@@ -7635,8 +7635,197 @@ a, button, [role="button"] {
 }
 
 /* ================================================================
-   UPGRADE v6 � RESPONSIVE
+   UPGRADE v6 — RESPONSIVE
    ================================================================ */
 @media (max-width: 768px) {
   .idx-partners { padding-block: 32px 20px; }
+}
+
+
+/* ================================================================
+   BOOT SCREEN (first-visit Linux-style animation)
+   ================================================================ */
+#boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 40px 28px;
+  font-family: 'Courier New', Courier, monospace;
+  overflow: hidden;
+}
+
+.boot-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(0, 255, 70, 0.18);
+}
+
+.boot-title-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.boot-logo {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #f97316;
+  letter-spacing: 6px;
+  text-shadow: 0 0 18px rgba(249,115,22,.7);
+}
+
+.boot-subtitle {
+  font-size: 0.72rem;
+  color: #00ff46;
+  opacity: 0.65;
+  letter-spacing: 0.05em;
+}
+
+.boot-hw-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.boot-hw-item {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,.35);
+  letter-spacing: 0.04em;
+}
+
+.boot-hw-item span {
+  color: rgba(255,255,255,.6);
+}
+
+.boot-console {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.boot-line {
+  font-size: 0.78rem;
+  line-height: 1.65;
+  white-space: pre;
+  color: #c9d1d9;
+  opacity: 0;
+  animation: bootLineIn 0.12s ease forwards;
+}
+
+@keyframes bootLineIn {
+  from { opacity: 0; transform: translateX(-4px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.boot-line .ok   { color: #00ff46; font-weight: bold; }
+.boot-line .warn { color: #f97316; font-weight: bold; }
+.boot-line .err  { color: #ef4444; font-weight: bold; }
+.boot-line .dim  { color: rgba(255,255,255,.28); }
+.boot-line .hl   { color: #f97316; }
+
+.boot-footer {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.boot-bar-wrap {
+  height: 2px;
+  background: rgba(0,255,70,.12);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.boot-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #f97316 0%, #00ff46 100%);
+  transition: width 0.25s ease;
+  box-shadow: 0 0 10px rgba(249,115,22,.55);
+}
+
+.boot-status {
+  font-size: 0.68rem;
+  color: rgba(0,255,70,.55);
+  letter-spacing: 0.04em;
+}
+
+.boot-cursor {
+  display: inline-block;
+  width: 9px;
+  height: 1em;
+  background: #00ff46;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blinkCursor 0.6s step-end infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.boot-screen--out {
+  animation: bootScreenOut 0.55s ease forwards;
+}
+
+@keyframes bootScreenOut {
+  0%   { opacity: 1; transform: scale(1); }
+  60%  { opacity: 1; transform: scale(1.015); }
+  100% { opacity: 0; transform: scale(1.03); pointer-events: none; }
+}
+
+/* ================================================================
+   PAGE TRANSITION — top progress bar
+   ================================================================ */
+#page-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 99998;
+  background: linear-gradient(90deg, #f97316, #fb923c, #fbbf24);
+  transform-origin: left center;
+  transform: scaleX(0);
+  pointer-events: none;
+  box-shadow: 0 0 12px rgba(249,115,22,.7), 0 0 4px rgba(249,115,22,.4);
+  transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+#page-loader.is-loading {
+  transform: scaleX(0.88);
+  transition: transform 2.4s cubic-bezier(0.08, 0, 0.25, 1);
+}
+
+#page-loader.is-complete {
+  transform: scaleX(1);
+  opacity: 0;
+  transition: transform 0.15s ease, opacity 0.35s 0.1s ease;
+}
+
+/* Page body entrance */
+body.page-enter {
+  animation: pageBodyIn 0.38s ease both;
+}
+
+@keyframes pageBodyIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  #boot-screen { padding: 20px 18px 18px; }
+  .boot-logo   { font-size: 1.2rem; letter-spacing: 4px; }
+  .boot-line   { font-size: 0.68rem; }
 }
