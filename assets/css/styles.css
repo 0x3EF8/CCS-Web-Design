@@ -109,6 +109,32 @@
 /* ================================================================
    2. CSS RESET & BASE
    ================================================================ */
+
+/* Metric-compatible fallback faces — eliminates any residual layout
+   shift while web fonts are loading (first visit only).
+   size-adjust & ascent/descent tweaks match Inter & Space Grotesk
+   so the fallback glyphs occupy the exact same line-box height.     */
+@font-face {
+  font-family: 'Inter';
+  src: local('Arial');
+  font-weight: 100 900;
+  font-style: normal;
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  src: local('Arial Black'), local('Arial Bold'), local('Arial');
+  font-weight: 500 900;
+  font-style: normal;
+  size-adjust: 96%;
+  ascent-override: 92%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
