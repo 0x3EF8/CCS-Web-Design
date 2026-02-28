@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="College of Computing Studies � Bachelor of Science in Computer Science and Information Technology." />
+  <meta property="og:title" content="CCS Department | College of Computing Studies" />
+  <meta property="og:description" content="College of Computing Studies � Bachelor of Science in Computer Science and Information Technology." />
+  <meta property="og:type" content="website" />
+  <title>CCS Department | College of Computing Studies &mdash; BSCS &amp; BSIT</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- --------------- NAVBAR --------------- -->
+  <header class="navbar" role="banner">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand" aria-label="CCS Department Home">
+        <img src="assets/images/logo.svg" alt="CCS Logo" class="brand-mark" width="44" height="44" />
+        <div class="brand-text">
+          <span class="brand-name">CCS Dept.</span>
+          <span class="brand-full">An open door to the limitless horizon</span>
+        </div>
+      </a>
+      <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+        <a href="index.html"    class="nav-item">Home</a>
+        <a href="pages/about.html"   class="nav-item">About</a>
+        <a href="pages/programs.html"class="nav-item">Programs</a>
+        <a href="pages/faculty.html" class="nav-item">Faculty</a>
+        <a href="pages/enroll.html"  class="nav-item">Enroll</a>
+        <a href="pages/news.html"    class="nav-item">News</a>
+        <a href="pages/contact.html" class="nav-item nav-item--cta">Apply Now</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+        <span class="toggle-bar"></span>
+        <span class="toggle-bar"></span>
+        <span class="toggle-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- --------------- HERO --------------- -->
+    <section class="hero" aria-label="Hero">
+      <canvas id="particleCanvas" aria-hidden="true"></canvas>
+
+      <div class="container">
+        <div class="hero-layout">
+
+          <!-- Copy -->
+          <div class="hero-copy">
+
+            <p class="hero-dept-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              College of Computing Studies
+            </p>
+
+            <h1 class="hero-heading">
+              Build the <em class="heading-accent">Future</em><br>
+              One Line at<br>
+              a Time.
+            </h1>
+
+            <p class="hero-body">
+              Earn your <strong>BSCS</strong> or <strong>BSIT</strong> degree from a department that blends rigorous academics, hands-on projects, and real industry connections &mdash; designed to launch your career in tech.
+            </p>
+
+            <div class="hero-actions">
+              <a href="pages/enroll.html" class="btn btn--primary">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 1v14M1 8h14"/></svg>
+                Apply Now
+              </a>
+              <a href="pages/programs.html" class="btn btn--ghost">View Programs</a>
+            </div>
+
+            <!-- Inline stats -->
+            <div class="hero-stats-row">
+              <div class="hstat">
+                <span class="hstat-num">500+</span>
+                <span class="hstat-label">Students</span>
+              </div>
+              <div class="hstat-div"></div>
+              <div class="hstat">
+                <span class="hstat-num">98%</span>
+                <span class="hstat-label">Employment</span>
+              </div>
+              <div class="hstat-div"></div>
+              <div class="hstat">
+                <span class="hstat-num">40+</span>
+                <span class="hstat-label">Industry Partners</span>
+              </div>
+              <div class="hstat-div"></div>
+              <div class="hstat">
+                <span class="hstat-num">15+</span>
+                <span class="hstat-label">Years</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Visual Panel � Student Model Showcase -->
+          <div class="hero-panel">
+
+            <div class="hero-model-wrap">
+
+              <!-- Background logo -->
+              <img src="assets/images/logo1.png" class="model-bg-logo" aria-hidden="true" draggable="false">
+
+              <!-- Photo frame -->
+              <div class="model-photo-frame">
+                <img
+                  id="heroStudentImg"
+                  src="assets/images/officers/sam.png"
+                  alt="CCS Student — College of Computing Studies"
+                  class="model-photo"
+                  loading="eager"
+                  draggable="false"
+                />
+                <!-- Bottom gradient fade -->
+                <div class="model-photo-fade" aria-hidden="true"></div>
+              </div>
+
+              <!-- Floating card — program badge (top-left) -->
+              <div class="model-badge model-badge--prog">
+                <div class="mbadge-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div class="mbadge-body">
+                  <span id="badgeProgLabel" class="mbadge-label">Be part of something great</span>
+                  <span id="badgeProgValue" class="mbadge-value">Join CCS Today 🚀</span>
+                </div>
+              </div>
+
+              <!-- Floating card — enrollment status (top-right) -->
+              <div class="model-badge model-badge--status">
+                <span class="mbadge-dot"></span>
+                <div class="mbadge-body">
+                  <span id="badgeStatusLabel" class="mbadge-label">Enrollment</span>
+                  <span id="badgeStatusValue" class="mbadge-value mbadge-value--green">Now Open</span>
+                </div>
+              </div>
+
+              <!-- Floating card — CHED recognized (mid-right) -->
+              <div class="model-badge model-badge--partners">
+                <div class="mbadge-icon mbadge-icon--gold">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M8 14l-4 8h16l-4-8"/></svg>
+                </div>
+                <div class="mbadge-body">
+                  <span id="badgeChedLabel" class="mbadge-label">Accredited</span>
+                  <span id="badgeChedValue" class="mbadge-value">CHED Recognized</span>
+                </div>
+              </div>
+
+              <!-- Prev / Next buttons -->
+              <button class="model-nav-btn model-nav-btn--prev" id="modelPrev" aria-label="Previous student">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M10 3L5 8l5 5"/></svg>
+              </button>
+              <button class="model-nav-btn model-nav-btn--next" id="modelNext" aria-label="Next student">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 3l5 5-5 5"/></svg>
+              </button>
+
+              <!-- HUD Officer Identity Card (bottom) -->
+              <div class="id-hud">
+                <!-- corner bracket decorators -->
+                <span class="id-hud-c id-hud-c--tl" aria-hidden="true"></span>
+                <span class="id-hud-c id-hud-c--tr" aria-hidden="true"></span>
+                <span class="id-hud-c id-hud-c--bl" aria-hidden="true"></span>
+                <span class="id-hud-c id-hud-c--br" aria-hidden="true"></span>
+                <!-- left blink indicator -->
+                <span class="id-hud-dot" aria-hidden="true"></span>
+                <!-- monospace label -->
+                <span class="id-hud-prefix" aria-hidden="true">OFFICER://</span>
+                <span class="id-hud-sep" aria-hidden="true"></span>
+                <!-- dynamic name + role -->
+                <span class="id-hud-name" id="studentName">Samantha Barola</span>
+                <span class="id-hud-divider" aria-hidden="true"></span>
+                <span class="id-hud-role" id="studentRole">Governor</span>
+              </div>
+
+            </div><!-- /hero-model-wrap -->
+
+          </div><!-- /hero-panel -->
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- --------------- AT A GLANCE --------------- -->
+    <section class="atglance" aria-label="CCS At a Glance">
+      <div class="container">
+        <div class="atg-inner">
+
+          <div class="atg-mission">
+            <div class="hero-eyebrow">
+              <span class="eyebrow-bracket" aria-hidden="true">[</span>
+              <span class="eyebrow-dot" aria-hidden="true"></span>
+              <span>CCS://OVERVIEW &mdash; Who We Are</span>
+              <span class="eyebrow-bracket" aria-hidden="true">]</span>
+            </div>
+            <h2 class="section-heading section-heading--light atg-heading">
+              A Department Built for the <em class="heading-accent">Digital Age</em>
+            </h2>
+            <p class="atg-body">
+              The College of Computing Studies is a CHED-recognized institution dedicated to producing industry-ready, ethically grounded, and future-proof computing professionals. With a curriculum aligned to global technology standards and a culture of excellence, CCS is where passion meets purpose.
+            </p>
+            <a href="pages/about.html" class="btn btn--ghost atg-more">
+              Discover Our Story
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </a>
+          </div>
+
+          <div class="atg-stats">
+            <div class="atg-stat js-reveal">
+              <span class="atg-stat-num">500<span class="atg-stat-plus">+</span></span>
+              <span class="atg-stat-label">Enrolled Students</span>
+              <span class="atg-stat-sub">A.Y. 2026&ndash;2027</span>
+            </div>
+            <div class="atg-stat js-reveal">
+              <span class="atg-stat-num">98<span class="atg-stat-plus">%</span></span>
+              <span class="atg-stat-label">Graduate Employment</span>
+              <span class="atg-stat-sub">Class of 2025</span>
+            </div>
+            <div class="atg-stat js-reveal">
+              <span class="atg-stat-num">40<span class="atg-stat-plus">+</span></span>
+              <span class="atg-stat-label">Industry Partners</span>
+              <span class="atg-stat-sub">Local &amp; Global</span>
+            </div>
+            <div class="atg-stat js-reveal">
+              <span class="atg-stat-num">15<span class="atg-stat-plus">+</span></span>
+              <span class="atg-stat-label">Years of Excellence</span>
+              <span class="atg-stat-sub">Est. 2009</span>
+            </div>
+            <div class="atg-badges">
+              <span class="atg-badge">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="8" cy="6" r="4"/><path d="M4 12l-2 4h12l-2-4"/></svg>
+                CHED Recognized
+              </span>
+              <span class="atg-badge">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polyline points="3 8 6 11 13 4"/></svg>
+                OBE Curriculum
+              </span>
+              <span class="atg-badge">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M5 14h6M8 13v1"/></svg>
+                5 Computer Labs
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- --------------- INDUSTRY PARTNERS MARQUEE --------------- -->
+    <section class="idx-partners" aria-label="Industry Partners">
+      <div class="container">
+        <div class="idx-partners-hdr">
+          <span class="idx-partners-label">TRUSTED BY EMPLOYERS FROM</span>
+        </div>
+      </div>
+      <div class="pg-marquee-wrap pg-marquee-wrap--reverse" aria-hidden="true">
+        <div class="pg-marquee-track pg-marquee-track--reverse">
+          <span class="pg-marquee-item pg-marquee-item--partner">Accenture<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">IBM Philippines<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">Globe Telecom<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">Convergys<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">Sitel Group<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">Teletech<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">Exist Global<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">Pointwest Technologies<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">QBO Innovation Hub<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">Sprout Solutions<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">PayMongo<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">Kumu<span class="pg-marquee-dot"></span></span>
+          <!-- duplicate for seamless loop -->
+          <span class="pg-marquee-item pg-marquee-item--partner">Accenture<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">IBM Philippines<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">Globe Telecom<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">Convergys<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">Sitel Group<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">Teletech<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">Exist Global<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">Pointwest Technologies<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">QBO Innovation Hub<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">Sprout Solutions<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">PayMongo<span class="pg-marquee-dot"></span></span>
+          <span class="pg-marquee-item pg-marquee-item--partner">Kumu<span class="pg-marquee-dot"></span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- --------------- NEWS & EVENTS --------------- -->
+    <section class="news-events" aria-label="News and Events" id="news-events">
+      <div class="container">
+
+        <!-- Section header -->
+        <div class="ne-header">
+          <div class="ne-header-left">
+            <div class="hero-eyebrow">
+              <span class="eyebrow-bracket" aria-hidden="true">[</span>
+              <span class="eyebrow-dot" aria-hidden="true"></span>
+              <span>NEWS://CCS &mdash; A.Y. 2026&ndash;2027</span>
+              <span class="eyebrow-bracket" aria-hidden="true">]</span>
+            </div>
+            <h2 class="section-heading section-heading--light">
+              Latest <em class="heading-accent">News</em> &amp; Events
+            </h2>
+            <p class="intro-body intro-body--light" style="margin-inline:0; max-width:520px;">
+              Highlights, milestones, and upcoming activities from the CCS Department.
+            </p>
+          </div>
+          <a href="pages/news.html" class="ne-view-all" aria-label="View all news and events">
+            View All News
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+
+        <!-- Main layout: featured + sidebar cards -->
+        <div class="ne-body">
+
+          <!-- Featured Article -->
+          <article class="ne-featured js-reveal">
+            <div class="ne-feat-img">
+              <img src="assets/images/IT.jpg" alt="CCS Department � Information Technology students in the lab" loading="eager" decoding="async" />
+              <span class="news-tag news-tag--orange" aria-label="Category: Announcement">Announcement</span>
+              <div class="news-badge" aria-hidden="true">
+                <span class="news-badge-dot"></span>
+                Featured Story
+              </div>
+            </div>
+            <div class="ne-feat-content">
+              <div class="ne-feat-meta">
+                <time class="ne-meta-date" datetime="2026-02-20">FEB 20, 2026</time>
+                <span class="ne-meta-sep" aria-hidden="true">/</span>
+                <span class="ne-meta-read">8 min read</span>
+              </div>
+              <h3 class="ne-feat-headline">
+                CCS Opens Enrollment for A.Y. 2026&ndash;2027: Limited Slots Available for BSCS &amp; BSIT Programs
+              </h3>
+              <p class="ne-feat-excerpt">
+                The College of Computing Studies is now accepting applications for both the Bachelor of Science in Computer Science and the Bachelor of Science in Information Technology. Slots are strictly limited � prospective students are encouraged to apply early to secure their place in the program.
+              </p>
+              <div class="ne-feat-footer">
+                <div class="ne-author">
+                  <div class="ne-author-avatar" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  </div>
+                  <span class="ne-author-name">CCS Dept. Office</span>
+                </div>
+                <a href="#" class="btn btn--primary btn--sm">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                  Read Full Article
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Sidebar: 3 secondary news cards -->
+          <div class="ne-sidebar">
+
+            <!-- Card 1 -->
+            <article class="ne-card js-reveal">
+              <div class="ne-card-img ne-card-img--placeholder" aria-hidden="true">
+                <span class="news-tag news-tag--green">Achievement</span>
+                <div class="ne-card-img-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="6"/><path d="M8 14l-4 8h16l-4-8"/></svg>
+                </div>
+              </div>
+              <div class="ne-card-body">
+                <div class="ne-card-meta">
+                  <time class="ne-card-date" datetime="2026-02-15">FEB 15, 2026</time>
+                  <span class="ne-card-dot" aria-hidden="true">?</span>
+                  <span class="ne-card-mins">4 min</span>
+                </div>
+                <h3 class="ne-card-headline">
+                  CCS Students Clinch Top 3 at Regional E-Thesis Competition 2026
+                </h3>
+                <a href="#" class="ne-card-link" aria-label="Read: CCS Students Clinch Top 3 at Regional E-Thesis Competition 2026">
+                  Read More
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="ne-card js-reveal">
+              <div class="ne-card-img ne-card-img--placeholder" aria-hidden="true">
+                <span class="news-tag news-tag--blue">Research</span>
+                <div class="ne-card-img-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                </div>
+              </div>
+              <div class="ne-card-body">
+                <div class="ne-card-meta">
+                  <time class="ne-card-date" datetime="2026-02-10">FEB 10, 2026</time>
+                  <span class="ne-card-dot" aria-hidden="true">?</span>
+                  <span class="ne-card-mins">6 min</span>
+                </div>
+                <h3 class="ne-card-headline">
+                  Faculty Publishes AI-Driven Curriculum Framework in Peer-Reviewed Journal
+                </h3>
+                <a href="#" class="ne-card-link" aria-label="Read: Faculty Publishes AI-Driven Curriculum Framework">
+                  Read More
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="ne-card js-reveal">
+              <div class="ne-card-img ne-card-img--placeholder" aria-hidden="true">
+                <span class="news-tag news-tag--purple">Program</span>
+                <div class="ne-card-img-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+              </div>
+              <div class="ne-card-body">
+                <div class="ne-card-meta">
+                  <time class="ne-card-date" datetime="2026-02-05">FEB 05, 2026</time>
+                  <span class="ne-card-dot" aria-hidden="true">?</span>
+                  <span class="ne-card-mins">3 min</span>
+                </div>
+                <h3 class="ne-card-headline">
+                  New Specialization Track Launched: Cloud &amp; DevOps Engineering Now Available
+                </h3>
+                <a href="#" class="ne-card-link" aria-label="Read: New Cloud & DevOps Engineering Specialization">
+                  Read More
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </a>
+              </div>
+            </article>
+
+          </div><!-- /ne-sidebar -->
+
+        </div><!-- /ne-body -->
+
+        <!-- Highlights ticker -->
+        <div class="ne-ticker" aria-hidden="true">
+          <div class="ne-ticker-label">
+            <span></span>
+            HIGHLIGHTS
+          </div>
+          <div class="ne-ticker-track">
+            <div class="ne-ticker-inner">
+              <span class="ne-ticker-item">CCS Enrollment open &mdash; A.Y. 2026&ndash;2027</span>
+              <span class="ne-ticker-item">Regional E-Thesis Champions &mdash; CCS Team A</span>
+              <span class="ne-ticker-item">Capstone Fair: March 14, 2026 &mdash; CCS Gymnasium</span>
+              <span class="ne-ticker-item">New Elective: Machine Learning Fundamentals</span>
+              <span class="ne-ticker-item">Job Fair 2026 &mdash; 40+ partner tech companies</span>
+              <span class="ne-ticker-item">Hackathon 2026 Registration Now Open</span>
+              <span class="ne-ticker-item">CCS Peer Tutoring Program &mdash; Apply Now</span>
+              <span class="ne-ticker-item">98% Graduate Employment Rate &mdash; Class of 2025</span>
+              <span class="ne-ticker-item">CCS Enrollment open &mdash; A.Y. 2026&ndash;2027</span>
+              <span class="ne-ticker-item">Regional E-Thesis Champions &mdash; CCS Team A</span>
+              <span class="ne-ticker-item">Capstone Fair: March 14, 2026 &mdash; CCS Gymnasium</span>
+              <span class="ne-ticker-item">New Elective: Machine Learning Fundamentals</span>
+              <span class="ne-ticker-item">Job Fair 2026 &mdash; 40+ partner tech companies</span>
+              <span class="ne-ticker-item">Hackathon 2026 Registration Now Open</span>
+              <span class="ne-ticker-item">CCS Peer Tutoring Program &mdash; Apply Now</span>
+              <span class="ne-ticker-item">98% Graduate Employment Rate &mdash; Class of 2025</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- View all events CTA -->
+        <div class="ne-events-cta-row">
+          <a href="pages/news.html#events" class="btn btn--ghost">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="3" width="12" height="12" rx="1"/><path d="M5 1v3M11 1v3M2 8h12"/></svg>
+            View All Upcoming Events
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- --------------- PROGRAMS SPOTLIGHT --------------- -->
+  <section class="prog-spot" aria-label="Programs Overview">
+    <div class="container">
+      <div class="prog-spot-header">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-bracket" aria-hidden="true">[</span>
+          <span class="eyebrow-dot" aria-hidden="true"></span>
+          <span>PROGRAMS://CCS &mdash; Choose Your Path</span>
+          <span class="eyebrow-bracket" aria-hidden="true">]</span>
+        </div>
+        <h2 class="section-heading section-heading--light">
+          Two Degrees, <em class="heading-accent">Limitless</em> Futures
+        </h2>
+        <p class="intro-body intro-body--light prog-spot-sub">
+          Whether you're building intelligent systems or powering business technology � CCS has the program for you.
+        </p>
+      </div>
+
+      <div class="prog-spot-grid">
+
+        <!-- BSCS Card -->
+        <div class="prog-spot-card prog-spot-card--cs js-reveal">
+          <div class="prog-spot-badge">
+            <div class="prog-spot-badge-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <span class="prog-spot-badge-tag">4-Year Program</span>
+          </div>
+          <div class="prog-spot-degree">BSCS</div>
+          <h3 class="prog-spot-name">Bachelor of Science in<br><strong>Computer Science</strong></h3>
+          <p class="prog-spot-desc">Dive deep into algorithms, data structures, AI, machine learning, and theoretical foundations of computing. Ideal for students who want to innovate at the core of technology.</p>
+          <div class="prog-spot-tracks">
+            <span class="prog-track-pill">Artificial Intelligence</span>
+            <span class="prog-track-pill">Data Science</span>
+            <span class="prog-track-pill">Software Engineering</span>
+            <span class="prog-track-pill">Cybersecurity</span>
+          </div>
+          <ul class="prog-spot-highlights">
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="3 8 6 11 13 4"/></svg>
+              OBE-aligned, industry-curated curriculum
+            </li>
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="3 8 6 11 13 4"/></svg>
+              Mandatory research thesis &amp; capstone project
+            </li>
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="3 8 6 11 13 4"/></svg>
+              Industry OJT placement with partner companies
+            </li>
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="3 8 6 11 13 4"/></svg>
+              Graduate school &amp; tech career ready
+            </li>
+          </ul>
+          <a href="pages/programs.html" class="btn btn--primary prog-spot-cta" aria-label="Learn more about BSCS">
+            Explore BSCS
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+
+        <!-- BSIT Card -->
+        <div class="prog-spot-card prog-spot-card--it js-reveal">
+          <div class="prog-spot-badge">
+            <div class="prog-spot-badge-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <span class="prog-spot-badge-tag">4-Year Program</span>
+          </div>
+          <div class="prog-spot-degree">BSIT</div>
+          <h3 class="prog-spot-name">Bachelor of Science in<br><strong>Information Technology</strong></h3>
+          <p class="prog-spot-desc">Master the full spectrum of IT � from web and mobile development to network administration, database systems, and IT project management. Built for versatile tech professionals.</p>
+          <div class="prog-spot-tracks">
+            <span class="prog-track-pill">Web Development</span>
+            <span class="prog-track-pill">Network Administration</span>
+            <span class="prog-track-pill">Database Management</span>
+            <span class="prog-track-pill">Cloud &amp; DevOps</span>
+          </div>
+          <ul class="prog-spot-highlights">
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="3 8 6 11 13 4"/></svg>
+              Hands-on lab-based learning approach
+            </li>
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="3 8 6 11 13 4"/></svg>
+              Industry certifications supported (CompTIA, AWS)
+            </li>
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="3 8 6 11 13 4"/></svg>
+              Strong career outcomes in local &amp; global markets
+            </li>
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="3 8 6 11 13 4"/></svg>
+              Active tech community clubs &amp; org involvement
+            </li>
+          </ul>
+          <a href="pages/programs.html" class="btn btn--ghost prog-spot-cta" aria-label="Learn more about BSIT">
+            Explore BSIT
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="prog-spot-compare">
+        <a href="pages/programs.html" class="prog-compare-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="1" y="4" width="6" height="9" rx="1"/><rect x="9" y="1" width="6" height="12" rx="1"/></svg>
+          Compare BSCS vs BSIT in detail
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- --------------- TESTIMONIALS --------------- -->
+  <section class="testimonials" aria-label="Student Testimonials">
+    <div class="container">
+      <div class="testi-header">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-bracket" aria-hidden="true">[</span>
+          <span class="eyebrow-dot" aria-hidden="true"></span>
+          <span>VOICES://CCS &mdash; Student Experiences</span>
+          <span class="eyebrow-bracket" aria-hidden="true">]</span>
+        </div>
+        <h2 class="section-heading section-heading--light">
+          Straight from Our <em class="heading-accent">Students</em>
+        </h2>
+      </div>
+
+      <div class="testi-grid">
+
+        <blockquote class="testi-card js-reveal">
+          <span class="testi-card-quote-glyph" aria-hidden="true">“</span>
+          <div class="testi-stars" aria-label="5 stars">
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+          </div>
+          <p class="testi-quote">"CCS didn't just teach me to code � it taught me how to think like an engineer. The capstone project challenged me more than anything, but the support from faculty made it all possible. I landed my first dev role before graduation day."</p>
+          <footer class="testi-author">
+            <div class="testi-avatar testi-avatar--a" aria-hidden="true">JR</div>
+            <div>
+              <div class="testi-name">Joshua Reyes</div>
+              <div class="testi-role">BSCS Graduate &bull; Junior Software Engineer, TechCorp PH</div>
+            </div>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testi-card js-reveal">
+          <span class="testi-card-quote-glyph" aria-hidden="true">“</span>
+          <div class="testi-stars" aria-label="5 stars">
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+          </div>
+          <p class="testi-quote">"The labs here are incredible � we get to work with industry-standard tools from day one. The professors genuinely care about your growth. Two years in and I already feel like a professional developer, not just a student."</p>
+          <footer class="testi-author">
+            <div class="testi-avatar testi-avatar--b" aria-hidden="true">MC</div>
+            <div>
+              <div class="testi-name">Maria Claro</div>
+              <div class="testi-role">BSIT 3rd Year &bull; Web Dev Intern, StartupPH</div>
+            </div>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testi-card js-reveal">
+          <span class="testi-card-quote-glyph" aria-hidden="true">“</span>
+          <div class="testi-stars" aria-label="5 stars">
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+            <svg viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><polygon points="6 1 7.5 4.5 11 5 8.5 7.5 9 11 6 9.5 3 11 3.5 7.5 1 5 4.5 4.5"/></svg>
+          </div>
+          <p class="testi-quote">"CCS gave me the technical foundation and research skills to pursue my master's degree. The thesis process was rigorous but rewarding. My advisers pushed me to produce work I'm genuinely proud of. Best decision I ever made."</p>
+          <footer class="testi-author">
+            <div class="testi-avatar testi-avatar--c" aria-hidden="true">AL</div>
+            <div>
+              <div class="testi-name">Angelo Lim</div>
+              <div class="testi-role">BSCS Alumnus &bull; MS Computer Science, UP Diliman</div>
+            </div>
+          </footer>
+        </blockquote>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- --------------- CTA BANNER --------------- -->
+  <section class="cta-banner" aria-label="Enroll Now Call to Action">
+    <div class="container">
+      <div class="cta-banner-inner">
+        <div class="cta-banner-tag" aria-hidden="true">
+          <span class="cta-banner-tag-dot"></span>
+          Enrollment Open � A.Y. 2026&ndash;2027
+        </div>
+        <h2 class="cta-banner-heading">
+          Ready to Join<br>the <span class="cta-banner-accent">CCS Family</span>?
+        </h2>
+        <p class="cta-banner-body">
+          Limited slots are available for both BSCS and BSIT programs this academic year. Don't miss your chance to be part of one of the region's top computing departments.
+        </p>
+        <div class="cta-banner-actions">
+          <a href="pages/enroll.html" class="btn btn--primary cta-banner-btn">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 1v14M1 8h14"/></svg>
+            Apply Now
+          </a>
+          <a href="pages/programs.html" class="btn btn--ghost cta-banner-btn">
+            View Programs
+          </a>
+          <a href="pages/contact.html" class="btn btn--ghost cta-banner-btn">
+            Contact Admissions
+          </a>
+        </div>
+        <div class="cta-banner-chips">
+          <span class="cta-chip">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg>
+            No Application Fee
+          </span>
+          <span class="cta-chip">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg>
+            Scholarships Available
+          </span>
+          <span class="cta-chip">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg>
+            CHED-Recognized Programs
+          </span>
+          <span class="cta-chip">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polyline points="2 6 5 9 10 3"/></svg>
+            Results in 5 Business Days
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --------------- FOOTER --------------- -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-row">
+            <img src="assets/images/logo.svg" alt="CCS Logo" class="brand-mark brand-mark--sm" />
+            <div>
+              <div class="footer-dept">College of Computing Studies</div>
+              <div class="footer-tagline">An open door to the limitless horizon</div>
+            </div>
+          </div>
+          <p class="footer-about">Empowering the next generation of technology leaders through rigorous academics, hands-on learning, and values-driven education.</p>
+          <div class="social-row" aria-label="Social media links">
+            <a href="#" class="social-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="Twitter / X">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1f2937"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Explore">
+          <p class="footer-nav-heading">Explore</p>
+          <ul>
+            <li><a href="pages/about.html">About CCS</a></li>
+            <li><a href="pages/programs.html">Programs</a></li>
+            <li><a href="pages/faculty.html">Faculty</a></li>
+            <li><a href="pages/enroll.html">How to Enroll</a></li>
+            <li><a href="pages/news.html">News &amp; Events</a></li>
+            <li><a href="pages/contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-nav" aria-label="Programs">
+          <p class="footer-nav-heading">Programs</p>
+          <ul>
+            <li><a href="pages/programs.html">BS Computer Science</a></li>
+            <li><a href="pages/programs.html">BS Information Technology</a></li>
+            <li><a href="pages/programs.html#cs-track">CS Tracks</a></li>
+            <li><a href="pages/programs.html#it-track">IT Tracks</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-nav" aria-label="Support">
+          <p class="footer-nav-heading">Support</p>
+          <ul>
+            <li><a href="pages/enroll.html">Admissions</a></li>
+            <li><a href="pages/contact.html">Get in Touch</a></li>
+            <li><a href="pages/about.html#values">Our Values</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bar">
+        <p>&copy; <span id="copy-year"></span> CCS Department. All rights reserved.</p>
+        <p class="footer-credit">Built with passion by the CCS Family</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-top" aria-label="Back to top" hidden>
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 12V4M4 8l4-4 4 4"/></svg>
+  </button>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+  /* ── Hero Model Slideshow ── */
+  (function () {
+    const slides = [
+      { img: 'sam',      name: 'Samantha Barola',            role: 'Governor',           prog: ['Future is yours',           'Start Your Journey 🌟'], status: ['Slots Available','Apply Today'],     ched: ['Accredited',     'CHED Recognized']  },
+      { img: 'claire',   name: 'Claire Julianne Villaruel',  role: 'Vice Governor I',    prog: ['Code your future',           'Enroll in CCS ✨'],       status: ['A.Y. 2026–2027',  'Enrolling Now'],  ched: ['Industry-Ready', 'Top-Rated Dept.']  },
+      { img: 'kinley',   name: 'Jhon Kinley Laviña',         role: 'Vice Governor II',   prog: ['Build. Create. Lead.',       'Join CCS Today 🚀'],     status: ['A.Y. 2026–2027',  'Enrolling Now'],  ched: ['Industry-Ready', 'Top-Rated Dept.']  },
+      { img: 'jessel',   name: 'Jessel Abrea',               role: 'Secretary I',        prog: ['Your tech career here',      'Study at CCS ✨'],        status: ['Enrollment',     'Now Open'],       ched: ['Industry-Ready', 'Top-Rated Dept.']  },
+      { img: 'cleo',     name: 'Cleo Anne Sambayon',         role: 'Secretary II',       prog: ['Where talent grows',         'Join CCS Today 🚀'],     status: ['Enrollment',     'Now Open'],       ched: ['Accredited',     'CHED Recognized']  },
+      { img: 'kieziah',  name: 'Keiziah Resus Señas',        role: 'Treasurer I',        prog: ['Be part of greatness',       'Study at CCS ✨'],        status: ['Slots Available','Apply Today'],     ched: ['Accredited',     'CHED Recognized']  },
+      { img: 'gester',   name: 'Gester C. Macaldo',          role: 'Treasurer II',       prog: ['Be part of something great', 'Join CCS Today 🚀'],     status: ['Enrollment',     'Now Open'],       ched: ['Accredited',     'CHED Recognized']  },
+      { img: 'justine',  name: 'Justine P. Quirong',         role: 'Auditor',            prog: ['Future is yours',           'Start Your Journey 🌟'], status: ['Slots Available','Apply Today'],     ched: ['Industry-Ready', 'Top-Rated Dept.']  },
+      { img: 'joshua',   name: 'Joshua C. Egido',            role: 'Senior P.I.O.',      prog: ['Dream. Build. Succeed.',     'Join CCS Today 🚀'],     status: ['A.Y. 2026–2027',  'Enrolling Now'],  ched: ['Award-Winning',  'Top CCS Program']  },
+      { img: 'markc',    name: 'Mark James L. Calucin',      role: 'Senior P.I.O.',      prog: ['Where talent grows',         'Join CCS Today 🚀'],     status: ['A.Y. 2026–2027',  'Enrolling Now'],  ched: ['Accredited',     'CHED Recognized']  },
+      { img: 'marsha',   name: 'Marsha Jessa B. Cerad',      role: 'Junior P.I.O.',      prog: ['Code. Create. Innovate.',    'Study at CCS ✨'],        status: ['Enrollment',     'Now Open'],       ched: ['Industry-Ready', 'Top-Rated Dept.']  },
+      { img: 'mar',      name: 'Mar Adrian Toyon',           role: 'FCSO P.I.O. I',      prog: ['Your tech career here',      'Enroll in CCS 💻'],      status: ['Enrollment',     'Now Open'],       ched: ['Accredited',     'CHED Recognized']  },
+      { img: 'jose',     name: 'Jose Marijo D. Lariba',      role: 'FCSO P.I.O. II',     prog: ['Build the future',           'Be a CCS Student 🌟'],   status: ['Slots Available','Apply Today'],     ched: ['Accredited',     'CHED Recognized']  },
+      { img: 'isaiah',   name: 'Isaiah Diunne M. Semilla',   role: 'Property Custodian', prog: ['Innovation starts here',     'Level Up with CCS 🚀'],  status: ['Slots Available','Apply Today'],     ched: ['Award-Winning',  'Top CCS Program']  },
+      { img: 'mark',     name: 'Mark Joseph Lora',           role: 'Property Custodian', prog: ['Dream. Build. Succeed.',     'Be a CCS Student 🌟'],   status: ['Slots Available','Apply Today'],     ched: ['Award-Winning',  'Top CCS Program']  },
+      { img: 'sean',     name: 'Sean Karl Hinunangan',       role: 'Athletic Manager',   prog: ['Be part of something great', 'Join CCS Today 🚀'],     status: ['A.Y. 2026–2027',  'Enrolling Now'],  ched: ['Award-Winning',  'Top CCS Program']  },
+      { img: 'karl',     name: 'Sean Karl Hinunangan',       role: 'Athletic Manager',   prog: ['Innovation starts here',     'Level Up with CCS 🚀'],  status: ['Enrollment',     'Now Open'],       ched: ['Award-Winning',  'Top CCS Program']  },
+      { img: 'julius',   name: 'Julius Gonzales',            role: 'Musical Director',   prog: ['Where coders are made',      'Enroll in CCS 💻'],      status: ['Enrollment',     'Now Open'],       ched: ['Accredited',     'CHED Recognized']  },
+      { img: 'cj',       name: 'Cj Hilaga',                  role: 'Appointed EMCEE',    prog: ['Be part of greatness',       'Study at CCS 💻'],       status: ['Slots Available','Apply Today'],     ched: ['Accredited',     'CHED Recognized']  },
+      { img: 'justines', name: 'Justine Carl Sumalinog',      role: 'CCS Officer',        prog: ['Code your path',             'Join CCS Today 🚀'],     status: ['A.Y. 2026–2027',  'Enrolling Now'],  ched: ['Accredited',     'CHED Recognized']  },
+      { img: 'calvin',   name: 'Calvin Louie E. Arnaiz',    role: 'Sgt. @ Arms',        prog: ['Future is yours',           'Start Your Journey 🌟'], status: ['A.Y. 2026–2027',  'Enrolling Now'],  ched: ['Accredited',     'CHED Recognized']  },
+      { img: 'charlie',  name: 'Charlie Lleve Otadoy',       role: 'Sgt. @ Arms',        prog: ['Build. Create. Lead.',       'Join CCS Today 🚀'],     status: ['Enrollment',     'Now Open'],       ched: ['Award-Winning',  'Top CCS Program']  },
+      { img: 'jason',    name: 'Jason Langit',               role: 'Sgt. @ Arms',        prog: ['Code. Create. Innovate.',    'Join CCS 💻'],           status: ['A.Y. 2026–2027',  'Enrolling Now'],  ched: ['Accredited',     'CHED Recognized']  },
+    ];
+
+    let current = 0;
+    let timer;
+
+    const img        = document.getElementById('heroStudentImg');
+    const progLabel  = document.getElementById('badgeProgLabel');
+    const progValue  = document.getElementById('badgeProgValue');
+    const statLabel  = document.getElementById('badgeStatusLabel');
+    const statValue  = document.getElementById('badgeStatusValue');
+    const chedLabel  = document.getElementById('badgeChedLabel');
+    const chedValue  = document.getElementById('badgeChedValue');
+    const btnPrev    = document.getElementById('modelPrev');
+    const btnNext    = document.getElementById('modelNext');
+    const studentName = document.getElementById('studentName');
+    const studentRole = document.getElementById('studentRole');
+
+    if (!img) return;
+
+    function fadeTexts(out) {
+      [progLabel, progValue, statLabel, statValue, chedLabel, chedValue, studentName, studentRole]
+        .forEach(el => el && el.classList.toggle('is-fading', out));
+    }
+
+    function goTo(idx) {
+      const slide = slides[idx];
+      img.classList.add('is-fading');
+      fadeTexts(true);
+
+      setTimeout(() => {
+        img.src = 'assets/images/officers/' + slide.img + '.png';
+        progLabel.textContent = slide.prog[0];
+        progValue.textContent = slide.prog[1];
+        statLabel.textContent = slide.status[0];
+        statValue.textContent = slide.status[1];
+        chedLabel.textContent = slide.ched[0];
+        chedValue.textContent = slide.ched[1];
+        if (studentName) studentName.textContent = slide.name;
+        if (studentRole) studentRole.textContent = slide.role;
+        img.classList.remove('is-fading');
+        fadeTexts(false);
+      }, 420);
+
+      current = idx;
+    }
+
+    function next() { goTo((current + 1) % slides.length); }
+    function prev() { goTo((current - 1 + slides.length) % slides.length); }
+
+    function startTimer() { timer = setInterval(next, 4000); }
+    function resetTimer()  { clearInterval(timer); startTimer(); }
+
+    btnNext && btnNext.addEventListener('click', () => { next(); resetTimer(); });
+    btnPrev && btnPrev.addEventListener('click', () => { prev(); resetTimer(); });
+
+    startTimer();
+  })();
+  </script>
+  <script>
+  (function () {
+    const canvas = document.getElementById('particleCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    const SPEED    = 0.38;
+    const MAX_DIST = 260;
+
+    const LANGS = [
+      { label: 'C++',        color: '#f97316' },
+      { label: 'Python',     color: '#ea580c' },
+      { label: 'Java',       color: '#fb923c' },
+      { label: 'C#',         color: '#c2410c' },
+      { label: 'C',          color: '#f97316' },
+      { label: 'JavaScript', color: '#ea580c' },
+      { label: 'TypeScript', color: '#fb923c' },
+      { label: 'PHP',        color: '#c2410c' },
+      { label: 'HTML',       color: '#f97316' },
+      { label: 'CSS',        color: '#ea580c' },
+      { label: 'SQL',        color: '#fb923c' },
+      { label: 'Kotlin',     color: '#c2410c' },
+      { label: 'Swift',      color: '#f97316' },
+      { label: 'Go',         color: '#ea580c' },
+      { label: 'Rust',       color: '#fb923c' },
+      { label: 'R',          color: '#c2410c' },
+      { label: 'Dart',       color: '#f97316' },
+      { label: 'Bash',       color: '#ea580c' },
+    ];
+
+    let W, H, particles = [];
+
+    function resize() {
+      const hero = canvas.parentElement;
+      W = canvas.width  = hero.offsetWidth;
+      H = canvas.height = hero.offsetHeight;
+      particles = LANGS.map(lang => new Particle(lang));
+    }
+
+    function rand(min, max) { return Math.random() * (max - min) + min; }
+
+    function Particle(lang) {
+      this.label    = lang.label;
+      this.color    = lang.color;
+      this.x        = rand(60, W - 60);
+      this.y        = rand(40, H - 40);
+      this.vx       = rand(-SPEED, SPEED) || SPEED * 0.5;
+      this.vy       = rand(-SPEED, SPEED) || SPEED * 0.5;
+      this.alpha    = rand(0.25, 0.55);
+      this.fontSize = rand(10, 14);
+    }
+
+    Particle.prototype.update = function () {
+      this.x += this.vx;
+      this.y += this.vy;
+      const pad = 50;
+      if (this.x < pad || this.x > W - pad) this.vx *= -1;
+      if (this.y < pad || this.y > H - pad) this.vy *= -1;
+    };
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      // Connection lines between nearby particles
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx   = particles[i].x - particles[j].x;
+          const dy   = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < MAX_DIST) {
+            const opacity = (1 - dist / MAX_DIST) * 0.35;
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(249,115,22,${opacity})`;
+            ctx.lineWidth = 1;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw each language label — chamfered badge
+      particles.forEach(p => {
+        ctx.font = `600 ${p.fontSize}px 'SFMono-Regular', Consolas, monospace`;
+        const tw  = ctx.measureText(p.label).width;
+        const ph  = p.fontSize + 10;
+        const pw  = tw + 22;
+        const cut = 5;
+        const x1  = p.x - pw / 2;
+        const y1  = p.y - ph / 2;
+        const x2  = p.x + pw / 2;
+        const y2  = p.y + ph / 2;
+
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2 - cut, y1);
+        ctx.lineTo(x2, y1 + cut);
+        ctx.lineTo(x2, y2);
+        ctx.lineTo(x1 + cut, y2);
+        ctx.lineTo(x1, y2 - cut);
+        ctx.closePath();
+
+        ctx.fillStyle = `rgba(8,12,16,${p.alpha * 1.0})`;
+        ctx.fill();
+        ctx.strokeStyle = `rgba(249,115,22,${p.alpha * 0.75})`;
+        ctx.lineWidth = 0.85;
+        ctx.stroke();
+
+        ctx.fillStyle = `rgba(249,115,22,${p.alpha * 0.9})`;
+        ctx.fillRect(x2 - cut - 1, y1, 2, 1);
+        ctx.fillRect(x1, y2 - cut - 1, 1, 2);
+
+        ctx.fillStyle = `rgba(251,146,60,${p.alpha + 0.2})`;
+        ctx.textAlign    = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(p.label, p.x, p.y);
+
+        p.update();
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    resize();
+    draw();
+    window.addEventListener('resize', resize);
+  })();
+  </script>
+</body>
+</html>
