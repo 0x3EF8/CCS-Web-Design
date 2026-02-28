@@ -150,22 +150,146 @@
      PAGE TRANSITION — top progress bar on every page nav
   ────────────────────────────────────────────────────────────── */
   function setupPageTransition() {
-    // Inject loader bar
-    var loader = document.createElement('div');
-    loader.id = 'page-loader';
-    document.body.appendChild(loader);
+    var HEX_CHARS = '0123456789ABCDEF';
+    var PAGE_LABELS = {
+      'index.html':    'HOME MODULE',
+      'about.html':    'ABOUT MODULE',
+      'programs.html': 'PROGRAMS MODULE',
+      'faculty.html':  'FACULTY MODULE',
+      'enroll.html':   'ENROLL MODULE',
+      'news.html':     'NEWS MODULE',
+      'contact.html':  'CONTACT MODULE',
+      '':              'HOME MODULE'
+    };
+    var STATUSES = [
+      'Authenticating session',
+      'Resolving dependencies',
+      'Compiling assets',
+      'Fetching data',
+      'Rendering interface',
+      'Handshaking with server',
+      'Transferring packets',
+      'Decrypting module'
+    ];
 
-    // Trigger entrance animation on every page load
-    document.body.classList.add('page-enter');
+    function randHex(n) {
+      var s = '';
+      for (var i = 0; i < n; i++) s += HEX_CHARS[Math.floor(Math.random() * 16)];
+      return s;
+    }
 
-    // Intercept internal link clicks → show loader
+    function buildOverlay(destLabel) {
+      var ov = document.createElement('div');
+      ov.id = 'pt-overlay';
+
+      // grid
+      var grid = document.createElement('div');
+      grid.className = 'pt-grid';
+      ov.appendChild(grid);
+
+      // scan line
+      var scan = document.createElement('div');
+      scan.className = 'pt-scan';
+      ov.appendChild(scan);
+
+      // corner brackets
+      var corners = document.createElement('div');
+      corners.className = 'pt-corners';
+      corners.innerHTML = '<span class="pt-c pt-c--tl"></span><span class="pt-c pt-c--tr"></span><span class="pt-c pt-c--bl"></span><span class="pt-c pt-c--br"></span>';
+      ov.appendChild(corners);
+
+      // hex rain
+      var rain = document.createElement('div');
+      rain.className = 'pt-rain';
+      var cols = Math.floor(window.innerWidth / 24);
+      for (var c = 0; c < cols; c++) {
+        var col = document.createElement('div');
+        col.className = 'pt-rain-col';
+        col.style.left  = (c * 24) + 'px';
+        col.style.animationDuration = (6 + Math.random() * 8).toFixed(2) + 's';
+        col.style.animationDelay    = -(Math.random() * 10).toFixed(2) + 's';
+        var rowCount = Math.floor(10 + Math.random() * 14);
+        for (var r = 0; r < rowCount; r++) {
+          var span = document.createElement('span');
+          span.textContent = randHex(2);
+          col.appendChild(span);
+        }
+        rain.appendChild(col);
+      }
+      ov.appendChild(rain);
+
+      // centre content
+      var center = document.createElement('div');
+      center.className = 'pt-center';
+      center.innerHTML = [
+        '<div class="pt-logo">[ CCS ]</div>',
+        '<div class="pt-route">ACCESSING &rsaquo; <strong>' + (destLabel || 'MODULE') + '</strong></div>',
+        '<div class="pt-bar-wrap">',
+        '  <div class="pt-bar-fill" id="pt-bar-fill"></div>',
+        '  <div class="pt-bar-shine"></div>',
+        '</div>',
+        '<div class="pt-meta">',
+        '  <div class="pt-pct" id="pt-pct">0%</div>',
+        '  <div class="pt-hex" id="pt-hex">0x' + randHex(8) + '</div>',
+        '  <div class="pt-status" id="pt-status">' + STATUSES[Math.floor(Math.random() * STATUSES.length)] + '</div>',
+        '</div>'
+      ].join('');
+      ov.appendChild(center);
+
+      return ov;
+    }
+
+    function animateProgress(ov, onDone) {
+      var barFill  = ov.querySelector('#pt-bar-fill');
+      var pctEl    = ov.querySelector('#pt-pct');
+      var hexEl    = ov.querySelector('#pt-hex');
+      var statusEl = ov.querySelector('#pt-status');
+      var pct = 0;
+      var hexTimer = setInterval(function () {
+        if (hexEl) hexEl.textContent = '0x' + randHex(8);
+      }, 120);
+      var statusIdx = 0;
+      var statusTimer = setInterval(function () {
+        statusIdx = (statusIdx + 1) % STATUSES.length;
+        if (statusEl) statusEl.textContent = STATUSES[statusIdx];
+      }, 280);
+
+      // fast fill: 0→70% quickly, pause, then 70→100%
+      var startTime = performance.now();
+      var phase = 0; // 0 = fast, 1 = pause, 2 = complete
+
+      function step(now) {
+        var elapsed = now - startTime;
+        if (phase === 0) {
+          pct = Math.min(70, (elapsed / 340) * 70);
+          if (pct >= 70) { phase = 1; startTime = now; }
+        } else if (phase === 1) {
+          if (elapsed > 120) { phase = 2; startTime = now; }
+        } else {
+          pct = 70 + Math.min(30, (elapsed / 180) * 30);
+        }
+        if (barFill) barFill.style.width = pct + '%';
+        if (pctEl)   pctEl.textContent   = Math.round(pct) + '%';
+        if (pct < 100) {
+          requestAnimationFrame(step);
+        } else {
+          clearInterval(hexTimer);
+          clearInterval(statusTimer);
+          if (pctEl) pctEl.textContent = '100%';
+          if (barFill) barFill.style.width = '100%';
+          setTimeout(onDone, 120);
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    // ---------- EXIT (click → cover → navigate) ----------
     document.addEventListener('click', function (e) {
       var link = e.target.closest('a[href]');
       if (!link) return;
       var href = link.getAttribute('href');
       if (!href) return;
 
-      // Skip anchors, mailto/tel, blank targets, external
       var skip = href.startsWith('#') ||
                  href.startsWith('mailto:') ||
                  href.startsWith('tel:') ||
@@ -174,10 +298,47 @@
                  (href.startsWith('http') && !href.includes(window.location.hostname));
       if (skip) return;
 
-      // Show the loading bar
-      loader.classList.remove('is-complete');
-      loader.classList.add('is-loading');
+      e.preventDefault();
+
+      // Resolve destination label
+      var destFile = href.split('/').pop().split('?')[0].split('#')[0] || 'index.html';
+      var destLabel = PAGE_LABELS[destFile] || destFile.replace('.html', '').toUpperCase() + ' MODULE';
+
+      var ov = buildOverlay(destLabel);
+      document.body.appendChild(ov);
+
+      // force reflow then slide in
+      ov.getBoundingClientRect();
+      ov.classList.add('pt-in');
+
+      // mark for the next page to do entry animation
+      sessionStorage.setItem('pt_entering', '1');
+
+      // start progress, then navigate
+      animateProgress(ov, function () {
+        window.location.href = href;
+      });
     });
+
+    // ---------- ENTER (new page — slide overlay out) ----------
+    if (sessionStorage.getItem('pt_entering')) {
+      sessionStorage.removeItem('pt_entering');
+
+      // Build overlay already covering the screen
+      var entryOv = buildOverlay('');
+      entryOv.classList.add('pt-instant'); // no transition, immediately visible
+      document.body.appendChild(entryOv);
+      document.body.classList.add('page-enter');
+
+      // Slide out after a short settle
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          entryOv.classList.remove('pt-instant');
+          entryOv.classList.add('pt-out');
+          setTimeout(function () { entryOv.remove(); }, 500);
+        });
+      });
+    }
   }
 
   /* ──────────────────────────────────────────────────────────────
