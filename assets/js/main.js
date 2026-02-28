@@ -136,6 +136,7 @@
             setTimeout(function () {
               screen.classList.add('boot-screen--out');
               sessionStorage.setItem('ccs_booted', '1');
+              document.documentElement.classList.remove('ccs-first-visit');
               document.body.style.overflow = '';
               setTimeout(function () { screen.remove(); }, 650);
             }, 900);

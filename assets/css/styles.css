@@ -7645,6 +7645,18 @@ a, button, [role="button"] {
 /* ================================================================
    BOOT SCREEN (first-visit Linux-style animation)
    ================================================================ */
+
+/* Hide all body content before paint on first visit — prevents flash */
+html.ccs-first-visit,
+html.ccs-first-visit body {
+  background: #000 !important;
+}
+html.ccs-first-visit body > *:not(#boot-screen) {
+  visibility: hidden !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
 #boot-screen {
   position: fixed;
   inset: 0;
