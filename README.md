@@ -1,6 +1,6 @@
 # CCS Department Website
 
-A static front-end website for the **College of Computer Studies (CCS)** department at **Saint Joseph College — Maasin City**.  
+A static front-end website for the **College of Computer Studies (CCS)** department at Saint Joseph College — Maasin City.  
 Built with plain HTML, CSS, and JavaScript — no frameworks or build tools required.
 
 ---
@@ -9,44 +9,40 @@ Built with plain HTML, CSS, and JavaScript — no frameworks or build tools requ
 
 | File | Description |
 |------|-------------|
-| `index.html` | Home — hero with officer showcase, news, testimonials |
-| `pages/about.html` | About CCS — mission, vision, accreditations |
+| `index.html` | Home page — hero, officer showcase, news |
+| `pages/about.html` | About CCS |
 | `pages/programs.html` | BSCS, BSIT & ACT programs |
-| `pages/faculty.html` | Faculty diamond grid + modals |
+| `pages/faculty.html` | Faculty directory |
 | `pages/enroll.html` | Enrollment guide |
 | `pages/news.html` | News & events |
 | `pages/contact.html` | Contact information |
-| `pages/chat.html` | AI chatbot (Gemini-powered) |
 
 ## Assets
 
 | Path | Description |
 |------|-------------|
 | `assets/css/styles.css` | Global stylesheet |
-| `assets/css/chatbot.css` | Chatbot UI styles |
-| `assets/js/main.js` | Boot screen, navbar, transitions, hero carousel |
-| `assets/js/chatbot.js` | AI chatbot logic (Gemini API) |
-| `assets/data/ccs-knowledge.js` | CCS knowledge base fed to the chatbot |
+| `assets/css/chatbot.css` | Chatbot widget styles |
+| `assets/js/main.js` | Navbar, transitions, officer carousel, counters |
+| `assets/js/chatbot.js` | AI chatbot (Gemini-powered) |
+| `assets/data/ccs-knowledge.js` | Chatbot knowledge base |
 | `assets/images/` | Logos, faculty photos, officer photos |
 
 ---
 
-## Setup — AI Chatbot (Gemini API Keys)
+## Chatbot — API Key Setup
 
-The chatbot in `pages/chat.html` uses the **Google Gemini API**.  
-API keys are **not included** in this repo for security. Follow these steps to add yours:
+The AI chatbot uses the **Google Gemini API**. You must supply your own key(s) before the chatbot will work.
 
-### 1. Get a free API key
-1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey)
-2. Sign in with your Google account
-3. Click **"Create API key"** — it's free
+### Steps
 
-### 2. Add the key to the project
-Open `assets/js/chatbot.js` and find the `keys` array near the top of the file:
+1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey) and create one or more API keys.
+2. Open `assets/js/chatbot.js`.
+3. Find the `keys` array near the top of the file:
 
 ```js
 window.CCS_CONFIG = {
-  model:  'gemini-3-flash-preview',
+  model: 'gemini-3-flash-preview',
   keys: [
     // Add your Gemini API key(s) here
     // e.g. 'AIzaSy...'
@@ -55,24 +51,21 @@ window.CCS_CONFIG = {
 };
 ```
 
-Replace the comment with your key(s):
+4. Add your key(s) inside the array:
 
 ```js
-  keys: [
-    'AIzaSyYOUR_KEY_HERE'
-  ],
+keys: [
+  'AIzaSy_YOUR_KEY_HERE',
+  // add more keys for automatic rotation on rate-limit
+],
 ```
 
-You can add **multiple keys** — the chatbot will automatically rotate between them if one hits the rate limit.
-
-### 3. Done
-Open `index.html` or `pages/chat.html` in a browser. No server needed.
-
 > **Security note:** Never commit real API keys to a public repository.  
-> If you accidentally push a key, revoke it immediately in [Google AI Studio](https://aistudio.google.com/app/apikey) and generate a new one.
+> Consider using a backend proxy or environment variable injection for production deployments.
 
 ---
 
 ## Usage
 
-Open `index.html` directly in a browser — no server or build step needed.
+Open `index.html` directly in a browser — no server needed.  
+For the chatbot to function, add your Gemini API key(s) as described above.
