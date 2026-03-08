@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -7,23 +7,24 @@
   <meta property="og:title" content="News &amp; Events | CCS Department" />
   <meta property="og:description" content="CCS Department News and Events — latest announcements, achievements, and upcoming activities for A.Y. 2026–2027." />
   <meta property="og:type" content="website" />
-  <title>News &amp; Events | CCS Department &mdash; College of Computing Studies</title>
+  <title>News &amp; Events | CCS Department &mdash; Saint Joseph College</title>
   <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800;900&display=block" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/chatbot.css" />
 </head>
-<body style="background:#080c10">
+<body style="background:#03060a">
 
   <!-- === NAVBAR === -->
   <header class="navbar is-scrolled" role="banner">
     <div class="nav-inner">
       <a href="../index.html" class="nav-brand" aria-label="CCS Department Home">
-        <img src="../assets/images/logo.svg" alt="CCS Logo" class="brand-mark" width="44" height="44" />
+        <img src="../assets/images/ccs_logo.png" alt="CCS Logo" class="brand-mark" width="44" height="44" />
         <div class="brand-text">
           <span class="brand-name">CCS Dept.</span>
-          <span class="brand-full">An open door to the limitless horizon</span>
+          <span class="brand-full">Saint Joseph College &mdash; Maasin City</span>
         </div>
       </a>
       <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
@@ -48,34 +49,131 @@
 
     <!-- HERO FEATURED STORY -->
     <div class="np-hero-wrap" id="np-hero-carousel" aria-label="Featured story">
-      <!-- Main hero -->
+      <!-- Main hero — content populated by main.js carousel (slides array) -->
       <div class="np-hero">
-        <img class="np-hero-img" id="np-hero-img" src="../assets/images/IT.jpg" alt="CCS featured story" loading="eager" />
+        <img class="np-hero-img" id="np-hero-img" src="../assets/images/IT.jpg" alt="CCS Students PhilNITS Exam Day" loading="eager" />
         <div class="np-hero-body">
-          <div class="np-hero-catrow">
-            <span class="np-hero-badge" id="np-hero-badge">Featured</span>
-            <span class="np-hero-live" id="np-hero-live">Latest</span>
-          </div>
-          <h1 class="np-hero-headline" id="np-hero-headline">
-            CCS Opens Enrollment for A.Y. 2025&mdash;2026:<br />Slots Strictly Limited for BSCS &amp; BSIT
-          </h1>
-          <p class="np-hero-excerpt" id="np-hero-excerpt">
-            The College of Computing Studies is now accepting applications for both programs. Prospective students are urged to apply early &mdash; entrance examinations are scheduled throughout March and April 2026.
-          </p>
-          <div class="np-hero-meta">
-            <div class="np-hero-author">
-              <div class="np-hero-avatar" id="np-hero-avatar" aria-hidden="true">CO</div>
-              <span id="np-hero-author-name">CCS Office</span>
+
+          <!-- Slide 0: PhilNITS Exam Day -->
+          <div class="np-slide" data-img="../assets/images/IT.jpg" data-alt="CCS Department — College of Computer Studies Saint Joseph College">
+            <div class="np-hero-catrow">
+              <span class="np-hero-badge">Featured</span>
+              <span class="np-hero-live">Latest</span>
             </div>
-            <span class="np-hero-sep" aria-hidden="true">/</span>
-            <span class="np-hero-time"><time id="np-hero-date" datetime="2026-02-20">Feb 20, 2026</time> &middot; <span id="np-hero-read-time">8 min read</span></span>
+            <h1 class="np-hero-headline">College of Computer Studies &mdash; Shaping the Next Generation of IT Professionals</h1>
+            <p class="np-hero-excerpt">The College of Computer Studies at Saint Joseph College, Maasin City has been at the forefront of technology education in Southern Leyte for over 20 years. Offering three CHED-recognized programs &mdash; BSCS, BSIT, and the Associate in Computer Technology (ACT-CS &amp; ACT-IT) &mdash; the department is home to 14+ dedicated faculty members, 14 PhilNITS passers, and a growing community of students committed to excellence in computing and information technology.</p>
+            <div class="np-hero-meta">
+              <div class="np-hero-author">
+                <div class="np-hero-avatar" aria-hidden="true">CO</div>
+                <span>CCS Office</span>
+              </div>
+              <span class="np-hero-sep" aria-hidden="true">/</span>
+              <span class="np-hero-time"><time datetime="2025-10-26">Oct 26, 2025</time> &middot; <span>3 min read</span></span>
+            </div>
+            <div class="np-hero-actions">
+              <a href="#" class="np-hero-read">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                Read Full Story
+              </a>
+            </div>
           </div>
-          <div class="np-hero-actions">
-            <a href="#" class="np-hero-read">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-              Read Full Story
-            </a>
+
+          <!-- Slide 1: CCS 4th Year PhilNITS Top Score -->
+          <div class="np-slide" style="display:none" data-img="../assets/images/ccs/PhilNITS.jpg" data-alt="CCS Students PhilNITS Exam — Top Score Across 6 ITPEC Countries">
+            <div class="np-hero-catrow">
+              <span class="np-hero-badge">Achievement</span>
+              <span class="np-hero-live" style="display:none"></span>
+            </div>
+            <h1 class="np-hero-headline">CCS Students Pass PhilNITS &mdash; Faculty Member Tops 1,612 Examinees Across 6 Countries</h1>
+            <p class="np-hero-excerpt">Fourteen CCS students passed the PhilNITS IT Passport Examination held at the college&rsquo;s Audio-Visual Room on October 27, 2024 &mdash; while part-time faculty member Mr. Jonathan F. Tse, MBA earned the <strong>highest score</strong> among all 1,612 examinees across 6 ITPEC member countries. A proud milestone for the entire CCS community at Saint Joseph College.</p>
+            <div class="np-hero-meta">
+              <div class="np-hero-author">
+                <div class="np-hero-avatar" aria-hidden="true">CO</div>
+                <span>CCS Office</span>
+              </div>
+              <span class="np-hero-sep" aria-hidden="true">/</span>
+              <span class="np-hero-time"><time datetime="2025-10-26">Oct 26, 2025</time> &middot; <span>3 min read</span></span>
+            </div>
+            <div class="np-hero-actions">
+              <a href="#" class="np-hero-read">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                Read Full Story
+              </a>
+            </div>
           </div>
+
+          <!-- Slide 2: Faculty Excellence -->
+          <div class="np-slide" style="display:none" data-img="../assets/images/ccs/teachers.jpg" data-alt="CCS Faculty Excellence in IT Education">
+            <div class="np-hero-catrow">
+              <span class="np-hero-badge">Faculty</span>
+              <span class="np-hero-live" style="display:none"></span>
+            </div>
+            <h1 class="np-hero-headline">CCS Faculty Leads Department Excellence in IT Education</h1>
+            <p class="np-hero-excerpt">Under the leadership of Department Head Mrs. Riza Lynn O. Siega, MCS, the CCS faculty continues to elevate academic standards &mdash; preparing students for nationally recognized IT certifications and equipping graduates with the skills needed in today's technology-driven workplace.</p>
+            <div class="np-hero-meta">
+              <div class="np-hero-author">
+                <div class="np-hero-avatar" aria-hidden="true">CO</div>
+                <span>CCS Office</span>
+              </div>
+              <span class="np-hero-sep" aria-hidden="true">/</span>
+              <span class="np-hero-time"><time datetime="2025-01-10">Jan 10, 2025</time> &middot; <span>4 min read</span></span>
+            </div>
+            <div class="np-hero-actions">
+              <a href="#" class="np-hero-read">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                Read Full Story
+              </a>
+            </div>
+          </div>
+
+          <!-- Slide 3: 3 Programs Announcement -->
+          <div class="np-slide" style="display:none" data-img="../assets/images/ccs/CCS Gov.jpg" data-alt="CCS Programs BSCS BSIT ACT">
+            <div class="np-hero-catrow">
+              <span class="np-hero-badge">Announcement</span>
+              <span class="np-hero-live" style="display:none"></span>
+            </div>
+            <h1 class="np-hero-headline">CCS Now Offers 3 Programs: BSCS, BSIT &amp; Associate in Computer Technology</h1>
+            <p class="np-hero-excerpt">The College of Computer Studies at Saint Joseph College offers three academic programs &mdash; giving students flexible pathways into the technology field. The Associate in Computer Technology (ACT) is the foundational 2-year program: ACT-CS leads to BSCS, and ACT-IT leads to BSIT, before students progress into the full four-year degrees.</p>
+            <div class="np-hero-meta">
+              <div class="np-hero-author">
+                <div class="np-hero-avatar" aria-hidden="true">CO</div>
+                <span>CCS Office</span>
+              </div>
+              <span class="np-hero-sep" aria-hidden="true">/</span>
+              <span class="np-hero-time"><time datetime="2025-06-01">Jun 01, 2025</time> &middot; <span>3 min read</span></span>
+            </div>
+            <div class="np-hero-actions">
+              <a href="#" class="np-hero-read">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                Read Full Story
+              </a>
+            </div>
+          </div>
+
+          <!-- Slide 4: Enrollment Open -->
+          <div class="np-slide" style="display:none" data-img="../assets/images/ccs/ccs dean.jpg" data-alt="CCS Enrollment BSCS BSIT ACT">
+            <div class="np-hero-catrow">
+              <span class="np-hero-badge">Academic</span>
+              <span class="np-hero-live" style="display:none"></span>
+            </div>
+            <h1 class="np-hero-headline">CCS Opens Enrollment &mdash; Slots Available for BSCS, BSIT &amp; ACT (ACT-CS / ACT-IT)</h1>
+            <p class="np-hero-excerpt">The College of Computer Studies is now accepting student applications. Prospective students are encouraged to visit the CCS department at Rosales Street, Maasin City, call (053) 570 8448, or reach out via the official Saint Joseph College Facebook page for enrollment details.</p>
+            <div class="np-hero-meta">
+              <div class="np-hero-author">
+                <div class="np-hero-avatar" aria-hidden="true">CO</div>
+                <span>CCS Office</span>
+              </div>
+              <span class="np-hero-sep" aria-hidden="true">/</span>
+              <span class="np-hero-time"><time datetime="2026-01-28">Jan 28, 2026</time> &middot; <span>2 min read</span></span>
+            </div>
+            <div class="np-hero-actions">
+              <a href="#" class="np-hero-read">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                Read Full Story
+              </a>
+            </div>
+          </div>
+
         </div>
         <!-- Nav positioned at bottom-right of hero image -->
         <div class="np-hero-nav">
@@ -90,52 +188,69 @@
       </div>
       <!-- Thumbnail rail -->
       <aside class="np-thumb-rail" aria-label="More top stories">
+        <div class="np-thumb-item js-reveal is-active" data-slide="0">
+          <div class="np-thumb-bg">
+            <img src="../assets/images/IT.jpg" alt="CCS Students PhilNITS Exam Day" loading="lazy" />
+          </div>
+          <div class="np-thumb-content">
+            <div class="np-thumb-toprow">
+              <span class="np-thumb-num">01</span>
+              <span class="np-thumb-cat">Featured</span>
+            </div>
+            <p class="np-thumb-title">College of Computer Studies &mdash; Shaping the Next Generation of IT Professionals</p>
+            <div class="np-thumb-meta">
+              <time>Oct 26, 2025</time>
+              <span class="np-thumb-meta-dot">&#9679;</span>
+              <span>3 min read</span>
+            </div>
+          </div>
+        </div>
         <div class="np-thumb-item js-reveal" data-slide="1">
           <div class="np-thumb-bg">
-            <img src="../assets/images/ccs/PhilNITS.jpg" alt="E-Thesis Competition" loading="lazy" />
+            <img src="../assets/images/ccs/PhilNITS.jpg" alt="CCS Students Top PhilNITS Score" loading="lazy" />
           </div>
           <div class="np-thumb-content">
             <div class="np-thumb-toprow">
               <span class="np-thumb-num">02</span>
               <span class="np-thumb-cat">Achievement</span>
             </div>
-            <p class="np-thumb-title">CCS Students Clinch Top 3 at Regional E-Thesis Competition 2026</p>
+            <p class="np-thumb-title">CCS Student Passes PhilNITS &mdash; Faculty Member Tops 1,612 Examinees Across 6 ITPEC Countries</p>
             <div class="np-thumb-meta">
-              <time>Feb 15, 2026</time>
+              <time>Oct 26, 2025</time>
               <span class="np-thumb-meta-dot">&#9679;</span>
-              <span>4 min read</span>
+              <span>3 min read</span>
             </div>
           </div>
         </div>
         <div class="np-thumb-item js-reveal" data-slide="2">
           <div class="np-thumb-bg">
-            <img src="../assets/images/ccs/teachers.jpg" alt="Faculty Research" loading="lazy" />
+            <img src="../assets/images/ccs/teachers.jpg" alt="CCS Faculty" loading="lazy" />
           </div>
           <div class="np-thumb-content">
             <div class="np-thumb-toprow">
               <span class="np-thumb-num">03</span>
-              <span class="np-thumb-cat">Research</span>
+              <span class="np-thumb-cat">Faculty</span>
             </div>
-            <p class="np-thumb-title">Faculty Publishes AI-Driven Curriculum Framework in Peer-Reviewed Journal</p>
+            <p class="np-thumb-title">CCS Faculty Leads Department Excellence in IT Education</p>
             <div class="np-thumb-meta">
-              <time>Feb 10, 2026</time>
+              <time>Jan 10, 2025</time>
               <span class="np-thumb-meta-dot">&#9679;</span>
-              <span>6 min read</span>
+              <span>4 min read</span>
             </div>
           </div>
         </div>
         <div class="np-thumb-item js-reveal" data-slide="3">
           <div class="np-thumb-bg">
-            <img src="../assets/images/ccs/CCS Gov.jpg" alt="Cloud DevOps Program" loading="lazy" />
+            <img src="../assets/images/ccs/CCS Gov.jpg" alt="CCS Programs BSCS BSIT ACT" loading="lazy" />
           </div>
           <div class="np-thumb-content">
             <div class="np-thumb-toprow">
               <span class="np-thumb-num">04</span>
-              <span class="np-thumb-cat">Program</span>
+              <span class="np-thumb-cat">Announcement</span>
             </div>
-            <p class="np-thumb-title">New Specialization Track Launched: Cloud &amp; DevOps Engineering</p>
+            <p class="np-thumb-title">CCS Now Offers 3 Programs: BSCS, BSIT &amp; Associate in Computer Technology</p>
             <div class="np-thumb-meta">
-              <time>Feb 05, 2026</time>
+              <time>Jun 01, 2025</time>
               <span class="np-thumb-meta-dot">&#9679;</span>
               <span>3 min read</span>
             </div>
@@ -143,14 +258,14 @@
         </div>
         <div class="np-thumb-item js-reveal" data-slide="4">
           <div class="np-thumb-bg">
-            <img src="../assets/images/ccs/ccs dean.jpg" alt="Peer Tutoring Program" loading="lazy" />
+            <img src="../assets/images/ccs/ccs dean.jpg" alt="CCS Enrollment" loading="lazy" />
           </div>
           <div class="np-thumb-content">
             <div class="np-thumb-toprow">
               <span class="np-thumb-num">05</span>
-              <span class="np-thumb-cat">Announcement</span>
+              <span class="np-thumb-cat">Academic</span>
             </div>
-            <p class="np-thumb-title">Peer Tutoring Program Opens Applications for 2nd Semester</p>
+            <p class="np-thumb-title">CCS Opens Enrollment &mdash; Slots Available for BSCS, BSIT &amp; ACT (ACT-CS / ACT-IT)</p>
             <div class="np-thumb-meta">
               <time>Jan 28, 2026</time>
               <span class="np-thumb-meta-dot">&#9679;</span>
@@ -169,33 +284,33 @@
       </div>
       <div class="ne-ticker-track">
         <div class="ne-ticker-inner">
-          <span class="ne-ticker-item">CCS Enrollment open &mdash; A.Y. 2025&mdash;2026</span>
-          <span class="ne-ticker-item">Regional E-Thesis Champions &mdash; CCS Team A</span>
-          <span class="ne-ticker-item">Capstone Fair: March 14, 2026 &mdash; CCS Gymnasium</span>
-          <span class="ne-ticker-item">New Elective: Machine Learning Fundamentals</span>
-          <span class="ne-ticker-item">Job Fair 2026 &mdash; 40+ partner tech companies</span>
-          <span class="ne-ticker-item">Hackathon 2026 Registration Now Open</span>
-          <span class="ne-ticker-item">CCS Peer Tutoring Program &mdash; Apply Now</span>
-          <span class="ne-ticker-item">98% Graduate Employment Rate &mdash; Class of 2025</span>
-          <span class="ne-ticker-item">CCS Enrollment open &mdash; A.Y. 2025&mdash;2026</span>
-          <span class="ne-ticker-item">Regional E-Thesis Champions &mdash; CCS Team A</span>
-          <span class="ne-ticker-item">Capstone Fair: March 14, 2026 &mdash; CCS Gymnasium</span>
-          <span class="ne-ticker-item">New Elective: Machine Learning Fundamentals</span>
-          <span class="ne-ticker-item">Job Fair 2026 &mdash; 40+ partner tech companies</span>
-          <span class="ne-ticker-item">Hackathon 2026 Registration Now Open</span>
-          <span class="ne-ticker-item">CCS Peer Tutoring Program &mdash; Apply Now</span>
-          <span class="ne-ticker-item">98% Graduate Employment Rate &mdash; Class of 2025</span>
+          <span class="ne-ticker-item">&#x1F389; CCS Days 2026 is happening NOW &mdash; March 4&ndash;7, 2026</span>
+          <span class="ne-ticker-item">Day 2 (TODAY, Mar 6) &mdash; Musical Contest &middot; Badminton &middot; Volleyball &middot; Basketball Championship &middot; Combado Gym</span>
+          <span class="ne-ticker-item">Day 3 (Mar 7) &mdash; Grand Night at Hacbang Gym &middot; Ms. &amp; Mr. CCS Coronation &middot; PhilNITS Awarding &middot; Live Band</span>
+          <span class="ne-ticker-item">Closing Speech by Governor Samantha Kate P. Barola &mdash; CCS Days 2026 Grand Night</span>
+          <span class="ne-ticker-item">14 CCS students pass PhilNITS IT Passport Exam &mdash; Oct 27, 2024</span>
+          <span class="ne-ticker-item">Mr. Jonathan Tse &mdash; Top PhilNITS scorer among 1,612 examinees in 6 ITPEC countries</span>
+          <span class="ne-ticker-item">CCS Programs: BSCS, BSIT &amp; ACT (ACT-CS / ACT-IT) &mdash; Saint Joseph College, Maasin City</span>
+          <span class="ne-ticker-item">Dean: Mrs. Riza Lynn O. Siega, MCS &mdash; Opening Remarks, CCS Days 2026 Day 3</span>
+          <span class="ne-ticker-item">&#x1F389; CCS Days 2026 is happening NOW &mdash; March 4&ndash;7, 2026</span>
+          <span class="ne-ticker-item">Day 2 (TODAY, Mar 6) &mdash; Musical Contest &middot; Badminton &middot; Volleyball &middot; Basketball Championship &middot; Combado Gym</span>
+          <span class="ne-ticker-item">Day 3 (Mar 7) &mdash; Grand Night at Hacbang Gym &middot; Ms. &amp; Mr. CCS Coronation &middot; PhilNITS Awarding &middot; Live Band</span>
+          <span class="ne-ticker-item">Closing Speech by Governor Samantha Kate P. Barola &mdash; CCS Days 2026 Grand Night</span>
+          <span class="ne-ticker-item">14 CCS students pass PhilNITS IT Passport Exam &mdash; Oct 27, 2024</span>
+          <span class="ne-ticker-item">Mr. Jonathan Tse &mdash; Top PhilNITS scorer among 1,612 examinees in 6 ITPEC countries</span>
+          <span class="ne-ticker-item">CCS Programs: BSCS, BSIT &amp; ACT (ACT-CS / ACT-IT) &mdash; Saint Joseph College, Maasin City</span>
+          <span class="ne-ticker-item">Dean: Mrs. Riza Lynn O. Siega, MCS &mdash; Opening Remarks, CCS Days 2026 Day 3</span>
         </div>
       </div>
     </div>
 
 
     <!-- === MAIN CONTENT + SIDEBAR === -->
-    <section style="background: #05080c; border-top: 1px solid rgba(249,115,22,.06);" aria-label="News and sidebar">
+    <section style="background: #03060a; border-top: 1px solid rgba(249,115,22,.06);" aria-label="News and sidebar">
       <div class="container">
         <div class="np-layout">
 
-          <!-- ── MAIN FEED ─────────────────────────────────────── -->
+          <!-- -- MAIN FEED --------------------------------------- -->
           <div class="np-main">
 
     <!-- === CATEGORY NAV === -->
@@ -210,18 +325,15 @@
             <div class="np-grid np-grid--single" style="margin-bottom: 20px;">
               <article class="np-card np-card--wide js-reveal" data-category="achievement">
                 <div class="np-card-thumb">
-                  <div class="np-card-thumb-inner np-card-thumb--green">
-                    <div class="np-card-thumb-pattern"></div>
-                    <div class="np-card-thumb-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="8" r="6"/><path d="M8 14l-4 8h16l-4-8"/></svg>
-                    </div>
+                  <div class="np-card-thumb-inner">
+                    <img src="../assets/images/ccs/team programmers.jpg" alt="CCS student teams competing at Regional E-Thesis Competition 2026" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
                   </div>
                   <span class="np-card-cat np-card-cat--green">Achievement</span>
                 </div>
                 <div class="np-card-body">
                   <div class="np-card-meta">
                     <time class="np-card-time" datetime="2026-02-15">Feb 15, 2026</time>
-                    <span class="np-card-dot">&#x25CF;</span>
+                    <span class="np-card-dot">&#x25CF;</span>
                     <span class="np-card-read">4 min read</span>
                   </div>
                   <h2 class="np-card-headline">CCS Students Clinch Top 3 Spots at Regional E-Thesis Competition 2026</h2>
@@ -242,24 +354,21 @@
 
               <article class="np-card js-reveal" data-category="research">
                 <div class="np-card-thumb">
-                  <div class="np-card-thumb-inner np-card-thumb--blue">
-                    <div class="np-card-thumb-pattern"></div>
-                    <div class="np-card-thumb-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-                    </div>
+                  <div class="np-card-thumb-inner">
+                    <img src="../assets/images/ccs/teachers1.jpg" alt="CCS faculty member contributing to AI research publication" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
                   </div>
                   <span class="np-card-cat np-card-cat--blue">Research</span>
                 </div>
                 <div class="np-card-body">
                   <div class="np-card-meta">
                     <time class="np-card-time" datetime="2026-02-10">Feb 10, 2026</time>
-                    <span class="np-card-dot">&#x25CF;</span>
+                    <span class="np-card-dot">&#x25CF;</span>
                     <span class="np-card-read">6 min read</span>
                   </div>
                   <h3 class="np-card-headline">Faculty Publishes AI-Driven Curriculum Framework in Peer-Reviewed Journal</h3>
-                  <p class="np-card-excerpt">CCS faculty member Dr. Santos co-authored a paper on adaptive AI-driven course delivery published in the JCSS international journal.</p>
+                  <p class="np-card-excerpt">A CCS faculty member co-authored a paper on adaptive AI-driven course delivery, published in the JCSS international journal &mdash; advancing the department&rsquo;s research output in computing education.</p>
                   <div class="np-card-footer">
-                    <div class="np-card-author"><div class="np-card-author-av">DS</div>Dr. Santos</div>
+                    <div class="np-card-author"><div class="np-card-author-av">CO</div>CCS Faculty</div>
                     <span class="np-card-cta">Read More <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
                   </div>
                 </div>
@@ -267,18 +376,15 @@
 
               <article class="np-card js-reveal" data-category="program">
                 <div class="np-card-thumb">
-                  <div class="np-card-thumb-inner np-card-thumb--purple">
-                    <div class="np-card-thumb-pattern"></div>
-                    <div class="np-card-thumb-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                    </div>
+                  <div class="np-card-thumb-inner">
+                    <img src="../assets/images/ccs/programmers.jpg" alt="CCS students exploring the new Cloud and DevOps engineering specialization track" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
                   </div>
                   <span class="np-card-cat np-card-cat--purple">Program</span>
                 </div>
                 <div class="np-card-body">
                   <div class="np-card-meta">
                     <time class="np-card-time" datetime="2026-02-05">Feb 05, 2026</time>
-                    <span class="np-card-dot">&#x25CF;</span>
+                    <span class="np-card-dot">&#x25CF;</span>
                     <span class="np-card-read">3 min read</span>
                   </div>
                   <h3 class="np-card-headline">New Specialization Track Launched: Cloud &amp; DevOps Engineering</h3>
@@ -292,18 +398,15 @@
 
               <article class="np-card js-reveal" data-category="announcement">
                 <div class="np-card-thumb">
-                  <div class="np-card-thumb-inner np-card-thumb--orange">
-                    <div class="np-card-thumb-pattern"></div>
-                    <div class="np-card-thumb-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-                    </div>
+                  <div class="np-card-thumb-inner">
+                    <img src="../assets/images/ccs/pc assembly.jpg" alt="CCS students in a hands-on PC assembly session — peer tutoring program" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
                   </div>
                   <span class="np-card-cat np-card-cat--orange">Announcement</span>
                 </div>
                 <div class="np-card-body">
                   <div class="np-card-meta">
                     <time class="np-card-time" datetime="2026-01-28">Jan 28, 2026</time>
-                    <span class="np-card-dot">&#x25CF;</span>
+                    <span class="np-card-dot">&#x25CF;</span>
                     <span class="np-card-read">2 min read</span>
                   </div>
                   <h3 class="np-card-headline">CCS Peer Tutoring Program Opens Applications for 2nd Semester</h3>
@@ -317,18 +420,15 @@
 
               <article class="np-card js-reveal" data-category="achievement">
                 <div class="np-card-thumb">
-                  <div class="np-card-thumb-inner np-card-thumb--green">
-                    <div class="np-card-thumb-pattern"></div>
-                    <div class="np-card-thumb-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                    </div>
+                  <div class="np-card-thumb-inner">
+                    <img src="../assets/images/ccs/regi.jpg" alt="CCS Class of 2025 graduates — 98 percent employment rate" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
                   </div>
                   <span class="np-card-cat np-card-cat--green">Achievement</span>
                 </div>
                 <div class="np-card-body">
                   <div class="np-card-meta">
                     <time class="np-card-time" datetime="2026-01-20">Jan 20, 2026</time>
-                    <span class="np-card-dot">&#x25CF;</span>
+                    <span class="np-card-dot">&#x25CF;</span>
                     <span class="np-card-read">5 min read</span>
                   </div>
                   <h3 class="np-card-headline">CCS Class of 2025 Records 98% Employment Rate &mdash; Highest in Department History</h3>
@@ -350,18 +450,15 @@
             <div class="np-grid">
               <article class="np-card js-reveal" data-category="research">
                 <div class="np-card-thumb">
-                  <div class="np-card-thumb-inner np-card-thumb--blue">
-                    <div class="np-card-thumb-pattern"></div>
-                    <div class="np-card-thumb-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                    </div>
+                  <div class="np-card-thumb-inner">
+                    <img src="../assets/images/ccs/debugers2.jpg" alt="CCS research team presenting at National Computing Congress 2026" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
                   </div>
                   <span class="np-card-cat np-card-cat--blue">Research</span>
                 </div>
                 <div class="np-card-body">
                   <div class="np-card-meta">
                     <time class="np-card-time" datetime="2026-01-14">Jan 14, 2026</time>
-                    <span class="np-card-dot">&#x25CF;</span>
+                    <span class="np-card-dot">&#x25CF;</span>
                     <span class="np-card-read">7 min read</span>
                   </div>
                   <h3 class="np-card-headline">CCS Research Team Presents at National Computing Congress 2026</h3>
@@ -374,22 +471,19 @@
               </article>
               <article class="np-card js-reveal" data-category="faculty">
                 <div class="np-card-thumb">
-                  <div class="np-card-thumb-inner np-card-thumb--purple">
-                    <div class="np-card-thumb-pattern"></div>
-                    <div class="np-card-thumb-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                    </div>
+                  <div class="np-card-thumb-inner">
+                    <img src="../assets/images/ccs/teachers.jpg" alt="CCS faculty members who earned their PhD in Computer Science" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
                   </div>
                   <span class="np-card-cat np-card-cat--purple">Faculty</span>
                 </div>
                 <div class="np-card-body">
                   <div class="np-card-meta">
                     <time class="np-card-time" datetime="2026-01-08">Jan 08, 2026</time>
-                    <span class="np-card-dot">&#x25CF;</span>
+                    <span class="np-card-dot">&#x25CF;</span>
                     <span class="np-card-read">4 min read</span>
                   </div>
                   <h3 class="np-card-headline">Two CCS Faculty Members Earn PhDs in Computer Science This Semester</h3>
-                  <p class="np-card-excerpt">Professors Cruz and Villanueva successfully defended their doctoral dissertations, further strengthening CCS's research capacity and post-graduate mentorship offerings.</p>
+                  <p class="np-card-excerpt">Two CCS faculty members successfully defended their doctoral dissertations, further strengthening the department&rsquo;s research capacity and post-graduate mentorship offerings.</p>
                   <div class="np-card-footer">
                     <div class="np-card-author"><div class="np-card-author-av">CO</div>CCS Office</div>
                     <span class="np-card-cta">Read More <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
@@ -407,7 +501,7 @@
 
           </div><!-- /np-main -->
 
-          <!-- ── SIDEBAR ─────────────────────────────────────────── -->
+          <!-- -- SIDEBAR ------------------------------------------- -->
           <aside class="np-sidebar-col" aria-label="Sidebar">
 
             <!-- Browse by Category -->
@@ -500,17 +594,17 @@
                 <div class="np-trending-item">
                   <span class="np-trending-num">1</span>
                   <div class="np-trending-body">
-                    <p class="np-trending-cat">Announcement</p>
-                    <p class="np-trending-title">CCS Opens Enrollment &mdash; Limited Slots Available for BSCS &amp; BSIT</p>
-                    <span class="np-trending-meta">Feb 20, 2026 &middot; 8 min read</span>
+                    <p class="np-trending-cat">Achievement</p>
+                    <p class="np-trending-title">14 CCS Students Pass PhilNITS IT Passport Exam &mdash; Oct 27, 2024</p>
+                    <span class="np-trending-meta">Oct 27, 2024 &middot; 4 min read</span>
                   </div>
                 </div>
                 <div class="np-trending-item">
                   <span class="np-trending-num">2</span>
                   <div class="np-trending-body">
                     <p class="np-trending-cat">Achievement</p>
-                    <p class="np-trending-title">Class of 2025 Records Historic 98% Employment Rate</p>
-                    <span class="np-trending-meta">Jan 20, 2026 &middot; 5 min read</span>
+                    <p class="np-trending-title">Mr. Jonathan Tse Tops PhilNITS Among 1,612 Examinees in 6 ITPEC Countries</p>
+                    <span class="np-trending-meta">CCS Spotlight &middot; 5 min read</span>
                   </div>
                 </div>
                 <div class="np-trending-item">
@@ -561,31 +655,31 @@
               </div>
               <div class="np-qev-list">
                 <a href="#events" class="np-qev-item np-qev-item--orange">
-                  <div class="np-qev-date-box"><span class="np-qev-day">14</span><span class="np-qev-mon">MAR</span></div>
+                  <div class="np-qev-date-box"><span class="np-qev-day">04</span><span class="np-qev-mon">MAR</span></div>
                   <div class="np-qev-info">
-                    <p class="np-qev-title">Capstone &amp; E-Thesis Presentation Fair</p>
-                    <span class="np-qev-loc">CCS Gymnasium &middot; All Day</span>
+                    <p class="np-qev-title">CCS Days 2026 &mdash; Day 0</p>
+                    <span class="np-qev-loc">SAC &amp; Combado Gym &middot; 1:00 PM</span>
                   </div>
                 </a>
                 <a href="#events" class="np-qev-item np-qev-item--blue">
-                  <div class="np-qev-date-box"><span class="np-qev-day">22</span><span class="np-qev-mon">MAR</span></div>
+                  <div class="np-qev-date-box"><span class="np-qev-day">05</span><span class="np-qev-mon">MAR</span></div>
                   <div class="np-qev-info">
-                    <p class="np-qev-title">Build &amp; Break Hackathon 2026</p>
-                    <span class="np-qev-loc">CCS Labs A &amp; B &middot; 24 Hours</span>
+                    <p class="np-qev-title">CCS Days 2026 &mdash; Day 1</p>
+                    <span class="np-qev-loc">CCN Theatre &middot; SAC &middot; Hacbang Gym</span>
                   </div>
                 </a>
                 <a href="#events" class="np-qev-item np-qev-item--green">
-                  <div class="np-qev-date-box"><span class="np-qev-day">04</span><span class="np-qev-mon">APR</span></div>
+                  <div class="np-qev-date-box"><span class="np-qev-day">06</span><span class="np-qev-mon">MAR</span></div>
                   <div class="np-qev-info">
-                    <p class="np-qev-title">Tech Industry Job Fair 2026</p>
-                    <span class="np-qev-loc">Covered Court &middot; 8 AM &mdash; 5 PM</span>
+                    <p class="np-qev-title">CCS Days 2026 &mdash; Day 2 &bull; Today</p>
+                    <span class="np-qev-loc">CCN Theatre &middot; Combado Gym</span>
                   </div>
                 </a>
                 <a href="#events" class="np-qev-item np-qev-item--purple">
-                  <div class="np-qev-date-box"><span class="np-qev-day">18</span><span class="np-qev-mon">APR</span></div>
+                  <div class="np-qev-date-box"><span class="np-qev-day">07</span><span class="np-qev-mon">MAR</span></div>
                   <div class="np-qev-info">
-                    <p class="np-qev-title">AI &amp; ML in Industry &mdash; Guest Lecture</p>
-                    <span class="np-qev-loc">CCS AVR + Zoom &middot; 1&mdash;4 PM</span>
+                    <p class="np-qev-title">CCS Days 2026 &mdash; Day 3 Grand Night</p>
+                    <span class="np-qev-loc">Hacbang Gym &middot; 4:00 PM</span>
                   </div>
                 </a>
               </div>
@@ -624,9 +718,9 @@
 
         <div class="np-events-hdr">
           <div class="np-events-hdr-left">
-            <p class="np-events-eyebrow">CCS Calendar &mdash; A.Y. 2025&mdash;2026</p>
+            <p class="np-events-eyebrow">CCS Days 2026 &mdash; March 4&ndash;7, 2026</p>
             <h2 class="np-events-heading" id="events-heading">
-              Upcoming <em>Events</em>
+              CCS Days <em>2026</em>
             </h2>
           </div>
           <a href="#" class="np-events-cal-btn">
@@ -637,153 +731,166 @@
 
         <div class="np-ev-grid">
 
-          <!-- Event 1 &mdash; Capstone Fair -->
+          <!-- Day 0 — March 4 -->
           <article class="np-ev-card np-ev-card--orange js-reveal">
             <div class="np-ev-date-col">
-              <span class="np-ev-day">14</span>
+              <span class="np-ev-day">04</span>
               <span class="np-ev-mon">MAR</span>
-              <span class="np-ev-dow">Friday</span>
+              <span class="np-ev-dow">Wednesday</span>
             </div>
             <div class="np-ev-body">
               <div class="np-ev-chips">
-                <span class="np-ev-chip np-ev-chip--orange">Academic</span>
-                <span class="np-ev-chip np-ev-chip--dim">All Year Levels</span>
+                <span class="np-ev-chip np-ev-chip--orange">CCS Days 2026</span>
+                <span class="np-ev-chip np-ev-chip--dim">Day 0</span>
               </div>
-              <h3 class="np-ev-title">CCS Capstone &amp; E-Thesis Presentation Fair 2026</h3>
-              <p class="np-ev-desc">Final-year students present their capstone projects and e-thesis research to a panel of industry evaluators, faculty, and invited guests. Attendance required for graduating students.</p>
+              <h3 class="np-ev-title">CCS Days 2026 &mdash; Day 0: Capstone Expo &amp; Basketball Elimination</h3>
+              <p class="np-ev-desc">
+                <strong>1:00&ndash;4:00 PM</strong> &mdash; Capstone Project Expo with Senior High School Audience &middot; Venue: SAC<br />
+                <strong>4:00&ndash;4:30 PM</strong> &mdash; Attendance (IN)<br />
+                <strong>4:30 PM</strong> &mdash; Start of Program: Prayer &middot; National Anthem &middot; SJC Hymn<br />
+                <strong>Bench Yelling Competition:</strong> Team Debuggers vs Team Programmers<br />
+                Basketball (Elimination Round)<br />
+                <strong>After Event</strong> &mdash; Attendance &middot; Venue: Combado Gym
+              </p>
               <div class="np-ev-attrs">
                 <span class="np-ev-attr">
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 1C5.24 1 3 3.24 3 6c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5z"/><circle cx="8" cy="6" r="1.5"/></svg>
-                  CCS Gymnasium
+                  SAC &amp; Combado Gym
                 </span>
                 <span class="np-ev-attr">
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
-                  08:00 AM &mdash; All Day
-                </span>
-                <span class="np-ev-attr">
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-4 7-4 7 4 7 4"/><circle cx="9" cy="5" r="3"/></svg>
-                  300 Seats
+                  1:00 PM &mdash; After Event
                 </span>
               </div>
               <div class="np-ev-row">
-                <span class="np-ev-countdown"><strong>19</strong> days away</span>
-                <a href="#" class="np-ev-reg np-ev-reg--orange">
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                  Register Now
-                </a>
+                <span class="np-ev-countdown" style="color:rgba(255,255,255,.35);">Concluded</span>
               </div>
             </div>
           </article>
 
-          <!-- Event 2 &mdash; Hackathon -->
+          <!-- Day 1 — March 5 -->
           <article class="np-ev-card np-ev-card--blue js-reveal">
             <div class="np-ev-date-col">
-              <span class="np-ev-day">22</span>
+              <span class="np-ev-day">05</span>
+              <span class="np-ev-mon">MAR</span>
+              <span class="np-ev-dow">Thursday</span>
+            </div>
+            <div class="np-ev-body">
+              <div class="np-ev-chips">
+                <span class="np-ev-chip np-ev-chip--blue">CCS Days 2026</span>
+                <span class="np-ev-chip np-ev-chip--dim">Day 1</span>
+              </div>
+              <h3 class="np-ev-title">CCS Days 2026 &mdash; Day 1: Opening, Dean&rsquo;s List &amp; Pickleball</h3>
+              <p class="np-ev-desc">
+                <strong>Morning &mdash; Venue: CCN Theatre</strong><br />
+                7:00&ndash;7:30 AM Attendance (IN) &middot; 7:30 AM Holy Mass &middot; National Anthem &middot; SJC Hymn<br />
+                Opening Program &middot; Production Number (Ms. &amp; Mr. CCS)<br />
+                Awarding of Dean&rsquo;s List &middot; Team Leader&rsquo;s Speech<br />
+                CCS Quiz &middot; Board Games &middot; Academics Contest &middot; 12:00 PM Attendance (OUT)<br />
+                <strong>Afternoon &mdash; Venue: SAC</strong><br />
+                12:30&ndash;1:00 PM Capstone Project Expo<br />
+                <strong>Evening &mdash; Venue: Hacbang Gym</strong><br />
+                5:30&ndash;6:00 PM Attendance (IN) &middot; 6:30 PM Pickleball: Faculty &middot; Women&rsquo;s &middot; Men&rsquo;s<br />
+                After Event: Attendance (OUT)
+              </p>
+              <div class="np-ev-attrs">
+                <span class="np-ev-attr">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 1C5.24 1 3 3.24 3 6c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+                  CCN Theatre &middot; SAC &middot; Hacbang Gym
+                </span>
+                <span class="np-ev-attr">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
+                  7:00 AM &mdash; After Event
+                </span>
+              </div>
+              <div class="np-ev-row">
+                <span class="np-ev-countdown" style="color:rgba(255,255,255,.35);">Concluded</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Day 2 — March 6 -->
+          <article class="np-ev-card np-ev-card--green js-reveal">
+            <div class="np-ev-date-col">
+              <span class="np-ev-day">06</span>
+              <span class="np-ev-mon">MAR</span>
+              <span class="np-ev-dow">Friday</span>
+            </div>
+            <div class="np-ev-body">
+              <div class="np-ev-chips">
+                <span class="np-ev-chip np-ev-chip--green">CCS Days 2026</span>
+                <span class="np-ev-chip np-ev-chip--dim" style="background:rgba(34,197,94,.18);color:#4ade80;">Day 2 &mdash; Today</span>
+              </div>
+              <h3 class="np-ev-title">CCS Days 2026 &mdash; Day 2: Musical Contest, Badminton, Volleyball &amp; Basketball</h3>
+              <p class="np-ev-desc">
+                <strong>Morning &mdash; Venue: CCN Theatre</strong><br />
+                7:00&ndash;7:30 AM Attendance (IN) &middot; 7:30 AM Opening Prayer &middot; National Anthem &middot; SJC Hymn &middot; Opening Program<br />
+                <strong>Musical Contest:</strong> Solo &middot; Duet &middot; Modern Dance &middot; Spoken Poetry &middot; Musical Theatre<br />
+                Announcing of Winners &middot; After Event: Attendance (OUT)<br />
+                <strong>Afternoon &amp; Evening &mdash; Venue: Combado Gym</strong><br />
+                12:30&ndash;1:00 PM Attendance (IN)<br />
+                1:00 PM <strong>Badminton:</strong> Women&rsquo;s Single &middot; Men&rsquo;s Single &middot; Women&rsquo;s Double &middot; Men&rsquo;s Double<br />
+                <strong>Volleyball:</strong> Women&rsquo;s &amp; Men&rsquo;s &middot; <strong>Basketball Championship</strong><br />
+                After Event: Attendance (OUT)
+              </p>
+              <div class="np-ev-attrs">
+                <span class="np-ev-attr">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 1C5.24 1 3 3.24 3 6c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+                  CCN Theatre &middot; Combado Gym
+                </span>
+                <span class="np-ev-attr">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
+                  7:00 AM &mdash; After Event
+                </span>
+              </div>
+              <div class="np-ev-row">
+                <span class="np-ev-countdown" style="color:#4ade80;"><strong>Today!</strong></span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Day 3 — March 7 -->
+          <article class="np-ev-card np-ev-card--purple js-reveal">
+            <div class="np-ev-date-col">
+              <span class="np-ev-day">07</span>
               <span class="np-ev-mon">MAR</span>
               <span class="np-ev-dow">Saturday</span>
             </div>
             <div class="np-ev-body">
               <div class="np-ev-chips">
-                <span class="np-ev-chip np-ev-chip--blue">Hackathon</span>
-                <span class="np-ev-chip np-ev-chip--dim">Open Registration</span>
+                <span class="np-ev-chip np-ev-chip--purple">CCS Days 2026</span>
+                <span class="np-ev-chip np-ev-chip--dim">Day 3 &mdash; Grand Night</span>
               </div>
-              <h3 class="np-ev-title">CCS Annual Hackathon 2026 &mdash; Build &amp; Break</h3>
-              <p class="np-ev-desc">A 24-hour team coding competition open to all CCS students. Compete for the &#x20B1;50,000 prize pool, connect with industry sponsors, and build solutions that matter.</p>
+              <h3 class="np-ev-title">CCS Days 2026 &mdash; Day 3: Grand Night, Ms. &amp; Mr. CCS, PhilNITS Awards &amp; Coronation</h3>
+              <p class="np-ev-desc">
+                <strong>Venue: Hacbang Gym</strong><br />
+                4:00&ndash;5:00 PM Attendance (IN) &middot; 5:30 PM Opening Prayer &middot; National Anthem &middot; SJC Hymn<br />
+                Opening Remarks &mdash; Dean Mrs. Riza Lynn O. Siega<br />
+                Introduction Ms. &amp; Mr. CCS (Team T-Shirt) &middot; Dinner &amp; Raffle<br />
+                Awarding: Outgoing &amp; Incoming Officers<br />
+                Ms. &amp; Mr. CCS (Sports Attire) &middot; Parody &mdash; Best Comedy Timing<br />
+                <strong>Awarding of PhilNITS</strong> &middot; Parody &mdash; Crowd Favorite<br />
+                Evening Gown &middot; Awarding of Ms. &amp; Mr. CCS 2026<br />
+                Parody &mdash; Best Overall Champion &middot; Q&amp;A &middot; Coronation of Mr. &amp; Ms. CCS<br />
+                Closing Speech &mdash; Governor Samantha Kate P. Barola<br />
+                Announcement of Overall Champion &middot; Live Band &middot; Socials<br />
+                After Event: Attendance (OUT)
+              </p>
               <div class="np-ev-attrs">
                 <span class="np-ev-attr">
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 1C5.24 1 3 3.24 3 6c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5z"/><circle cx="8" cy="6" r="1.5"/></svg>
-                  CCS Labs A &amp; B
+                  Hacbang Gym
                 </span>
                 <span class="np-ev-attr">
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
-                  09:00 AM &mdash; 24 Hours
-                </span>
-                <span class="np-ev-attr">
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 1l1.9 4 4.4.6-3.2 3.1.8 4.4L8 11l-3.9 2.1.8-4.4L1.7 5.6l4.4-.6z"/></svg>
-                  &#x20B1;50,000 Prize Pool
+                  4:00 PM &mdash; After Event
                 </span>
               </div>
               <div class="np-ev-row">
-                <span class="np-ev-countdown"><strong>27</strong> days away</span>
-                <a href="#" class="np-ev-reg np-ev-reg--blue">
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                  Register Now
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Event 3 &mdash; Job Fair -->
-          <article class="np-ev-card np-ev-card--green js-reveal">
-            <div class="np-ev-date-col">
-              <span class="np-ev-day">04</span>
-              <span class="np-ev-mon">APR</span>
-              <span class="np-ev-dow">Saturday</span>
-            </div>
-            <div class="np-ev-body">
-              <div class="np-ev-chips">
-                <span class="np-ev-chip np-ev-chip--green">Career</span>
-                <span class="np-ev-chip np-ev-chip--dim">Free Entry</span>
-              </div>
-              <h3 class="np-ev-title">Tech Industry Job Fair 2026 &mdash; 40+ Partner Companies</h3>
-              <p class="np-ev-desc">Connect with top tech companies for jobs and internships. Bring your resume and portfolio. On-site interviews available for select hiring partners.</p>
-              <div class="np-ev-attrs">
-                <span class="np-ev-attr">
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 1C5.24 1 3 3.24 3 6c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5z"/><circle cx="8" cy="6" r="1.5"/></svg>
-                  Main Campus Covered Court
-                </span>
-                <span class="np-ev-attr">
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
-                  08:00 AM &mdash; 05:00 PM
-                </span>
-                <span class="np-ev-attr">
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-                  40+ Companies
-                </span>
-              </div>
-              <div class="np-ev-row">
-                <span class="np-ev-countdown"><strong>40</strong> days away</span>
-                <a href="#" class="np-ev-reg np-ev-reg--green">
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                  Learn More
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Event 4 &mdash; Guest Lecture -->
-          <article class="np-ev-card np-ev-card--purple js-reveal">
-            <div class="np-ev-date-col">
-              <span class="np-ev-day">18</span>
-              <span class="np-ev-mon">APR</span>
-              <span class="np-ev-dow">Friday</span>
-            </div>
-            <div class="np-ev-body">
-              <div class="np-ev-chips">
-                <span class="np-ev-chip np-ev-chip--purple">Seminar</span>
-                <span class="np-ev-chip np-ev-chip--dim">Hybrid</span>
-              </div>
-              <h3 class="np-ev-title">Guest Lecture: AI &amp; Machine Learning in Industry Practice</h3>
-              <p class="np-ev-desc">Senior ML engineer from a leading tech firm covers production AI systems, MLOps pipelines, and career pathways in data science. Q&amp;A session included. 3 CPD units awarded.</p>
-              <div class="np-ev-attrs">
-                <span class="np-ev-attr">
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 1C5.24 1 3 3.24 3 6c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5z"/><circle cx="8" cy="6" r="1.5"/></svg>
-                  CCS AVR + Zoom
-                </span>
-                <span class="np-ev-attr">
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
-                  01:00 PM &mdash; 04:00 PM
-                </span>
-                <span class="np-ev-attr">
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 13l4-4 3 3 5-6"/></svg>
-                  3 CPD Units
-                </span>
-              </div>
-              <div class="np-ev-row">
-                <span class="np-ev-countdown"><strong>54</strong> days away</span>
+                <span class="np-ev-countdown"><strong>1</strong> day away</span>
                 <a href="#" class="np-ev-reg np-ev-reg--purple">
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                  Reserve Seat
+                  See Schedule
                 </a>
               </div>
             </div>
@@ -801,15 +908,16 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-logo-row">
-            <img src="../assets/images/logo.svg" alt="CCS Logo" class="brand-mark brand-mark--sm" />
+            <img src="../assets/images/sjc_logo.png" alt="Saint Joseph College Logo" class="brand-mark brand-mark--sm" />
+            <img src="../assets/images/ccs_logo.png" alt="CCS Logo" class="brand-mark brand-mark--sm" />
             <div>
-              <div class="footer-dept">College of Computing Studies</div>
-              <div class="footer-tagline">An open door to the limitless horizon</div>
+              <div class="footer-dept">College of Computer Studies</div>
+              <div class="footer-tagline">Saint Joseph College &mdash; Maasin City, Southern Leyte</div>
             </div>
           </div>
           <p class="footer-about">Empowering the next generation of technology leaders through rigorous academics, hands-on learning, and values-driven education.</p>
           <div class="social-row" aria-label="Social media links">
-            <a href="#" class="social-btn" aria-label="Facebook">
+            <a href="https://www.facebook.com/profile.php?id=100083430218425" class="social-btn" aria-label="Facebook" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
             </a>
             <a href="#" class="social-btn" aria-label="Twitter / X">
@@ -860,11 +968,7 @@
     </div>
   </footer>
 
-  <!-- Back to top -->
-  <button class="back-top" aria-label="Back to top" hidden>
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 12V4M4 8l4-4 4 4"/></svg>
-  </button>
-
   <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/chatbot.js?v=6"></script>
 </body>
 </html>

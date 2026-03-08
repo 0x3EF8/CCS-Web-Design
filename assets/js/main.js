@@ -13,17 +13,17 @@
   function init() {
     setupPageTransition();
     setupBootScreen();
+    setupCustomCursor();
     setupNavbar();
     setActiveNavLink();
     setupScrollReveal();
     setupBackToTop();
     setupCounters();
-    setupProgramTabs();
     setupContactForm();
     setupFaqAccordion();
-    setupFacultyFilter();
-    setupNewsFilter();
     setupLoadMore();
+    setupCourseComparison();
+    setupProgramPicker();
 
     // Auto copyright year
     const yr = document.getElementById('copy-year');
@@ -36,113 +36,66 @@
   function setupBootScreen() {
     if (sessionStorage.getItem('ccs_booted')) return;
 
-    const screen = document.createElement('div');
+    // Resolve asset base path (works from root or pages/ subfolder)
+    var base = (function() {
+      var s = document.querySelector('link[href*="assets/css/styles.css"]');
+      return (s && s.getAttribute('href').indexOf('../') === 0) ? '../assets/images/' : 'assets/images/';
+    })();
+
+    var screen = document.createElement('div');
     screen.id = 'boot-screen';
     screen.innerHTML = [
-      '<div class="boot-header">',
-      '  <div class="boot-title-row">',
-      '    <span class="boot-logo">[ CCS ]</span>',
+      '<div class="bl-inner">',
+      '  <div class="bl-coin-wrap">',
+      '    <div class="bl-coin">',
+      '      <div class="bl-face bl-face--front">',
+      '        <img src="' + base + 'ccs_logo.png" alt="CCS" draggable="false" />',
+      '      </div>',
+      '      <div class="bl-face bl-face--back">',
+      '        <img src="' + base + 'sjc_logo.png" alt="SJC" draggable="false" />',
+      '      </div>',
+      '    </div>',
       '  </div>',
-      '  <div class="boot-subtitle">CCS-DEPT BIOS v4.0.2026 &mdash; College of Computing Studies &mdash; BSCS &amp; BSIT Portal</div>',
-      '  <div class="boot-hw-row">',
-      '    <span class="boot-hw-item">CPU: <span>Web Interface Controller @ 4.0GHz</span></span>',
-      '    <span class="boot-hw-item">MEM: <span>512MB VRAM (CCS Academic DB)</span></span>',
-      '    <span class="boot-hw-item">NET: <span>eth0 — connected</span></span>',
-      '  </div>',
-      '</div>',
-      '<div class="boot-console" id="boot-console"></div>',
-      '<div class="boot-footer">',
-      '  <div class="boot-bar-wrap"><div class="boot-bar" id="boot-bar"></div></div>',
-      '  <div class="boot-status" id="boot-status">Initializing hardware...<span class="boot-cursor"></span></div>',
+      '  <p class="bl-label">College of Computer Studies</p>',
+      '  <p class="bl-sub">Saint Joseph College &middot; Maasin City</p>',
+      '  <div class="bl-bar-wrap"><div class="bl-bar" id="boot-bar"></div></div>',
+      '  <p class="bl-status" id="boot-status">Initializing...</p>',
       '</div>'
     ].join('');
 
     document.body.appendChild(screen);
     document.body.style.overflow = 'hidden';
 
-    var lines = [
-      { t: '[    0.000000] Linux version 6.1.0-ccs (ccs@dept) (gcc 12.2.0) #1 SMP', c: 'dim' },
-      { t: '[    0.000012] BIOS-e820: [mem 0x0000000000000000-0x000000000009ffff] usable', c: 'dim' },
-      { t: '[    0.048213] CCS Department Portal v4.0.2026 — booting...', c: '' },
-      { t: '[    0.091337] Initializing kernel event notification mechanism', c: 'dim' },
-      { t: '[  OK  ] Loading kernel modules...', c: '' },
-      { t: '[  OK  ] Mounting /proc filesystem...', c: '' },
-      { t: '[  OK  ] Mounting /sys filesystem...', c: '' },
-      { t: '[  OK  ] Mounting virtual file systems...', c: '' },
-      { t: '[  OK  ] Starting system journal (systemd-journald)...', c: '' },
-      { t: '[  OK  ] Bringing up network interface: eth0', c: '' },
-      { t: '[    0.312894] eth0: Link is Up — 1000Mbps Full Duplex', c: 'dim' },
-      { t: '[  OK  ] Starting academic database service (ccs-db)...', c: '' },
-      { t: '[  OK  ] Loaded BSCS curriculum modules (4 tracks found)', c: '' },
-      { t: '[  OK  ] Loaded BSIT curriculum modules (3 tracks found)', c: '' },
-      { t: '[  OK  ] Connecting to faculty registry (15 records synced)', c: '' },
-      { t: '[  OK  ] Loading student enrollment system...', c: '' },
-      { t: '[ WARN ] 3 enrollment slots remaining — apply early!', c: 'w' },
-      { t: '[  OK  ] Starting news & events feed (ccs-news)...', c: '' },
-      { t: '[  OK  ] Initializing contact form handler...', c: '' },
-      { t: '[  OK  ] Starting web rendering engine (ccs-ui v4)...', c: '' },
-      { t: '[  OK  ] Verifying system integrity... [PASS]', c: '' },
-      { t: '[  OK  ] All systems operational.', c: '' },
-      { t: '', c: '' },
-      { t: '┌─────────────────────────────────────────────────────┐', c: 'ok' },
-      { t: '│                                                     │', c: 'ok' },
-      { t: '│     Welcome to CCS Department Portal                │', c: 'ok' },
-      { t: '│     College of Computing Studies                    │', c: 'ok' },
-      { t: '│     An open door to the limitless horizon           │', c: 'ok' },
-      { t: '│                                                     │', c: 'ok' },
-      { t: '└─────────────────────────────────────────────────────┘', c: 'ok' },
-      { t: '', c: '' },
-      { t: 'CCS login: portal@ccs — Starting graphical interface...', c: 'hl' }
+    var bar      = document.getElementById('boot-bar');
+    var statusEl = document.getElementById('boot-status');
+
+    var steps = [
+      { pct: 18,  msg: 'Initializing...',          delay: 300  },
+      { pct: 38,  msg: 'Loading modules...',        delay: 550  },
+      { pct: 62,  msg: 'Connecting to database...', delay: 650  },
+      { pct: 80,  msg: 'Preparing interface...',    delay: 500  },
+      { pct: 94,  msg: 'Almost ready...',           delay: 420  },
+      { pct: 100, msg: 'Welcome!',                  delay: 380  }
     ];
 
-    var console_el = document.getElementById('boot-console');
-    var bar        = document.getElementById('boot-bar');
-    var status_el  = document.getElementById('boot-status');
-    var delay      = 0;
-    // Vary timing for realism
-    var timings    = [80,40,120,60,110,80,80,90,130,140,60,160,140,140,160,150,130,150,130,140,200,120,60,40,40,40,40,40,40,80,100,160];
-
-    lines.forEach(function (line, idx) {
-      delay += (timings[idx] || 100);
-      (function (l, i, d) {
-        setTimeout(function () {
-          var el = document.createElement('div');
-          el.className = 'boot-line';
-
-          var html = l.t
-            .replace(/\[  OK  \]/g,  '<span class="ok">[  OK  ]</span>')
-            .replace(/\[ WARN \]/g,  '<span class="warn">[ WARN ]</span>')
-            .replace(/\[ ERR  \]/g,  '<span class="err">[ ERR  ]</span>');
-
-          if (l.c === 'dim') html = '<span class="dim">' + l.t + '</span>';
-          else if (l.c === 'ok')  html = '<span class="ok">' + l.t + '</span>';
-          else if (l.c === 'hl')  html = '<span class="hl">' + l.t + '</span>';
-          else if (l.c === 'w')   html = html; // already replaced warn tag
-
-          el.innerHTML = html;
-          console_el.appendChild(el);
-
-          // Progress bar
-          bar.style.width = (((i + 1) / lines.length) * 100) + '%';
-
-          // Status text
-          if (i < 10)        status_el.innerHTML = 'Initializing hardware...<span class="boot-cursor"></span>';
-          else if (i < 18)   status_el.innerHTML = 'Loading CCS modules...<span class="boot-cursor"></span>';
-          else if (i < 22)   status_el.innerHTML = 'Starting portal services...<span class="boot-cursor"></span>';
-          else               status_el.innerHTML = 'System ready.<span class="boot-cursor"></span>';
-
-          // Done — fade out
-          if (i === lines.length - 1) {
-            setTimeout(function () {
+    var totalDelay = 0;
+    steps.forEach(function(step) {
+      totalDelay += step.delay;
+      (function(s, d) {
+        setTimeout(function() {
+          bar.style.width = s.pct + '%';
+          statusEl.textContent = s.msg;
+          if (s.pct === 100) {
+            setTimeout(function() {
               screen.classList.add('boot-screen--out');
               sessionStorage.setItem('ccs_booted', '1');
               document.documentElement.classList.remove('ccs-first-visit');
               document.body.style.overflow = '';
-              setTimeout(function () { screen.remove(); }, 650);
-            }, 900);
+              setTimeout(function() { screen.remove(); }, 700);
+            }, 480);
           }
         }, d);
-      })(line, idx, delay);
+      })(step, totalDelay);
     });
   }
 
@@ -155,10 +108,32 @@
     loader.id = 'page-loader';
     document.body.appendChild(loader);
 
-    // Trigger entrance animation on the main content only (not body)
-    // so the fixed navbar is never included in the fade/slide
+    // Complete the bar on every page arrival
+    function completeLoader() {
+      loader.classList.remove('is-loading');
+      loader.classList.add('is-complete');
+      setTimeout(function() { loader.classList.remove('is-complete'); }, 600);
+    }
+
+    // Entrance animation on main content
     var mainEl = document.querySelector('main, .page-main, [role="main"]');
-    if (mainEl) mainEl.classList.add('page-enter');
+    if (mainEl) {
+      mainEl.classList.add('page-enter');
+      mainEl.addEventListener('animationend', function() {
+        mainEl.classList.remove('page-enter');
+      }, { once: true });
+    }
+
+    // Complete loader when page is visible
+    if (document.readyState === 'complete') {
+      completeLoader();
+    } else {
+      window.addEventListener('load', completeLoader, { once: true });
+    }
+    // Also handle back/forward cache restored pages
+    window.addEventListener('pageshow', function(e) {
+      if (e.persisted) completeLoader();
+    });
 
     // Intercept internal link clicks → show loader
     document.addEventListener('click', function (e) {
@@ -167,7 +142,6 @@
       var href = link.getAttribute('href');
       if (!href) return;
 
-      // Skip anchors, mailto/tel, blank targets, external
       var skip = href.startsWith('#') ||
                  href.startsWith('mailto:') ||
                  href.startsWith('tel:') ||
@@ -176,7 +150,6 @@
                  (href.startsWith('http') && !href.includes(window.location.hostname));
       if (skip) return;
 
-      // Show the loading bar
       loader.classList.remove('is-complete');
       loader.classList.add('is-loading');
     });
@@ -308,46 +281,7 @@
   }
 
   /* ──────────────────────────────────────────────────────────────
-     7. PROGRAM DETAIL TABS (programs.html only)
-  ────────────────────────────────────────────────────────────── */
-  function setupProgramTabs() {
-    const tabs = document.querySelectorAll('.pd-tab');
-    if (!tabs.length) return;
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => activateTab(tab));
-      tab.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateTab(tab); }
-        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') focusAdjacentTab(tab, 1);
-        if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   focusAdjacentTab(tab, -1);
-      });
-    });
-
-    function activateTab(tab) {
-      const target = tab.dataset.tab;
-      tabs.forEach(t => {
-        const active = t === tab;
-        t.classList.toggle('pd-tab--active', active);
-        t.setAttribute('aria-selected', String(active));
-        t.setAttribute('tabindex',       active ? '0' : '-1');
-      });
-      document.querySelectorAll('.pd-panel').forEach(panel => {
-        const show = panel.id === target;
-        panel.classList.toggle('pd-panel--hidden', !show);
-        panel.setAttribute('aria-hidden', String(!show));
-      });
-    }
-
-    function focusAdjacentTab(current, dir) {
-      const arr = Array.from(tabs);
-      const next = arr[(arr.indexOf(current) + dir + arr.length) % arr.length];
-      next.focus();
-      activateTab(next);
-    }
-  }
-
-  /* ──────────────────────────────────────────────────────────────
-     8. CONTACT FORM — real-time validation + submission
+     7. CONTACT FORM — real-time validation + submission
   ────────────────────────────────────────────────────────────── */
   function setupContactForm() {
     const form = document.querySelector('.ct-form');
@@ -459,71 +393,7 @@
   }
 
   /* ──────────────────────────────────────────────────────────────
-     10. FACULTY FILTER (faculty.html)
-  ────────────────────────────────────────────────────────────── */
-  function setupFacultyFilter() {
-    const filterBtns = document.querySelectorAll('.fc-filter-btn');
-    if (!filterBtns.length) return;
-
-    const allCards = document.querySelectorAll('.fc-card[data-expertise]');
-    const fcGroups = document.querySelectorAll('.fc-group');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('fc-filter-btn--active'));
-        btn.classList.add('fc-filter-btn--active');
-
-        const filter = btn.dataset.filter;
-
-        allCards.forEach(card => {
-          const show = filter === 'all' || card.dataset.expertise === filter;
-          card.style.display = show ? '' : 'none';
-          card.style.opacity = show ? '1' : '0';
-        });
-
-        // Hide group labels when filtering
-        fcGroups.forEach(g => {
-          g.style.display = filter === 'all' ? '' : 'none';
-        });
-      });
-    });
-  }
-
-  /* ──────────────────────────────────────────────────────────────
-     11. NEWS CATEGORY FILTER (news.html)
-  ────────────────────────────────────────────────────────────── */
-  function setupNewsFilter() {
-    const filterBtns = document.querySelectorAll('.np-filter-btn');
-    if (!filterBtns.length) return;
-
-    const allArticles = document.querySelectorAll('.np-card[data-category]');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('np-filter-btn--active'));
-        btn.classList.add('np-filter-btn--active');
-
-        const filter = btn.dataset.filter;
-
-        allArticles.forEach(card => {
-          const show = filter === 'all' || card.dataset.category === filter;
-          card.style.display = show ? '' : 'none';
-        });
-
-        // Show/hide section headers based on visibility
-        document.querySelectorAll('.np-section-hdr').forEach(hdr => {
-          const nextGrid = hdr.nextElementSibling;
-          if (nextGrid) {
-            const visibleCards = nextGrid.querySelectorAll('.np-card:not([style*="none"])');
-            hdr.style.display = (filter === 'all' || visibleCards.length > 0) ? '' : 'none';
-          }
-        });
-      });
-    });
-  }
-
-  /* ──────────────────────────────────────────────────────────────
-     12. LOAD MORE (news.html)
+     10. LOAD MORE (news.html)
   ────────────────────────────────────────────────────────────── */
   function setupLoadMore() {
     const btn = document.querySelector('.np-load-more-btn');
@@ -539,59 +409,15 @@
   /* ── Hero Carousel ─────────────────────────────────────────── */
   const heroCarousel = document.getElementById('np-hero-carousel');
   if (heroCarousel) {
-    const slides = [
-      {
-        img: '../assets/images/IT.jpg',
-        badge: 'Featured', live: 'Latest',
-        headline: 'CCS Opens Enrollment for A.Y. 2025&mdash;2026:<br>Slots Strictly Limited for BSCS &amp; BSIT',
-        excerpt: 'The College of Computing Studies is now accepting applications for both programs. Prospective students are urged to apply early &mdash; entrance examinations are scheduled throughout March and April 2026.',
-        avatar: 'CO', author: 'CCS Office', datetime: '2026-02-20', date: 'Feb 20, 2026', read: '8 min read'
-      },
-      {
-        img: '../assets/images/ccs/PhilNITS.jpg',
-        badge: 'Achievement', live: '',
-        headline: 'CCS Students Clinch Top 3 at Regional E-Thesis Competition 2026',
-        excerpt: 'Three CCS teams swept the top placements, showcasing research in AI health diagnostics, smart agriculture IoT systems, and blockchain-based academic credentialing.',
-        avatar: 'JR', author: 'J. Reyes', datetime: '2026-02-15', date: 'Feb 15, 2026', read: '4 min read'
-      },
-      {
-        img: '../assets/images/ccs/teachers.jpg',
-        badge: 'Research', live: '',
-        headline: 'Faculty Publishes AI-Driven Curriculum Framework in Peer-Reviewed Journal',
-        excerpt: 'A landmark publication from the CCS faculty introduces an AI-driven framework for computing education, now cited in three international journals.',
-        avatar: 'FA', author: 'Faculty Affairs', datetime: '2026-02-10', date: 'Feb 10, 2026', read: '6 min read'
-      },
-      {
-        img: '../assets/images/ccs/CCS Gov.jpg',
-        badge: 'Program', live: '',
-        headline: 'New Specialization Track Launched: Cloud &amp; DevOps Engineering',
-        excerpt: 'Starting 2nd semester, students can enroll in the new Cloud &amp; DevOps Engineering track, co-designed with industry partners.',
-        avatar: 'CO', author: 'CCS Office', datetime: '2026-02-05', date: 'Feb 05, 2026', read: '3 min read'
-      },
-      {
-        img: '../assets/images/ccs/ccs dean.jpg',
-        badge: 'Announcement', live: '',
-        headline: 'Peer Tutoring Program Opens Applications for 2nd Semester',
-        excerpt: 'The CCS Peer Tutoring Program is now accepting applications for student tutors and tutees for the upcoming 2nd semester.',
-        avatar: 'CO', author: 'CCS Office', datetime: '2026-01-28', date: 'Jan 28, 2026', read: '2 min read'
-      }
-    ];
+    // Slide content lives entirely in news.html as .np-slide elements
+    const slides     = heroCarousel.querySelectorAll('.np-slide');
+    const heroImg    = document.getElementById('np-hero-img');
+    const slideCur   = document.getElementById('np-slide-cur');
+    const slideTotal = document.getElementById('np-slide-total');
+    const thumbItems = heroCarousel.querySelectorAll('.np-thumb-item');
 
     let current = 0;
     let timer;
-
-    const heroImg       = document.getElementById('np-hero-img');
-    const heroBadge     = document.getElementById('np-hero-badge');
-    const heroLive      = document.getElementById('np-hero-live');
-    const heroHeadline  = document.getElementById('np-hero-headline');
-    const heroExcerpt   = document.getElementById('np-hero-excerpt');
-    const heroAvatar    = document.getElementById('np-hero-avatar');
-    const heroAuthor    = document.getElementById('np-hero-author-name');
-    const heroDate      = document.getElementById('np-hero-date');
-    const heroRead      = document.getElementById('np-hero-read-time');
-    const slideCur      = document.getElementById('np-slide-cur');
-    const slideTotal    = document.getElementById('np-slide-total');
-    const thumbItems    = heroCarousel.querySelectorAll('.np-thumb-item');
 
     if (slideTotal) slideTotal.textContent = slides.length;
 
@@ -599,28 +425,22 @@
       current = (idx + slides.length) % slides.length;
       const s = slides[current];
 
-      heroImg.style.opacity = '0';
-      setTimeout(() => {
-        heroImg.src = s.img;
-        heroImg.alt = s.badge + ' — ' + s.date;
-        heroImg.style.opacity = '1';
-      }, 200);
+      // Swap hero image from data-img attribute on the slide
+      if (heroImg && s.dataset.img) {
+        heroImg.style.opacity = '0';
+        setTimeout(() => {
+          heroImg.src = s.dataset.img;
+          heroImg.alt = s.dataset.alt || '';
+          heroImg.style.opacity = '1';
+        }, 200);
+      }
 
-      heroBadge.textContent = s.badge;
-      heroLive.textContent  = s.live;
-      heroLive.style.display = s.live ? '' : 'none';
-      heroHeadline.innerHTML = s.headline;
-      heroExcerpt.innerHTML  = s.excerpt;
-      heroAvatar.textContent = s.avatar;
-      heroAuthor.textContent = s.author;
-      heroDate.setAttribute('datetime', s.datetime);
-      heroDate.textContent = s.date;
-      heroRead.textContent = s.read;
+      // Show only the active slide
+      slides.forEach((el, i) => { el.style.display = i === current ? '' : 'none'; });
       if (slideCur) slideCur.textContent = current + 1;
 
-      thumbItems.forEach((t, i) => {
-        const slideIdx = parseInt(t.dataset.slide, 10);
-        t.classList.toggle('is-active', slideIdx === current);
+      thumbItems.forEach(t => {
+        t.classList.toggle('is-active', parseInt(t.dataset.slide, 10) === current);
       });
     }
 
@@ -639,6 +459,220 @@
     heroImg.style.transition = 'opacity .25s ease';
     goTo(0);
     startAuto();
+  }
+
+  /* ──────────────────────────────────────────────────────────────
+     CUSTOM TECH CURSOR
+  ────────────────────────────────────────────────────────────── */
+  function setupCustomCursor() {
+    // Skip on touch / stylus-only devices
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+
+    // Guard against duplicate init (e.g. back-forward cache restore)
+    if (document.getElementById('ccs-cursor-dot')) return;
+
+    // Inject a high-priority <style> block — overrides any browser default
+    // that restores the system cursor on mousedown/active states
+    const forceStyle = document.createElement('style');
+    forceStyle.id = 'ccs-cursor-style';
+    forceStyle.textContent =
+      '*, *::before, *::after, *:hover, *:active, *:focus, *:focus-visible, ' +
+      'html, body, a, button, input, textarea, select, label, ' +
+      '[role="button"], [tabindex], [draggable] { cursor: none !important; }' +
+      'html, body { -webkit-user-select: none; user-select: none; }' +
+      'input, textarea, [contenteditable="true"] { -webkit-user-select: text; user-select: text; }';
+    document.head.appendChild(forceStyle);
+
+    document.documentElement.style.setProperty('cursor', 'none', 'important');
+    document.body.style.setProperty('cursor', 'none', 'important');
+
+    // Prevent text-selection cursor appearing on rapid multi-clicks
+    document.addEventListener('selectstart', e => {
+      if (!e.target.matches('input, textarea, [contenteditable]')) e.preventDefault();
+    });
+    // Prevent drag ghost cursor
+    document.addEventListener('dragstart', e => e.preventDefault());
+
+    const dot  = document.createElement('div');
+    dot.id = 'ccs-cursor-dot';
+    const ring = document.createElement('div');
+    ring.id = 'ccs-cursor-ring';
+    // Start fully hidden until first real mouse move
+    dot.style.opacity  = '0';
+    ring.style.opacity = '0';
+    document.body.appendChild(ring);
+    document.body.appendChild(dot);
+
+    let mx = -200, my = -200;
+    let rx = -200, ry = -200;
+    let rafId = null;
+    let visible = false;
+
+    function show() {
+      if (visible) return;
+      visible = true;
+      dot.style.opacity  = '1';
+      ring.style.opacity = '1';
+    }
+    function hide() {
+      visible = false;
+      dot.style.opacity  = '0';
+      ring.style.opacity = '0';
+    }
+
+    // Dot follows mouse instantly; reveal on first move
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.left = mx + 'px';
+      dot.style.top  = my + 'px';
+      show();
+    });
+
+    // Ring follows with a light lerp — fast enough to feel tight, smooth enough to trail
+    function animRing() {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      rafId = requestAnimationFrame(animRing);
+    }
+    animRing();
+
+    // Pause RAF when tab is hidden; resume and re-sync on visibility restore
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        hide();
+      } else {
+        // Snap ring to last known position so it doesn't drift in from -200
+        rx = mx; ry = my;
+        if (!rafId) animRing();
+      }
+    });
+
+    // Hide when pointer truly leaves the viewport (fires on <html>, not body)
+    document.documentElement.addEventListener('mouseleave', hide);
+    document.documentElement.addEventListener('mouseenter', show);
+
+    // Hover detection on interactive elements
+    const HOVER_SEL = 'a, button, [role="button"], label, select, input, textarea, ' +
+      '.model-nav-btn, .thumb-item, .btn, [data-tab], .news-card, .program-card, .officer-card, .faq-item';
+
+    document.addEventListener('mouseover', e => {
+      if (e.target.closest(HOVER_SEL)) {
+        dot.classList.add('is-hovering');
+        ring.classList.add('is-hovering');
+      }
+    });
+    document.addEventListener('mouseout', e => {
+      if (e.target.closest(HOVER_SEL)) {
+        dot.classList.remove('is-hovering');
+        ring.classList.remove('is-hovering');
+      }
+    });
+
+    // Click burst (left-click only)
+    document.addEventListener('mousedown', e => {
+      // Re-assert cursor:none on every click regardless of button
+      if (e.target) e.target.style.setProperty('cursor', 'none', 'important');
+      document.documentElement.style.setProperty('cursor', 'none', 'important');
+      document.body.style.setProperty('cursor', 'none', 'important');
+      if (e.button !== 0) return; // skip ripple/animation for right/middle click
+      dot.classList.add('is-clicking');
+      ring.classList.add('is-clicking');
+      spawnClickRipple(mx, my);
+    });
+    document.addEventListener('mouseup', () => {
+      dot.classList.remove('is-clicking');
+      ring.classList.remove('is-clicking');
+    });
+
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', e => e.preventDefault());
+
+    // Re-show immediately on any pointer activity after being hidden
+    window.addEventListener('focus', () => {
+      rx = mx; ry = my;
+      if (!rafId) animRing();
+    });
+
+    // Click ripple burst
+    function spawnClickRipple(x, y) {
+      const r = document.createElement('div');
+      r.className = 'ccs-cursor-ripple';
+      r.style.left = x + 'px';
+      r.style.top  = y + 'px';
+      document.body.appendChild(r);
+      r.addEventListener('animationend', () => r.remove(), { once: true });
+    }
+  }
+
+  /* ──────────────────────────────────────────────────────────────
+     COURSE COMPARISON  — semester tab switcher
+  ────────────────────────────────────────────────────────────── */
+  function setupCourseComparison() {
+    const tabs   = document.querySelectorAll('.cmp-tab');
+    const panels = document.querySelectorAll('.cmp-panel');
+    if (!tabs.length) return;
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        const target = tab.dataset.cmp;
+
+        // Update tab states
+        tabs.forEach(function(t) {
+          t.classList.remove('cmp-tab--active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('cmp-tab--active');
+        tab.setAttribute('aria-selected', 'true');
+
+        // Show/hide panels
+        panels.forEach(function(panel) {
+          if (panel.id === 'cmp-' + target) {
+            panel.classList.add('cmp-panel--active');
+            panel.removeAttribute('hidden');
+          } else {
+            panel.classList.remove('cmp-panel--active');
+            panel.setAttribute('hidden', '');
+          }
+        });
+      });
+    });
+  }
+
+  /* ── Program Picker (BSCS / BSIT switcher) ─────────────────── */
+  function setupProgramPicker() {
+    var tabs   = document.querySelectorAll('.pg-picker-tab');
+    var panels = document.querySelectorAll('.pg-picker-panel');
+    if (!tabs.length) return;
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var pg = tab.dataset.pg;
+
+        tabs.forEach(function(t) {
+          var active = t === tab;
+          t.classList.toggle('pg-picker-tab--active', active);
+          t.setAttribute('aria-selected', String(active));
+        });
+
+        panels.forEach(function(panel) {
+          var show = panel.id === 'pg-panel-' + pg;
+          panel.classList.toggle('pg-picker-panel--active', show);
+          if (show) {
+            panel.removeAttribute('hidden');
+          } else {
+            panel.setAttribute('hidden', '');
+          }
+        });
+      });
+
+      tab.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tab.click(); }
+      });
+    });
   }
 
 })();

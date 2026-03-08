@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CCS AI Assistant &mdash; College of Computer Studies | Saint Joseph College</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #080808;
+      --bg-2:         #0e0e0e;
+      --surface:      #111213;
+      --surface-2:    #161719;
+      --border:       rgba(255,255,255,0.065);
+      --border-2:     rgba(255,255,255,0.1);
+      --orange:       #f97316;
+      --orange-dim:   #c2601a;
+      --orange-dark:  #ea580c;
+      --orange-glow:  rgba(249,115,22,0.18);
+      --orange-faint: rgba(249,115,22,0.07);
+      --text:         #e8e8e8;
+      --text-2:       #a0a0a0;
+      --text-3:       #5c5c5c;
+      --text-4:       #3d3d3d;
+      --user-bg:      #1b1c1e;
+      --input-bg:     #141516;
+      --radius-sm:    8px;
+      --radius-md:    14px;
+      --radius-lg:    18px;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow: hidden;
+    }
+
+    /* =========================================================
+       BACKGROUND — subtle radial gradient + dot grid
+    ========================================================= */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%,   rgba(249,115,22,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 90% 100%, rgba(249,115,22,0.035) 0%, transparent 55%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* =========================================================
+       LAYOUT
+    ========================================================= */
+    .layout {
+      display: flex;
+      height: 100vh;
+      position: relative;
+      z-index: 1;
+      animation: pageIn .38s cubic-bezier(.22,1,.36,1) both;
+    }
+    @keyframes pageIn {
+      from { opacity: 0; transform: scale(0.975) translateY(6px); }
+      to   { opacity: 1; transform: scale(1)     translateY(0);   }
+    }
+
+    /* =========================================================
+       SIDEBAR
+    ========================================================= */
+    .sidebar {
+      width: 272px;
+      flex-shrink: 0;
+      background: rgba(14,15,16,0.9);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Brand */
+    .sidebar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand-icon {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(140deg, #fb923c 0%, #ea580c 100%);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 18px rgba(249,115,22,0.38), 0 0 0 1px rgba(249,115,22,0.15);
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2px;
+      min-width: 0;
+    }
+    .brand-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px; font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-3);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.2;
+    }
+
+    /* Sidebar nav */
+    .sidebar-nav {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 4px 10px;
+      overflow-y: auto;
+    }
+    .sidebar-nav::-webkit-scrollbar { width: 3px; }
+    .sidebar-nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.07); border-radius: 99px; }
+
+    .sidebar-label {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-4);
+      padding: 12px 8px 5px;
+    }
+
+    .s-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-2);
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 450;
+      cursor: pointer;
+      transition: background .15s, color .15s, border-color .15s;
+      text-decoration: none;
+      width: 100%;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .s-btn svg { flex-shrink: 0; opacity: .75; transition: opacity .15s; }
+    .s-btn:hover { background: rgba(255,255,255,0.044); color: var(--text); border-color: var(--border); }
+    .s-btn:hover svg { opacity: 1; }
+    .s-btn.new-chat {
+      margin: 10px 10px 6px;
+      width: calc(100% - 20px);
+      padding: 10px 14px;
+      background: linear-gradient(135deg, rgba(249,115,22,0.12) 0%, rgba(234,88,12,0.08) 100%);
+      border: 1px solid rgba(249,115,22,0.28);
+      border-radius: var(--radius-md);
+      color: var(--orange);
+      font-weight: 600;
+      font-size: 13.5px;
+      justify-content: center;
+      gap: 8px;
+    }
+    .s-btn.new-chat:hover {
+      background: linear-gradient(135deg, rgba(249,115,22,0.2) 0%, rgba(234,88,12,0.14) 100%);
+      border-color: rgba(249,115,22,0.5);
+      color: #fb923c;
+    }
+
+    /* Sidebar footer */
+    .sidebar-footer {
+      padding: 14px 18px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .sf-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-3);
+    }
+    .sf-row svg { opacity: .5; flex-shrink: 0; }
+
+    /* =========================================================
+       MAIN
+    ========================================================= */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* =========================================================
+       TOPBAR
+    ========================================================= */
+    .topbar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 28px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,8,8,0.88);
+      backdrop-filter: blur(18px) saturate(150%);
+      -webkit-backdrop-filter: blur(18px) saturate(150%);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .topbar-actions { display: flex; gap: 7px; align-items: center; margin-left: auto; }
+
+    .t-btn {
+      width: 34px; height: 34px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-3);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .15s, color .15s, border-color .15s;
+      text-decoration: none;
+    }
+    .t-btn:hover { background: rgba(255,255,255,0.055); color: var(--text); border-color: var(--border-2); }
+    .t-btn.danger:hover { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3); color: #f87171; }
+
+    .t-divider { width: 1px; height: 22px; background: var(--border); flex-shrink: 0; }
+
+    /* =========================================================
+       MESSAGES AREA
+    ========================================================= */
+    .messages-wrap {
+      flex: 1;
+      overflow-y: auto;
+      padding: 40px 0 24px;
+      scroll-behavior: smooth;
+      position: relative;
+    }
+    .messages-wrap::-webkit-scrollbar { width: 4px; }
+    .messages-wrap::-webkit-scrollbar-track { background: transparent; }
+    .messages-wrap::-webkit-scrollbar-thumb { background: rgba(249,115,22,0.2); border-radius: 99px; }
+    .messages-wrap::-webkit-scrollbar-thumb:hover { background: rgba(249,115,22,0.38); }
+
+    .messages-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* =========================================================
+       WELCOME SCREEN
+    ========================================================= */
+    .welcome {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 0 16px;
+      text-align: center;
+    }
+    .welcome-icon {
+      width: 68px; height: 68px;
+      border-radius: 22px;
+      background: linear-gradient(140deg, #fb923c 0%, #ea580c 100%);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      box-shadow:
+        0 8px 32px rgba(249,115,22,0.35),
+        0 0 0 1px rgba(249,115,22,0.2),
+        0 0 80px rgba(249,115,22,0.08);
+    }
+    .welcome-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      letter-spacing: -.02em;
+    }
+    .welcome-sub {
+      font-size: 14px;
+      color: var(--text-2);
+      max-width: 440px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .welcome-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      width: 100%;
+      max-width: 540px;
+    }
+    .w-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      text-align: left;
+      cursor: pointer;
+      transition: background .17s, border-color .17s, transform .15s;
+    }
+    .w-card:hover {
+      background: var(--surface-2);
+      border-color: rgba(249,115,22,0.28);
+      transform: translateY(-2px);
+    }
+    .w-card-icon { font-size: 20px; margin-bottom: 8px; display: block; }
+    .w-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 3px;
+    }
+    .w-card-desc { font-size: 11.5px; color: var(--text-3); line-height: 1.55; }
+    .welcome-hint {
+      margin-top: 28px;
+      font-size: 12px;
+      color: var(--text-4);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .welcome-hint svg { opacity: .4; }
+
+    /* =========================================================
+       MESSAGE ROWS
+    ========================================================= */
+    .msg-row {
+      display: flex;
+      gap: 14px;
+      animation: msgIn .3s cubic-bezier(.22,1,.36,1) both;
+    }
+    @keyframes msgIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+    .msg-row.user { flex-direction: row-reverse; }
+    .msg-row.no-anim { animation: none !important; }
+
+    .m-avatar {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      align-self: flex-start;
+      margin-top: 2px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10.5px; font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: .02em;
+    }
+    .msg-row.bot  .m-avatar { background: linear-gradient(140deg, #fb923c, #ea580c); color: #fff; box-shadow: 0 3px 14px rgba(249,115,22,0.3); }
+    .msg-row.user .m-avatar { background: rgba(255,255,255,0.055); border: 1px solid var(--border-2); color: var(--text-2); }
+
+    .m-body { flex: 1; min-width: 0; }
+    .msg-row.user .m-body { display: flex; flex-direction: column; align-items: flex-end; }
+
+    .m-header { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+    .msg-row.user .m-header { flex-direction: row-reverse; }
+
+    .m-sender { font-size: 12.5px; font-weight: 600; font-family: 'Space Grotesk', sans-serif; }
+    .msg-row.bot  .m-sender { color: var(--orange); }
+    .msg-row.user .m-sender { color: var(--text-3); }
+
+    .m-time { font-size: 11px; color: var(--text-4); }
+
+    .msg-row.user .m-text {
+      background: var(--user-bg);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px 18px 4px 18px;
+      padding: 11px 16px;
+      max-width: 76%;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text);
+      word-break: break-word;
+    }
+    .msg-row.bot .m-text { font-size: 14.5px; line-height: 1.78; color: var(--text); word-break: break-word; }
+
+    /* Markdown */
+    .m-text h2  { font-size: 16px; font-weight: 700; color: var(--orange); font-family: 'Space Grotesk',sans-serif; margin: 22px 0 9px; padding-bottom: 7px; border-bottom: 1px solid rgba(249,115,22,0.18); }
+    .m-text h3  { font-size: 14px; font-weight: 600; color: #fdba74; font-family: 'Space Grotesk',sans-serif; margin: 16px 0 7px; }
+    .m-text h4  { font-size: 13px; font-weight: 600; color: #fed7aa; margin: 13px 0 6px; }
+    .m-text p   { margin: 0 0 12px; }
+    .m-text p:last-child { margin-bottom: 0; }
+    .m-text ul, .m-text ol { padding-left: 22px; margin: 9px 0 12px; }
+    .m-text li  { margin-bottom: 5px; line-height: 1.7; }
+    .m-text strong { color: #fde68a; font-weight: 600; }
+    .m-text em     { color: #d1d5db; font-style: italic; }
+    .m-text code   { background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.2); color: #fdba74; padding: 2px 7px; border-radius: 5px; font-size: 13px; font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace; }
+    .m-text pre    { background: #0e0f10; border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-sm); padding: 16px 18px; overflow-x: auto; margin: 14px 0; }
+    .m-text pre code { background: none; border: none; padding: 0; font-size: 13px; }
+    .m-text blockquote { border-left: 3px solid var(--orange); padding: 2px 0 2px 15px; color: var(--text-2); margin: 12px 0; font-style: italic; }
+    .m-text table  { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13.5px; border-radius: 10px; overflow: hidden; }
+    .m-text thead tr { background: rgba(249,115,22,0.1); }
+    .m-text th     { color: var(--orange); padding: 10px 14px; border: 1px solid rgba(249,115,22,0.18); font-weight: 600; text-align: left; font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; }
+    .m-text td     { padding: 9px 14px; border: 1px solid var(--border); }
+    .m-text tr:nth-child(even) td { background: rgba(255,255,255,0.018); }
+    .m-text hr     { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
+    .m-text a      { color: var(--orange); text-decoration: underline; text-underline-offset: 2px; }
+    .m-text a:hover { color: #fb923c; }
+
+    /* Copy button */
+    .m-footer { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+    .copy-btn {
+      display: flex; align-items: center; gap: 5px;
+      padding: 4px 9px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-3);
+      font-size: 11.5px; font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: background .14s, color .14s, border-color .14s;
+    }
+    .copy-btn:hover { background: rgba(255,255,255,0.05); border-color: var(--border); color: var(--text-2); }
+    .copy-btn.copied { color: #22c55e; }
+
+    /* =========================================================
+       TYPING INDICATOR
+    ========================================================= */
+    .typing-row .m-text {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      padding: 12px 0 4px;
+    }
+    .typing-row .typing-label { font-size: 12px; color: var(--text-3); margin-right: 4px; font-style: italic; }
+    .typing-row .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); opacity: 0.55; animation: tBounce 1.3s ease-in-out infinite; }
+    .typing-row .dot:nth-child(2) { animation-delay: .18s; }
+    .typing-row .dot:nth-child(3) { animation-delay: .36s; }
+    @keyframes tBounce {
+      0%,65%,100% { transform: translateY(0);    opacity: 0.55; }
+      32%          { transform: translateY(-8px); opacity: 1;    }
+    }
+
+    /* =========================================================
+       INPUT AREA
+    ========================================================= */
+    .input-area {
+      flex-shrink: 0;
+      padding: 8px 32px 28px;
+      background: linear-gradient(to top, var(--bg) 60%, transparent);
+      z-index: 10;
+    }
+    .input-inner { max-width: 800px; margin: 0 auto; }
+
+    /* Suggestions */
+    .sugg-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      padding-bottom: 10px;
+      max-height: 130px;
+      overflow: hidden;
+      opacity: 1;
+      transition: max-height .28s ease, opacity .22s ease, padding .22s ease;
+    }
+    .sugg-row.sugg-hidden {
+      max-height: 0;
+      opacity: 0;
+      padding-bottom: 0;
+      pointer-events: none;
+    }
+    .sugg-chip {
+      display: flex; align-items: center; gap: 8px;
+      white-space: nowrap;
+      padding: 7px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-2);
+      font-size: 12.5px; font-family: 'Inter', sans-serif; font-weight: 500;
+      cursor: pointer;
+      transition: background .15s, border-color .15s, color .15s, transform .12s;
+      flex-shrink: 0;
+    }
+    .sugg-chip::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--orange);
+      opacity: 0.55;
+      flex-shrink: 0;
+      transition: opacity .15s;
+    }
+    .sugg-chip:hover { background: rgba(249,115,22,0.09); border-color: rgba(249,115,22,0.28); color: var(--text); transform: translateY(-1px); }
+    .sugg-chip:hover::before { opacity: 1; }
+
+    /* Error bar */
+    .error-bar {
+      align-items: center;
+      gap: 9px;
+      background: rgba(239,68,68,0.08);
+      border: 1px solid rgba(239,68,68,0.24);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #fca5a5;
+      margin-bottom: 10px;
+      display: none;
+    }
+    .error-bar.show { display: flex; }
+    .error-bar svg { flex-shrink: 0; opacity: .8; }
+
+    /* Input box */
+    .input-box {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      background: var(--input-bg);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 18px;
+      padding: 10px 10px 10px 20px;
+      transition: border-color .22s, box-shadow .22s;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.03) inset;
+    }
+    .input-box:focus-within {
+      border-color: rgba(249,115,22,0.42);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.55), 0 0 0 3px rgba(249,115,22,0.07), 0 1px 0 rgba(255,255,255,0.03) inset;
+    }
+    .input-ta {
+      flex: 1; background: transparent; border: none; outline: none;
+      color: var(--text); font-family: 'Inter', sans-serif;
+      font-size: 14.5px; line-height: 1.65;
+      resize: none; max-height: 160px; overflow-y: auto;
+      padding: 4px 0;
+    }
+    .input-ta::placeholder { color: var(--text-3); }
+    .input-ta::-webkit-scrollbar { width: 3px; }
+    .input-ta::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 99px; }
+
+    .input-right { display: flex; flex-direction: column; align-items: center; gap: 6px; padding-bottom: 2px; }
+
+    .send-btn {
+      width: 38px; height: 38px; border-radius: 11px;
+      background: var(--orange); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; flex-shrink: 0;
+      transition: background .15s, transform .12s, opacity .15s, box-shadow .15s;
+      box-shadow: 0 4px 14px rgba(249,115,22,0.35);
+    }
+    .send-btn:hover   { background: var(--orange-dark); box-shadow: 0 4px 20px rgba(249,115,22,0.5); }
+    .send-btn:active  { transform: scale(0.91); }
+    .send-btn:disabled { opacity: 0.25; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .input-hint {
+      text-align: center; font-size: 11.5px; color: var(--text-4);
+      margin-top: 10px;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .input-hint kbd { font-size: 10px; background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 1px 6px; font-family: inherit; }
+    .hint-sep { color: var(--text-4); font-size: 10px; }
+
+    /* =========================================================
+       SCROLL-TO-BOTTOM FAB
+    ========================================================= */
+    .scroll-fab {
+      position: sticky;
+      bottom: 16px;
+      float: right;
+      margin-right: 40px;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--surface-2);
+      border: 1px solid var(--border-2);
+      color: var(--text-2);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+      opacity: 0; transform: translateY(10px);
+      transition: opacity .22s, transform .22s, background .15s;
+      pointer-events: none;
+      z-index: 9;
+    }
+    .scroll-fab.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .scroll-fab:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .topbar { padding: 12px 16px; }
+      .messages-inner { padding: 0 16px; }
+      .input-area { padding: 6px 16px 22px; }
+      .scroll-fab { margin-right: 20px; }
+      .welcome-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ====================== SIDEBAR ====================== -->
+  <aside class="sidebar" role="complementary" aria-label="Chat sidebar">
+
+    <div class="sidebar-brand">
+      <div class="brand-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          <path d="M8 10h8M8 14h5" opacity=".6"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="brand-name">CCS AI</div>
+        <div class="brand-sub">College of Computer Studies</div>
+      </div>
+    </div>
+
+    <button class="s-btn new-chat" id="fpNewChat" aria-label="Start new conversation">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      New Conversation
+    </button>
+
+    <nav class="sidebar-nav" aria-label="Quick topic navigation">
+      <div class="sidebar-label">Quick Topics</div>
+      <button class="s-btn" data-prompt="What degree programs does CCS offer?">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Programs &amp; Curriculum
+      </button>
+      <button class="s-btn" data-prompt="How do I enroll in CCS? What are the requirements?">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+        Enrollment &amp; Admission
+      </button>
+      <button class="s-btn" data-prompt="What scholarships are available in CCS?">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+        Scholarships &amp; Grants
+      </button>
+      <button class="s-btn" data-prompt="What career paths are available for CCS graduates?">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        Career Outcomes
+      </button>
+      <button class="s-btn" data-prompt="Compare BSCS, BSIT & ACT — which program is better for me?">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        BSCS vs BSIT vs ACT
+      </button>
+      <button class="s-btn" data-prompt="Tell me about CCS student organizations and events.">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Student Life &amp; Events
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sf-row">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Knowledge cutoff: January 2025
+      </div>
+      <div class="sf-row">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        CCS Department &copy; 2026
+      </div>
+    </div>
+  </aside>
+
+  <!-- ====================== MAIN ========================= -->
+  <main class="main">
+
+    <!-- Top bar -->
+    <header class="topbar" role="banner">
+      <div class="topbar-actions">
+        <button class="t-btn danger" id="fpClear" title="Clear conversation" aria-label="Clear conversation">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M3 6h18M19 6l-1 14H6L5 6M9 6V4h6v2M10 11v6M14 11v6"/>
+          </svg>
+        </button>
+        <div class="t-divider" aria-hidden="true"></div>
+        <a class="t-btn" id="fpBackTop" href="#" title="Back to site" aria-label="Back to CCS website">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </a>
+      </div>
+    </header>
+
+    <!-- Messages -->
+    <div class="messages-wrap" id="fpMsgsWrap" role="log" aria-live="polite" aria-label="Chat messages">
+      <div class="messages-inner" id="fpMsgs"></div>
+      <!-- Scroll to bottom FAB -->
+      <button class="scroll-fab" id="scrollFab" aria-label="Scroll to latest message">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </button>
+    </div>
+
+    <!-- Input area -->
+    <div class="input-area">
+      <div class="input-inner">
+        <div class="sugg-row" id="fpSuggs" aria-label="Suggested questions"></div>
+        <div class="error-bar" id="fpErr" role="alert">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          <span id="fpErrText"></span>
+        </div>
+        <div class="input-box">
+          <textarea
+            class="input-ta" id="fpInput"
+            placeholder="Ask anything about CCS..."
+            rows="1"
+            aria-label="Type your message"
+            autocomplete="off"
+            spellcheck="true"
+          ></textarea>
+          <div class="input-right">
+            <button class="send-btn" id="fpSend" disabled aria-label="Send message">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+          </div>
+        </div>
+        <p class="input-hint">
+          <kbd>Enter</kbd> to send <span class="hint-sep">&bull;</span>
+          <kbd>Shift + Enter</kbd> for new line <span class="hint-sep">&bull;</span>
+          CCS AI &bull; Google Gemini
+        </p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ================================================================
+  chatbot.js provides:
+    window.CCS_CONFIG  — shared API config
+    window.CCS_AI      — AI engine (Gemini, intent detection, prompts)
+  This inline script handles only the full-page chat UI.
+================================================================ -->
+<script src="../assets/data/ccs-knowledge.js"></script>
+<script src="../assets/js/chatbot.js?v=6"></script>
+<script>
+/* =============================================================
+   FULL-PAGE CHAT UI — chat.html
+   Responsibilities:
+     - DOM rendering (messages, typing indicator, suggestions)
+     - User input & keyboard events
+     - Session save / restore (rendered HTML + AI history)
+     - Sidebar / toolbar button actions
+     - Scroll-to-bottom FAB
+   All AI / Gemini logic is handled exclusively by window.CCS_AI.
+============================================================= */
+(function () {
+  'use strict';
+
+  var state = {
+    msgs:       [],
+    loading:    false,
+    turnCount:  0,
+    lastIntent: 'general'
+  };
+
+  var el = {};
+
+  /* ------- BOOT ------- */
+  function loadScript(src, cb) {
+    var s = document.createElement('script');
+    s.src = src; s.onload = cb; s.onerror = cb;
+    document.head.appendChild(s);
+  }
+
+  loadScript('https://cdn.jsdelivr.net/npm/marked/marked.min.js', function () {
+    if (window.marked) window.marked.setOptions({ breaks: true, gfm: true });
+    boot(window.CCS_KB || '');
+  });
+
+  function boot(kb) {
+    window.CCS_AI.setKnowledge(kb);
+    init();
+  }
+
+  /* ------- INIT ------- */
+  function init() {
+    el.msgs      = document.getElementById('fpMsgs');
+    el.wrap      = document.getElementById('fpMsgsWrap');
+    el.input     = document.getElementById('fpInput');
+    el.send      = document.getElementById('fpSend');
+    el.err       = document.getElementById('fpErr');
+    el.errText   = document.getElementById('fpErrText');
+    el.suggs     = document.getElementById('fpSuggs');
+    el.scrollFab = document.getElementById('scrollFab');
+
+    var returnUrl = sessionStorage.getItem('ccsChat_returnUrl') || '../index.html';
+    document.getElementById('fpBackTop').href = returnUrl;
+
+    try {
+      var savedHistory = sessionStorage.getItem('ccsChat_history');
+      var savedMsgs    = sessionStorage.getItem('ccsChat_msgs');
+      if (savedHistory) window.CCS_AI.setHistory(JSON.parse(savedHistory));
+      if (savedMsgs)    state.msgs = JSON.parse(savedMsgs);
+    } catch (e) {}
+
+    if (state.msgs.length) {
+      state.msgs.forEach(function (msg) { renderRow(msg.role, msg.html || '', msg.time || '', true); });
+      scrollDown();
+    } else {
+      renderWelcome();
+    }
+
+    el.input.addEventListener('input', onInputChange);
+    el.input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
+    });
+    el.send.addEventListener('click', handleSend);
+
+    el.wrap.addEventListener('scroll', function () {
+      var nearBottom = el.wrap.scrollHeight - el.wrap.scrollTop - el.wrap.clientHeight < 120;
+      el.scrollFab.classList.toggle('show', !nearBottom && el.wrap.scrollHeight > el.wrap.clientHeight + 200);
+      el.suggs.classList.toggle('sugg-hidden', !nearBottom);
+    });
+    el.scrollFab.addEventListener('click', function () { scrollDown(true); });
+
+    document.getElementById('fpNewChat').addEventListener('click', function () { resetChat(); renderWelcome(); });
+    document.getElementById('fpClear').addEventListener('click', function ()   { resetChat(); renderWelcome(); });
+
+    document.querySelectorAll('.s-btn[data-prompt]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var p = btn.getAttribute('data-prompt');
+        if (p) { el.input.value = p; onInputChange(); handleSend(); }
+      });
+    });
+
+    renderSuggs('general');
+    setTimeout(function () { el.input.focus(); }, 200);
+  }
+
+  function onInputChange() {
+    el.input.style.height = 'auto';
+    el.input.style.height = Math.min(el.input.scrollHeight, 160) + 'px';
+    el.send.disabled = !el.input.value.trim() || state.loading;
+  }
+
+  /* ------- WELCOME SCREEN ------- */
+  function renderWelcome() {
+    var row = document.createElement('div');
+    row.id = 'fpWelcome';
+    row.className = 'welcome';
+    row.innerHTML =
+      '<div class="welcome-icon" aria-hidden="true">'
+        + '<svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'
+          + '<path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/>'
+          + '<path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-2.52-8.45-5.13C11.38 4.2 10.6 1.96 8.3 2.4m3.57 18.23c3.19-5 3.94-9.06 2.11-15.5"/>'
+        + '</svg>'
+      + '</div>'
+      + '<h1 class="welcome-title">CCS AI Assistant</h1>'
+      + '<p class="welcome-sub">Your official College of Computer Studies (Saint Joseph College) AI assistant. Ask about programs, enrollment, scholarships, careers, and campus life.</p>'
+      + '<div class="welcome-cards">'
+        + makeCard('\uD83C\uDF93', 'Programs', 'BSCS &amp; BSIT tracks, curriculum, and course paths', 'What degree programs does CCS offer?')
+        + makeCard('\uD83D\uDCCB', 'Enrollment', 'Requirements, process, deadlines &amp; available slots', 'How do I enroll in CCS? What are the requirements?')
+        + makeCard('\uD83C\uDFC5', 'Scholarships', 'DOST, CHED, Academic Excellence &amp; more grants', 'What scholarships are available in CCS?')
+        + makeCard('\uD83D\uDE80', 'Careers', 'Job paths, salaries, certifications &amp; OJT programs', 'What career paths are available for CCS graduates?')
+      + '</div>'
+      + '<div class="welcome-hint">'
+        + '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>'
+        + 'Powered by Gemini 3 Flash &bull; 1M token context'
+      + '</div>';
+    el.msgs.appendChild(row);
+
+    row.querySelectorAll('.w-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        var p = card.getAttribute('data-prompt');
+        if (p) { el.input.value = p; onInputChange(); handleSend(); }
+      });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+      });
+    });
+  }
+
+  function makeCard(icon, title, desc, prompt) {
+    return '<div class="w-card" data-prompt="' + escAttr(prompt) + '" role="button" tabindex="0" aria-label="Ask about ' + title + '">'
+      + '<span class="w-card-icon" aria-hidden="true">' + icon + '</span>'
+      + '<div class="w-card-title">' + title + '</div>'
+      + '<div class="w-card-desc">' + desc + '</div>'
+      + '</div>';
+  }
+
+  /* ------- RESET ------- */
+  function resetChat() {
+    window.CCS_AI.resetHistory();
+    state.msgs       = [];
+    state.turnCount  = 0;
+    state.lastIntent = 'general';
+    el.msgs.innerHTML = '';
+    clearSuggs();
+    try { sessionStorage.removeItem('ccsChat_history'); sessionStorage.removeItem('ccsChat_msgs'); } catch (e) {}
+    clearErr();
+  }
+
+  /* ------- HANDLE SEND ------- */
+  function handleSend() {
+    var text = el.input.value.trim();
+    if (!text || state.loading) return;
+
+    var welcome = document.getElementById('fpWelcome');
+    if (welcome) welcome.remove();
+
+    clearErr();
+    clearSuggs();
+
+    state.lastIntent = window.CCS_AI.detectIntent(text);
+    state.turnCount++;
+    state.loading    = true;
+
+    addUserMsg(text);
+    el.input.value        = '';
+    el.input.style.height = 'auto';
+    el.send.disabled      = true;
+
+    var typing = addTyping();
+
+    window.CCS_AI.send(text, state.lastIntent, {
+      onReply: function (reply) {
+        removeTyping(typing);
+        state.loading    = false;
+        el.send.disabled = !el.input.value.trim();
+        addBotMsg(reply);
+        if (state.turnCount <= 6) renderSuggs(state.lastIntent);
+        saveSession();
+      },
+      onError: function (msg) {
+        removeTyping(typing);
+        state.loading    = false;
+        el.send.disabled = !el.input.value.trim();
+        showErr(msg);
+        addBotMsg('**Notice:** ' + msg + '\n\nFor urgent inquiries, contact the CCS Department Office at **Room 201** or **ccs.dept@school.edu.ph**.');
+      }
+    });
+  }
+
+  /* ------- MESSAGE RENDERING ------- */
+  function addUserMsg(text) {
+    var html = esc(text), time = nowStr();
+    state.msgs.push({ role: 'user', html: html, time: time });
+    renderRow('user', html, time, false);
+    scrollDown();
+  }
+
+  function addBotMsg(md) {
+    var html = md2html(md), time = nowStr();
+    state.msgs.push({ role: 'bot', html: html, time: time });
+    renderRow('bot', html, time, false);
+    scrollDown();
+  }
+
+  function renderRow(role, html, time, noAnim) {
+    var row = document.createElement('div');
+    row.className = 'msg-row ' + role + (noAnim ? ' no-anim' : '');
+
+    var footer = '';
+    if (role === 'bot') {
+      footer = '<div class="m-footer">'
+        + '<button class="copy-btn" aria-label="Copy message" title="Copy to clipboard">'
+          + '<svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'
+          + 'Copy'
+        + '</button>'
+      + '</div>';
+    }
+
+    row.innerHTML =
+      '<div class="m-avatar" aria-hidden="true">' + (role === 'user' ? 'You' : 'AI') + '</div>'
+      + '<div class="m-body">'
+        + '<div class="m-header">'
+          + '<span class="m-sender">' + (role === 'user' ? 'You' : 'CCS AI Assistant') + '</span>'
+          + '<span class="m-time">' + time + '</span>'
+        + '</div>'
+        + '<div class="m-text">' + html + '</div>'
+        + footer
+      + '</div>';
+
+    el.msgs.appendChild(row);
+
+    if (role === 'bot') {
+      var copyBtn = row.querySelector('.copy-btn');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', function () {
+          var textEl = row.querySelector('.m-text');
+          var plain  = textEl ? (textEl.innerText || textEl.textContent) : '';
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(plain).then(function () {
+              copyBtn.classList.add('copied');
+              copyBtn.innerHTML =
+                '<svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Copied';
+              setTimeout(function () {
+                copyBtn.classList.remove('copied');
+                copyBtn.innerHTML =
+                  '<svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy';
+              }, 2200);
+            });
+          }
+        });
+      }
+    }
+  }
+
+  /* ------- TYPING INDICATOR ------- */
+  function addTyping() {
+    var row = document.createElement('div');
+    row.className = 'msg-row bot typing-row';
+    row.id = 'fpTyping';
+    row.innerHTML =
+      '<div class="m-avatar" aria-hidden="true">AI</div>'
+      + '<div class="m-body">'
+        + '<div class="m-header"><span class="m-sender">CCS AI Assistant</span></div>'
+        + '<div class="m-text">'
+          + '<span class="typing-label">Thinking</span>'
+          + '<span class="dot"></span><span class="dot"></span><span class="dot"></span>'
+        + '</div>'
+      + '</div>';
+    el.msgs.appendChild(row);
+    scrollDown();
+    return row;
+  }
+
+  function removeTyping(row) { if (row && row.parentNode) row.parentNode.removeChild(row); }
+
+  /* ------- SUGGESTIONS ------- */
+  function renderSuggs(intent) {
+    var set = window.CCS_AI.SUGGESTION_SETS[intent] || window.CCS_AI.SUGGESTION_SETS.general;
+    el.suggs.innerHTML = '';
+    set.forEach(function (s) {
+      var chip = document.createElement('button');
+      chip.className   = 'sugg-chip';
+      chip.textContent = s;
+      chip.setAttribute('aria-label', 'Ask: ' + s);
+      chip.addEventListener('click', function () { el.input.value = s; onInputChange(); handleSend(); });
+      el.suggs.appendChild(chip);
+    });
+  }
+
+  function clearSuggs() { if (el.suggs) el.suggs.innerHTML = ''; }
+
+  /* ------- SESSION ------- */
+  function saveSession() {
+    try {
+      sessionStorage.setItem('ccsChat_history', JSON.stringify(window.CCS_AI.getHistory()));
+      sessionStorage.setItem('ccsChat_msgs',    JSON.stringify(state.msgs));
+    } catch (e) {}
+  }
+
+  /* ------- UTILITIES ------- */
+  function scrollDown(smooth) {
+    setTimeout(function () {
+      el.wrap.scrollTo({ top: el.wrap.scrollHeight, behavior: smooth ? 'smooth' : 'auto' });
+    }, 40);
+  }
+
+  function showErr(msg) { el.errText.textContent = msg; el.err.classList.add('show'); }
+  function clearErr()   { el.err.classList.remove('show'); }
+
+  function nowStr() {
+    var d = new Date(), h = d.getHours(), m = d.getMinutes();
+    var ap = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    return h + ':' + (m < 10 ? '0' + m : m) + ' ' + ap;
+  }
+
+  function esc(t) {
+    return String(t)
+      .replace(/&/g,  '&amp;')
+      .replace(/</g,  '&lt;')
+      .replace(/>/g,  '&gt;')
+      .replace(/"/g,  '&quot;')
+      .replace(/\n/g, '<br>');
+  }
+
+  function escAttr(t) {
+    return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function md2html(t) {
+    if (!t) return '';
+    if (window.marked && typeof window.marked.parse === 'function') return window.marked.parse(t);
+    return esc(t);
+  }
+
+})();
+</script>
+
+</body>
+</html>
